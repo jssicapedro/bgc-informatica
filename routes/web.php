@@ -1,7 +1,5 @@
 <?php
 
-<<<<<<< Updated upstream
-=======
 use App\Http\Controllers\CalendarioController;
 use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\EquipamentosController;
@@ -13,14 +11,11 @@ use App\Http\Controllers\DividasController;
 use App\Http\Controllers\ServicosController;
 use App\Http\Controllers\TecnicosController;
 use App\Http\Controllers\Auth\LoginController;
->>>>>>> Stashed changes
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
-<<<<<<< Updated upstream
-=======
 
 
 Route::middleware('guest')->name('tecnico.')->group(function () {
@@ -44,4 +39,3 @@ Route::middleware('auth')->group(function () {
     Route::get('/servicos', [ServicosController::class, 'index'])->name('servicos');
     Route::get('/tecnicos', [TecnicosController::class, 'index'])->name('tecnicos');
 });
->>>>>>> Stashed changes
