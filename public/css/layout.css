@@ -1,0 +1,39 @@
+:root{
+    --default_color: #000;
+    --default_background:#E5E5E5;
+
+    --default_footer_background:#254284;
+    --default_footer_color:#fff;
+
+    --default_table_border:#828282;
+    --default_table_th:#E5E5E5;
+    --default_table_background:#fff;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-nav li a, .navbar-nav li button{
+    font-weight: 600;
+    color: var(--default_color);
+    font-size: 18px;
+}
+
+main{
+    padding: 15px 0;
+    background-color: var(--default_background);
+}
+
+footer{
+    background-color: var(--default_footer_background);
+    color: var(--default_footer_color);
+    padding: 20px 30px;
+}
+
+footer small{
+    display: flex;
+    justify-content: flex-end;
+}
+
