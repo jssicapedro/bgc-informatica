@@ -1,0 +1,74 @@
+.pag_new{
+    display: flex;
+    flex-direction: row;
+    padding: 25px 0;
+    justify-content: space-between;
+}
+
+.pag_new a{
+    padding: 15px;
+    border-radius: 5px;
+    color: var(--default_footer_color);
+    background-color: var(--default_footer_background);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+div#table {
+    display: flex;
+    justify-content: center;
+}
+
+table tbody {
+    background-color: var(--default_table_background);
+}
+
+table,
+th,
+tr,
+td {
+    border: 1px solid var(--default_table_border);
+}
+
+th{
+    background-color: var(--default_table_th);
+}
+
+th,
+td {
+    padding: 10px;
+}
+
+.id {
+    width: 50px;
+}
+
+.nome,
+.email {
+    width: 200px;
+}
+
+.tel,
+.nif,
+.acoes {
+    width: 130px;
+}
+
+.morada {
+    width: 380px;
+}
+
+.acoes {
+    text-align: end;
+}
+
+.acoes a{
+    text-decoration: none;
+    color: black;
+}
+
+.btn{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}

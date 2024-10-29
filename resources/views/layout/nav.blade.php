@@ -13,28 +13,28 @@
                         <a class="nav-link" href="{{ asset('clientes') }}">Clientes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Equipamentos</a>
+                        <a class="nav-link" href="{{ asset('equipamentos') }}">Equipamentos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Marcas e Modelos</a>
+                        <a class="nav-link" href="{{ asset('marcasmodelos') }}">Marcas e Modelos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Reparações</a>
+                        <a class="nav-link" href="{{ asset('reparacoes') }}">Reparações</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Orçamentos</a>
+                        <a class="nav-link" href="{{ asset('orcamentos') }}">Orçamentos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Encomendas</a>
+                        <a class="nav-link" href="{{ asset('encomendas') }}">Encomendas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Dívidas</a>
+                        <a class="nav-link" href="{{ asset('dividas') }}">Dívidas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Serviços</a>
+                        <a class="nav-link" href="{{ asset('servicos') }}">Serviços</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Técnicos</a>
+                        <a class="nav-link" href="{{ asset('tecnicos') }}">Técnicos</a>
                     </li>
 
                     <!-- logout -->

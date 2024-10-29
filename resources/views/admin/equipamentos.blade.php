@@ -9,37 +9,36 @@
 
 <!-- js -->
 @push('scripts')
+@vite(['resources/js/app.js', 'resources/css/app.css'])
 @endpush
 
 @section('main')
 <div class="container">
     <div class="pag_new">
-        <h1>Clientes</h1>
-        <a href="">Novo contacto</a>
+        <h1>Equipamentos</h1>
+        <a href="">Novo Equipamento</a>
     </div>
     <div id="table">
         <table>
             <thead>
                 <tr>
                     <th class="id">ID</th>
-                    <th class="nome">Nome</th>
-                    <th class="email">Email</th>
-                    <th class="tel">Telemóvel</th>
-                    <th class="morada">Morada</th>
-                    <th class="nif">NIF</th>
+                    <th class="nome">Tipo</th>
+                    <th class="email">N. Serie</th>
+                    <th class="morada">Data de Entrada</th>
+                    <th class="nif">Levantamento</th>
                     <th class="acoes">-</th>
-                    <!-- Adicione outras colunas relevantes -->
                 </tr>
             </thead>
             <tbody>
-                @foreach($clientes as $cliente)
+                @foreach($equipamentos as $equipamento)
                 <tr>
-                    <td>{{ $cliente->id }}</td>
-                    <td>{{ $cliente->nome }}</td>
-                    <td>{{ $cliente->email }}</td>
-                    <td>{{ $cliente->telemovel }}</td>
-                    <td>{{ $cliente->morada }}</td>
-                    <td>{{ $cliente->nif }}</td>
+                    <td>{{ $equipamento->id }}</td>
+                    <td>{{ $equipamento->tipo }}</td>
+                    <td>{{ $equipamento->numero_serie }}</td>
+                    <td>{{ $equipamento->entrada }}</td>
+                    <td>{{ $equipamento->levantamento }}</td>
+                    <td>{{ $equipamento->estado }}</td>
                     <td class="acoes btn">
                         <a href="">
                             <span class="material-icons">

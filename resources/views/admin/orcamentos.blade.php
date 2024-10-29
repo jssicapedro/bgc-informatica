@@ -9,37 +9,37 @@
 
 <!-- js -->
 @push('scripts')
+@vite(['resources/js/app.js', 'resources/css/app.css'])
 @endpush
 
 @section('main')
 <div class="container">
     <div class="pag_new">
-        <h1>Clientes</h1>
-        <a href="">Novo contacto</a>
+        <h1>Orçamentos</h1>
+        <a href="">Novo Orçamento</a>
     </div>
     <div id="table">
         <table>
             <thead>
                 <tr>
                     <th class="id">ID</th>
-                    <th class="nome">Nome</th>
-                    <th class="email">Email</th>
-                    <th class="tel">Telemóvel</th>
-                    <th class="morada">Morada</th>
-                    <th class="nif">NIF</th>
+                    <th class="nome">Reparação_id</th>
+                    <th class="email">Valor</th>
+                    <th class="tel">Descrição</th>
+                    <th class="morada">Data de Emissão</th>
+                    <th class="nif">Estado</th>
                     <th class="acoes">-</th>
-                    <!-- Adicione outras colunas relevantes -->
                 </tr>
             </thead>
             <tbody>
-                @foreach($clientes as $cliente)
+                @foreach($orcamentos as $orcamento)
                 <tr>
-                    <td>{{ $cliente->id }}</td>
-                    <td>{{ $cliente->nome }}</td>
-                    <td>{{ $cliente->email }}</td>
-                    <td>{{ $cliente->telemovel }}</td>
-                    <td>{{ $cliente->morada }}</td>
-                    <td>{{ $cliente->nif }}</td>
+                    <td>{{ $orcamento->id }}</td>
+                    <td>{{ $orcamento->reparacao_id }}</td>
+                    <td>{{ $orcamento->valor }}</td>
+                    <td>{{ $orcamento->descricao }}</td>
+                    <td>{{ $orcamento->dataEmissao }}</td>
+                    <td>{{ $orcamento->estado }}</td>
                     <td class="acoes btn">
                         <a href="">
                             <span class="material-icons">

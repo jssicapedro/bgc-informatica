@@ -9,37 +9,37 @@
 
 <!-- js -->
 @push('scripts')
+@vite(['resources/js/app.js', 'resources/css/app.css'])
 @endpush
 
 @section('main')
 <div class="container">
     <div class="pag_new">
-        <h1>Clientes</h1>
-        <a href="">Novo contacto</a>
+        <h1>Dividas</h1>
+        <a href="">Nova Divida</a>
     </div>
     <div id="table">
         <table>
             <thead>
                 <tr>
                     <th class="id">ID</th>
-                    <th class="nome">Nome</th>
-                    <th class="email">Email</th>
-                    <th class="tel">Telemóvel</th>
-                    <th class="morada">Morada</th>
-                    <th class="nif">NIF</th>
+                    <th class="nome">Reparação</th>
+                    <th class="email">Valor</th>
+                    <th class="tel">Descrição</th>
+                    <th class="morada">Data de Emissão</th>
+                    <th class="nif">Estado</th>
                     <th class="acoes">-</th>
-                    <!-- Adicione outras colunas relevantes -->
                 </tr>
             </thead>
             <tbody>
-                @foreach($clientes as $cliente)
+                @foreach($dividas as $divida)
                 <tr>
-                    <td>{{ $cliente->id }}</td>
-                    <td>{{ $cliente->nome }}</td>
-                    <td>{{ $cliente->email }}</td>
-                    <td>{{ $cliente->telemovel }}</td>
-                    <td>{{ $cliente->morada }}</td>
-                    <td>{{ $cliente->nif }}</td>
+                    <td>{{ $divida->id }}</td>
+                    <td>{{ $divida->reparacao_id }}</td>
+                    <td>{{ $divida->valor }}</td>
+                    <td>{{ $divida->descricao }}</td>
+                    <td>{{ $divida->dataEmissao }}</td>
+                    <td>{{ $divida->estado }}</td>
                     <td class="acoes btn">
                         <a href="">
                             <span class="material-icons">

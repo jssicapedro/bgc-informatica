@@ -9,37 +9,31 @@
 
 <!-- js -->
 @push('scripts')
+@vite(['resources/js/app.js', 'resources/css/app.css'])
 @endpush
 
 @section('main')
 <div class="container">
     <div class="pag_new">
-        <h1>Clientes</h1>
-        <a href="">Novo contacto</a>
+        <h1>Marcas e Modelos</h1>
+        <a href="">Nova Marca/Modelo</a>
     </div>
     <div id="table">
         <table>
             <thead>
                 <tr>
                     <th class="id">ID</th>
-                    <th class="nome">Nome</th>
-                    <th class="email">Email</th>
-                    <th class="tel">Telemóvel</th>
-                    <th class="morada">Morada</th>
-                    <th class="nif">NIF</th>
+                    <th class="nome">Marca</th>
+                    <th class="email">Modelo</th>
                     <th class="acoes">-</th>
-                    <!-- Adicione outras colunas relevantes -->
                 </tr>
             </thead>
             <tbody>
-                @foreach($clientes as $cliente)
+                @foreach($marcasmodelos as $marcasmodelo)
                 <tr>
-                    <td>{{ $cliente->id }}</td>
-                    <td>{{ $cliente->nome }}</td>
-                    <td>{{ $cliente->email }}</td>
-                    <td>{{ $cliente->telemovel }}</td>
-                    <td>{{ $cliente->morada }}</td>
-                    <td>{{ $cliente->nif }}</td>
+                    <td>{{ $marcasmodelo->id }}</td>
+                    <td>{{ $marcasmodelo->marca }}</td>
+                    <td>{{ $marcasmodelo->modelo }}</td>
                     <td class="acoes btn">
                         <a href="">
                             <span class="material-icons">
