@@ -17,6 +17,7 @@
 div#table {
     display: flex;
     justify-content: center;
+    padding-bottom: 15px;
 }
 
 table tbody {
