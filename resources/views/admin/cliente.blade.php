@@ -41,7 +41,7 @@
                     <td>{{ $cliente->morada }}</td>
                     <td>{{ $cliente->nif }}</td>
                     <td class="acoes btn">
-                        <a href="">
+                        <a href="{{ route('cliente.show', ['id' => $cliente->id]) }}">
                             <span class="material-icons">
                                 visibility
                             </span>
