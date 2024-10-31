@@ -13,7 +13,7 @@ class EncomendasController extends Controller
     public function index()
     {
         $encomendas = Encomenda::all();
-        return view('admin.encomendas', compact('encomendas'));
+        return view('admin.encomendas.encomendas', compact('encomendas'));
     }
 
     /**

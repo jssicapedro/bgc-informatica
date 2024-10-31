@@ -13,7 +13,7 @@ class MarcaModelosController extends Controller
     public function index()
     {
         $marcasmodelos=MarcaModelo::all();
-        return view('admin.marcamodelos', compact('marcasmodelos'));
+        return view('admin.marcamodelo.marcamodelos', compact('marcasmodelos'));
     }
 
     /**

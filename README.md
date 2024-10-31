@@ -18,3 +18,34 @@ php artisan db:seed </pre>
 7. Para que tudo funcione deves executar o comando 
  <pre>npm run dev </pre> 
  <small>(este comando deve ser usado sempre que se for visualizar/editar o projeto)</small>
+
+## Gestão de Ficheiros e CRUD
+MENU              |  CREATE             | READ                | UPDATE              | DELETE
+_____________________________________________________________________________________________
+CLIENTE
+                  |  clienete_new       | cliente_view        | cliente_edit        |
+_____________________________________________________________________________________________
+EQUIPAMENTOS
+                  |  equipamentos_new   | equipamentos_view   | equipamentos_edit   |
+_____________________________________________________________________________________________
+MARCAS E MODELOS
+                  |  marcamodelos_new   | marcamodelos_view   | marcamodelos_edit   |
+_____________________________________________________________________________________________
+REPARACOES
+                  |  reparacoes_new     | reparacoes_view     | reparacoes_edit     |
+_____________________________________________________________________________________________
+ORCAMENTOS
+                  |  orcamentos_new     | orcamentos_view     | orcamentos_edit     |
+_____________________________________________________________________________________________
+ENCOMENDAS
+                  |  encomendas_new     | encomendas_view     | encomendas_edit     |
+_____________________________________________________________________________________________
+DIVIDAS
+                  |  dividas_new        | dividas_view        | dividas_edit        |
+_____________________________________________________________________________________________
+SERVICOS
+                  |  servicos_new       | servicos_view       | servicos_edit       |
+_____________________________________________________________________________________________
+TECNICOS
+                  |  tecnicos_new       | tecnicos_view       | tecnicos_edit       |
+_____________________________________________________________________________________________

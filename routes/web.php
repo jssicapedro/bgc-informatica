@@ -29,13 +29,40 @@ Route::middleware('auth')->name('tecnico.')->group(function (){
 
 Route::middleware('auth')->group(function () {
     Route::get('/calendario', [CalendarioController::class, 'index'])->name('calendario');
+    /* CLIENTES */
     Route::get('/clientes', [ClientesController::class, 'index'])->name('clientes');
+    Route::get('/cliente{id}', [ClientesController::class, 'show'])->name('cliente.show');
+
+    /* EQUIPAMENTOS */
     Route::get('/equipamentos', [EquipamentosController::class, 'index'])->name('equipamentos');
+
+
+    /* MARCAS MODELOS */
     Route::get('/marcasmodelos', [MarcaModelosController::class, 'index'])->name('marcasmodelos');
+
+
+    /* REPARACOES */
     Route::get('/reparacoes', [ReparacoesController::class, 'index'])->name('reparacoes');
+
+
+    /* ORCAMENTOS */
     Route::get('/orcamentos', [OrcamentosController::class, 'index'])->name('orcamentos');
+
+
+    /* ENCOMENDAS */
     Route::get('/encomendas', [EncomendasController::class, 'index'])->name('encomendas');
+
+
+    /* DIVIDAS */
     Route::get('/dividas', [DividasController::class, 'index'])->name('dividas');
+
+
+    /* SERVICOS */
     Route::get('/servicos', [ServicosController::class, 'index'])->name('servicos');
+
+
+    /* TECNICOS */
     Route::get('/tecnicos', [TecnicosController::class, 'index'])->name('tecnicos');
+    Route::get('/tecnicos{id}', [TecnicosController::class, 'show'])->name('tecnico.show');
+
 });

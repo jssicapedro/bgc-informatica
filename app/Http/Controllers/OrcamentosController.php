@@ -13,7 +13,7 @@ class OrcamentosController extends Controller
     public function index()
     {
         $orcamentos=Orcamento::all();
-        return view('admin.orcamentos', compact('orcamentos'));
+        return view('admin.orcamentos.orcamentos', compact('orcamentos'));
     }
 
     /**
