@@ -13,7 +13,7 @@ class ReparacoesController extends Controller
     public function index()
     {
         $reparacoes=Reparacoe::all();
-        return view('admin.reparacoes', compact('reparacoes'));
+        return view('admin.reparacoes.reparacoes', compact('reparacoes'));
     }
 
     /**

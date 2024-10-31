@@ -63,6 +63,6 @@ Route::middleware('auth')->group(function () {
 
     /* TECNICOS */
     Route::get('/tecnicos', [TecnicosController::class, 'index'])->name('tecnicos');
-
+    Route::get('/tecnicos{id}', [TecnicosController::class, 'show'])->name('tecnico.show');
 
 });

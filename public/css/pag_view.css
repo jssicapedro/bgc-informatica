@@ -1,0 +1,41 @@
+main{
+    padding: 30px 0;
+    display: flex;
+    align-items: center;
+}
+
+.pag_list{
+    flex-direction: column;
+}
+
+.pag_list a{
+    width: 20%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.info{
+    padding: 20px 0;
+    height: 45vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.email_tel {
+    display: flex;
+    justify-content: space-between;
+}
+
+.email, .tel, .nif, .morada, .esp{
+    width: 45%;
+}
+
+p {
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 5px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+}

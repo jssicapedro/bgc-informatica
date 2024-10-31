@@ -13,7 +13,7 @@ class TecnicosController extends Controller
     public function index()
     {
         $tecnicos=Tecnico::all();
-        return view('admin.tecnicos', compact('tecnicos'));
+        return view('admin.tecnicos.tecnicos', compact('tecnicos'));
     }
 
     /**
@@ -37,7 +37,9 @@ class TecnicosController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $tecnico = Tecnico::findOrFail($id);
+
+        return view('admin.tecnicos.tecnico_view', compact('tecnico'));
     }
 
     /**

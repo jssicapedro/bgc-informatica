@@ -39,7 +39,7 @@
                     <td>{{ $tecnico->telemovel }}</td>
                     <td>{{ $tecnico->especialidade }}</td>
                     <td class="acoes btn">
-                        <a href="">
+                        <a href="{{ route('tecnico.show', ['id' => $tecnico->id]) }}">
                             <span class="material-icons">
                                 visibility
                             </span>

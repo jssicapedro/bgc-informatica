@@ -13,7 +13,7 @@ class DividasController extends Controller
     public function index()
     {
         $dividas = Dividas::all();
-        return view('admin.dividas', compact('dividas'));
+        return view('admin.dividas.dividas', compact('dividas'));
     }
 
     /**

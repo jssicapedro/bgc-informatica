@@ -10,7 +10,7 @@ class ClientesController extends Controller
     public function index()
     {
         $clientes = Cliente::all();
-        return view('admin.cliente', compact('clientes'));
+        return view('admin.cliente.cliente', compact('clientes'));
     }
     /**
      * Show the form for creating a new resource.
@@ -35,7 +35,7 @@ class ClientesController extends Controller
     {
         $cliente = Cliente::findOrFail($id);
 
-        return view('admin.cliente_view', compact('cliente'));
+        return view('admin.cliente.cliente_view', compact('cliente'));
     }
 
     /**

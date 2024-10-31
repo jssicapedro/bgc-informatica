@@ -13,7 +13,7 @@ class EquipamentosController extends Controller
     public function index()
     {
         $equipamentos=Equipamento::all();
-        return view('admin.equipamentos', compact('equipamentos'));
+        return view('admin.equipamentos.equipamentos', compact('equipamentos'));
     }
 
     /**
