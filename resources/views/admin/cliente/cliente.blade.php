@@ -15,7 +15,7 @@
 <div class="container">
     <div class="pag_new">
         <h1>Clientes</h1>
-        <a href="">Novo contacto</a>
+        <a href="{{ route('cliente.new') }}">Novo contato</a>
     </div>
     <div id="table">
         <table>
@@ -28,7 +28,6 @@
                     <th class="morada">Morada</th>
                     <th class="nif">NIF</th>
                     <th class="acoes">-</th>
-                    <!-- Adicione outras colunas relevantes -->
                 </tr>
             </thead>
             <tbody>
@@ -57,7 +56,6 @@
                             </span>
                         </a>
                     </td>
-                    <!-- Adicione outros campos relevantes -->
                 </tr>
                 @endforeach
             </tbody>

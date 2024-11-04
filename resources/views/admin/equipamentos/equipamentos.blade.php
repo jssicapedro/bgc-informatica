@@ -40,7 +40,7 @@
                     <td>{{ $equipamento->levantamento }}</td>
                     <td>{{ $equipamento->estado }}</td>
                     <td class="acoes btn">
-                        <a href="">
+                        <a href="{{ route('equipamento.show', ['id' => $equipamento->id]) }}">
                             <span class="material-icons">
                                 visibility
                             </span>

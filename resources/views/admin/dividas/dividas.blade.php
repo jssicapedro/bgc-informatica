@@ -41,7 +41,7 @@
                     <td>{{ $divida->dataEmissao }}</td>
                     <td>{{ $divida->estado }}</td>
                     <td class="acoes btn">
-                        <a href="">
+                        <a href="{{ route('dividas.show', ['id' => $divida->id]) }}">
                             <span class="material-icons">
                                 visibility
                             </span>

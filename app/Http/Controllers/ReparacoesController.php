@@ -37,7 +37,9 @@ class ReparacoesController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $reparacao = Reparacoe::findOrFail($id);
+
+        return view('admin.reparacoes.reparacao_view', compact('reparacao'));
     }
 
     /**

@@ -41,7 +41,7 @@
                     <td>{{ $orcamento->dataEmissao }}</td>
                     <td>{{ $orcamento->estado }}</td>
                     <td class="acoes btn">
-                        <a href="">
+                        <a href="{{ route('orcamento.show', ['id' => $orcamento->id]) }}">
                             <span class="material-icons">
                                 visibility
                             </span>
