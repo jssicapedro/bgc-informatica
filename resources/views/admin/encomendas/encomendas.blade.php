@@ -41,7 +41,7 @@
                     <td>{{ $encomenda->estado }}</td>
                     <td>{{ $encomenda->descricao }}</td>
                     <td class="acoes btn">
-                        <a href="">
+                        <a href="{{ route('encomenda.show', ['id' => $encomenda->id]) }}">
                             <span class="material-icons">
                                 visibility
                             </span>

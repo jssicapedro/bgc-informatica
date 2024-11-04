@@ -37,7 +37,7 @@
                     <td>{{ $reparacao->servico_id }}</td>
                     <td>{{ $reparacao->estado }}</td>
                     <td class="acoes btn">
-                        <a href="">
+                        <a href="{{ route('reparacao.show', ['id' => $reparacao->id]) }}">
                             <span class="material-icons">
                                 visibility
                             </span>

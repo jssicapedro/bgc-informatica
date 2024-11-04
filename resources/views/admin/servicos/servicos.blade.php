@@ -37,7 +37,7 @@
                     <td>{{ $servico->dataInicio }}</td>
                     <td>{{ $servico->conclusao }}</td>
                     <td class="acoes btn">
-                        <a href="">
+                        <a href="{{ route('servico.show', ['id' => $servico->id]) }}">
                             <span class="material-icons">
                                 visibility
                             </span>
