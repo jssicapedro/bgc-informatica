@@ -12,10 +12,10 @@
 5. Abrir o ficheiro .env.example e alterar todas as informações sobre a base de dados. Depois guarda este ficheiro como .env
 6. De seguida deves executar o comando 
   <pre>php artisan key:generate</pre>
-5. No terminal executa os comandos:
+7. No terminal executa os comandos:
  <pre>php artisan migrate:fresh
 php artisan db:seed </pre>
-7. Para que tudo funcione deves executar o comando 
+8. Para que tudo funcione deves executar o comando 
  <pre>npm run dev </pre> 
  <small>(este comando deve ser usado sempre que se for visualizar/editar o projeto)</small>
 
