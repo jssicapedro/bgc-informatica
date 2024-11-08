@@ -16,7 +16,7 @@
 <div class="container">
     <div class="pag_new">
         <h1>Serviços</h1>
-        <a href="">Novo Serviço</a>
+        <a href="{{ route('servico.new') }}">Novo Serviço</a>
     </div>
     <div id="table">
         <table>

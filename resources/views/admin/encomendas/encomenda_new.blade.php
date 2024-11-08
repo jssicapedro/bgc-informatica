@@ -5,6 +5,8 @@
 <!-- css -->
 @push('links')
 <link rel="stylesheet" href="{{ asset('css/tabel_pag.css') }}">
+<link rel="stylesheet" href="{{ asset('css/formulario_pag.css') }}">
+<link rel="stylesheet" href="{{ asset('css/pag_view.css') }}">
 @endpush
 
 <!-- js -->
@@ -38,7 +40,7 @@
                 </div>
                 <div class="tel">
                     <label for="dataChegada" class="form-label">Data de chegada:</label>
-                    <input type="text" class="form-control" id="dataChegada" name="dataChegada" value="{{ old('dataChegada') }}">
+                    <input type="date" class="form-control" id="dataChegada" name="dataChegada" value="{{ old('dataChegada') }}">
                 </div>
             </div>
             <div class="nif">

@@ -31,12 +31,22 @@
         <div class="info">
             <div class="email_tel">
                 <div class="email">
-                    <label for="marca" class="form-label">Marca:</label>
-                    <input type="text" class="form-control" id="marca" name="marca" value="{{ old('marca') }}">
+                    <label for="equipamento_id" class="form-label">Equipamento a ser reparado:</label>
+                    <input type="text" class="form-control" id="equipamento_id" name="equipamento_id" value="{{ old('equipamento_id') }}">
                 </div>
                 <div class="tel">
-                    <label for="modelo" class="form-label">Modelo:</label>
-                    <input type="text" class="form-control" id="modelo" name="modelo" value="{{ old('modelo') }}">
+                    <label for="servico_id" class="form-label">Tipo de serviço:</label>
+                    <input type="text" class="form-control" id="servico_id" name="servico_id" value="{{ old('servico_id') }}">
+                </div>
+                <div class="tel">
+                    <label for="estado" class="form-label">Estado do serviço:</label>
+                    <input type="text" class="form-control" id="estado" name="estado" value="{{ old('estado') }}">
+                </div>
+            </div>
+            <div class="email_tel">
+                <div class="email">
+                    <label for="descricaoProblema" class="form-label">Descrição do problema:</label>
+                    <input type="text" class="form-control" id="descricaoProblema" name="descricaoProblema" value="{{ old('descricaoProblema') }}">
                 </div>
             </div>
         </div>

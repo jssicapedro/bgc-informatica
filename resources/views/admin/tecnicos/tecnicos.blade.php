@@ -15,8 +15,8 @@
 @section('main')
 <div class="container">
     <div class="pag_new">
-        <h1>Tecnicos</h1>
-        <a href="">Novo Tecnico</a>
+        <h1>Técnicos</h1>
+        <a href="{{ route('tecnico.new') }}">Novo Técnico</a>
     </div>
     <div id="table">
         <table>

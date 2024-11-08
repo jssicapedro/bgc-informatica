@@ -21,7 +21,7 @@ class TecnicosController extends Controller
      */
     public function create()
     {
-        return view('admin.tenicos.tecnico_new');
+        return view('admin.tecnicos.tecnico_new');
     }
 
     /**
