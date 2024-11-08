@@ -16,16 +16,16 @@
 <div class="container">
     <div class="pag_new">
         <h1>Marcas e Modelos</h1>
-        <a href="">Nova Marca/Modelo</a>
+        <a href="{{ route('marcamodelo.new') }}">Nova Marca/Modelo</a>
     </div>
     <div id="table">
         <table>
             <thead>
                 <tr>
-                    <th class="id">ID</th>
-                    <th class="nome">Marca</th>
-                    <th class="email">Modelo</th>
-                    <th class="acoes">-</th>
+                    <th>ID</th>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>-</th>
                 </tr>
             </thead>
             <tbody>

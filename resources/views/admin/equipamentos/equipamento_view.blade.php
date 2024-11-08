@@ -14,26 +14,38 @@
 @section('main')
 <div class="container">
     <div class="pag_new">
-        <h1>{{$cliente->id .' - '. $cliente->nome}}</h1>
+        <h1>{{$equipamento->id .' - '. $equipamento->tipo}}</h1>
     </div>
     <div class="info">
         <div class="email_tel">
             <div class="email">
-                <h3>Email</h3>
-                <p>{{$cliente->email}}</p>
+                <h3>Tipo</h3>
+                <p>{{$equipamento->tipo}}</p>
             </div>
             <div class="tel">
-                <h3>Telemovel</h3>
-                <p>{{$cliente->telemovel}}</p>
+                <h3>Numero de serie</h3>
+                <p>{{$equipamento->numero_serie}}</p>
             </div>
         </div>
         <div class="nif">
-            <h3>NIF</h3>
-            <p>{{$cliente->nif}}</p>
+            <h3>Descrição do equipamento</h3>
+            <p>{{$equipamento->descricao}}</p>
         </div>
         <div class="morada">
-            <h3>Morada</h3>
-            <p>{{$cliente->morada}}</p>
+            <h3>Este equipamento deu entrada a:</h3>
+            <p>{{$equipamento->entrada}}</p>
+        </div>
+        <div class="morada">
+            <h3>Resolução:</h3>
+            <p>{{$equipamento->resolucao}}</p>
+        </div>
+        <div class="morada">
+            <h3>O cliente levantou o equipamento a:</h3>
+            <p>{{$equipamento->levantamento}}</p>
+        </div>
+        <div class="morada">
+            <h3>QR Code:</h3>
+            <p>{{$equipamento->qr}}</p>
         </div>
     </div>
 </div>

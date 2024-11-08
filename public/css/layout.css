@@ -8,6 +8,8 @@
     --default_table_border:#828282;
     --default_table_th:#E5E5E5;
     --default_table_background:#fff;
+
+    --default_btn:#254284c2;
 }
 
 *{
@@ -42,4 +44,3 @@ footer small{
     display: flex;
     justify-content: flex-end;
 }
-

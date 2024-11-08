@@ -22,11 +22,11 @@
         <table>
             <thead>
                 <tr>
-                    <th class="id">ID</th>
-                    <th class="nome">Tipo</th>
-                    <th class="email">Data Inicio</th>
-                    <th class="tel">Conclusão</th>
-                    <th class="acoes">-</th>
+                    <th>ID</th>
+                    <th>Tipo</th>
+                    <th>Data Inicio</th>
+                    <th>Conclusão</th>
+                    <th>-</th>
                 </tr>
             </thead>
             <tbody>

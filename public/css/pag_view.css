@@ -22,15 +22,6 @@ main{
     justify-content: space-around;
 }
 
-.email_tel {
-    display: flex;
-    justify-content: space-between;
-}
-
-.email, .tel, .nif, .morada, .esp{
-    width: 45%;
-}
-
 p {
     border: 1px solid gray;
     border-radius: 5px;

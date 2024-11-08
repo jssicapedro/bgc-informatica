@@ -21,7 +21,7 @@ class ReparacoesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.reparacoes.reparacao_new');
     }
 
     /**
