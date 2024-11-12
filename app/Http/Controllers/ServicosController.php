@@ -21,7 +21,7 @@ class ServicosController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.servicos.servico_new');
     }
 
     /**

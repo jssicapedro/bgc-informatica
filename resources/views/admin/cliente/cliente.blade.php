@@ -15,19 +15,19 @@
 <div class="container">
     <div class="pag_new">
         <h1>Clientes</h1>
-        <a href="{{ route('cliente.new') }}">Novo contato</a>
+        <a href="{{ route('cliente.new') }}">Novo cliente</a>
     </div>
     <div id="table">
         <table>
             <thead>
                 <tr>
-                    <th class="id">ID</th>
-                    <th class="nome">Nome</th>
-                    <th class="email">Email</th>
-                    <th class="tel">Telemóvel</th>
-                    <th class="morada">Morada</th>
-                    <th class="nif">NIF</th>
-                    <th class="acoes">-</th>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Telemóvel</th>
+                    <th>Morada</th>
+                    <th>NIF</th>
+                    <th>-</th>
                 </tr>
             </thead>
             <tbody>

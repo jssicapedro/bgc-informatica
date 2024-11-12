@@ -21,7 +21,7 @@ class EquipamentosController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.equipamentos.equipamento_new');
     }
 
     /**
@@ -37,7 +37,9 @@ class EquipamentosController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $equipamento = Equipamento::findOrFail($id);
+
+        return view('admin.equipamentos.equipamento_view', compact('equipamento'));
     }
 
     /**

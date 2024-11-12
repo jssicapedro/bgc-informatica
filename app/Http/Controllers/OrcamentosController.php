@@ -21,7 +21,7 @@ class OrcamentosController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.orcamentos.orcamento_new');
     }
 
     /**
@@ -37,7 +37,9 @@ class OrcamentosController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $orcamento = Orcamento::findOrFail($id);
+
+        return view('admin.orcamentos.orcamento_view', compact('orcamento'));
     }
 
     /**

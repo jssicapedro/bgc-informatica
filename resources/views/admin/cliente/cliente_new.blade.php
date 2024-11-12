@@ -5,6 +5,7 @@
 <!-- css -->
 @push('links')
 <link rel="stylesheet" href="{{ asset('css/tabel_pag.css') }}">
+<link rel="stylesheet" href="{{ asset('css/formulario_pag.css') }}">
 <link rel="stylesheet" href="{{ asset('css/pag_view.css') }}">
 @endpush
 
@@ -22,37 +23,39 @@
         @csrf
         @if($errors->any())
         <div class="alert alert-danger">
-            <ul>
-                @foreach($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
+            @foreach($errors->all() as $error)
+            <p>{{ $error }}</p>
+            @endforeach
         </div>
         @endif
         <div class="info">
-            <div class="email_tel">
+            <div class="nome_tel">
                 <div class="nome">
-                    <label for="nome" class="form-label">Nome</label>
+                    <label for="nome" class="form-label">Nome:</label>
                     <input type="text" class="form-control" id="nome" name="nome" value="{{ old('nome') }}">
                 </div>
                 <div class="email">
-                    <label for="email" class="form-label">Email</label>
+                    <label for="email" class="form-label">Email:</label>
                     <input type="text" class="form-control" id="email" name="email" value="{{ old('email') }}">
                 </div>
+               
+            </div>
+            <div class="tel_nif">
                 <div class="tel">
-                    <label for="tel" class="form-label">Telemóvel</label>
+                    <label for="tel" class="form-label">Telemóvel:</label>
                     <input type="number" class="form-control" id="tel" name="tel" value="{{ old('tel') }}">
                 </div>
-            </div>
-            <div class="nif">
-                <label for="nif" class="form-label">NIF</label>
-                <input type="number" class="form-control" id="nif" name="nif" value="{{ old('nif') }}">
+                <div class="nif">
+                    <label for="nif" class="form-label">NIF:</label>
+                    <input type="number" class="form-control" id="nif" name="nif" value="{{ old('nif') }}">
+                </div>
             </div>
             <div class="morada">
-                <label for="morada" class="form-label">Morada</label>
+                <label for="morada" class="form-label">Morada:</label>
                 <input type="text" class="form-control" id="morada" name="morada" value="{{ old('morada') }}">
             </div>
         </div>
+        <button type="submit" class="btn btn-submit">Add cliente</button>
     </form>
 </div>
 @endsection
