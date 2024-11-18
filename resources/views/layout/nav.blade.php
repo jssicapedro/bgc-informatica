@@ -7,7 +7,7 @@
             </a>
 
             <!-- Menu -->
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="{{ asset('clientes') }}">Clientes</a>
@@ -22,13 +22,7 @@
                         <a class="nav-link" href="{{ asset('reparacoes') }}">Reparações</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ asset('orcamentos') }}">Orçamentos</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="{{ asset('encomendas') }}">Encomendas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ asset('dividas') }}">Dívidas</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ asset('servicos') }}">Serviços</a>

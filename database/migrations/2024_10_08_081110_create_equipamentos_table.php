@@ -13,13 +13,7 @@ return new class extends Migration
     {
         Schema::create('equipamentos', function (Blueprint $table) {
             $table->id();
-            $table->enum('tipo', ['computador', 'periferico', 'armazenamento', 'rede', 'conectividade']);
-            $table->string('numero_serie')->unique();
-            $table->text('descricao');
-            $table->date('entrada');
-            $table->date('resolucao')->nullable();
-            $table->date('levantamento')->nullable();
-            $table->string('qr')->nullable();
+            $table->enum('tipo', ['computador', 'smartphones', 'outros equipamentos']);
             $table->timestamps();
         });
     }

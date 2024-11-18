@@ -19,6 +19,10 @@ php artisan db:seed </pre>
  <pre>npm run dev </pre> 
  <small>(este comando deve ser usado sempre que se for visualizar/editar o projeto)</small>
 
+### Caso o comando 'npm run dev' não funcione deve
+<pre>npm install -g vite</pre>
+<pre>npm install vite --save-dev</pre>
+
 ## Gestão de Ficheiros e CRUD
 MENU              |  CREATE             | READ                | UPDATE              | DELETE
 _____________________________________________________________________________________________
