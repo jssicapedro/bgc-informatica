@@ -21,7 +21,7 @@ class EncomendasController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.encomendas.encomenda_new');
     }
 
     /**
@@ -37,7 +37,9 @@ class EncomendasController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $encomenda = Encomenda::findOrFail($id);
+
+        return view('admin.encomendas.encomenda_view', compact('encomenda'));
     }
 
     /**

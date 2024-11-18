@@ -21,7 +21,7 @@ class MarcaModelosController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.marcamodelo.marcamodelo_new');
     }
 
     /**
@@ -37,7 +37,9 @@ class MarcaModelosController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $marcamodelo = MarcaModelo::findOrFail($id);
+
+        return view('admin.marcamodelo.marcamodelo_view', compact('marcamodelo'));
     }
 
     /**

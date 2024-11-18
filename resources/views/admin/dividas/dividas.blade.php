@@ -16,19 +16,19 @@
 <div class="container">
     <div class="pag_new">
         <h1>Dividas</h1>
-        <a href="">Nova Divida</a>
+        <a href="{{ route('divida.new') }}">Nova Divida</a>
     </div>
     <div id="table">
         <table>
             <thead>
                 <tr>
-                    <th class="id">ID</th>
-                    <th class="nome">Reparação</th>
-                    <th class="email">Valor</th>
-                    <th class="tel">Descrição</th>
-                    <th class="morada">Data de Emissão</th>
-                    <th class="nif">Estado</th>
-                    <th class="acoes">-</th>
+                    <th>ID</th>
+                    <th>Reparação</th>
+                    <th>Valor</th>
+                    <th>Descrição</th>
+                    <th>Data de Emissão</th>
+                    <th>Estado</th>
+                    <th>-</th>
                 </tr>
             </thead>
             <tbody>
@@ -41,7 +41,7 @@
                     <td>{{ $divida->dataEmissao }}</td>
                     <td>{{ $divida->estado }}</td>
                     <td class="acoes btn">
-                        <a href="">
+                        <a href="{{ route('dividas.show', ['id' => $divida->id]) }}">
                             <span class="material-icons">
                                 visibility
                             </span>

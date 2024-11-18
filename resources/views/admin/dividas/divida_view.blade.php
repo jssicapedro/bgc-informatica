@@ -14,26 +14,26 @@
 @section('main')
 <div class="container">
     <div class="pag_new">
-        <h1>{{$cliente->id .' - '. $cliente->nome}}</h1>
+        <h1>{{$divida->id .' - '. $divida->valor .' - '. $divida->estado}}</h1>
     </div>
     <div class="info">
         <div class="email_tel">
             <div class="email">
-                <h3>Email</h3>
-                <p>{{$cliente->email}}</p>
+                <h3>Valor</h3>
+                <p>{{$divida->valor}}</p>
             </div>
             <div class="tel">
-                <h3>Telemovel</h3>
-                <p>{{$cliente->telemovel}}</p>
+                <h3>Descricao</h3>
+                <p>{{$divida->descricao}}</p>
             </div>
         </div>
         <div class="nif">
-            <h3>NIF</h3>
-            <p>{{$cliente->nif}}</p>
+            <h3>Data</h3>
+            <p>{{$divida->dataEmissao}}</p>
         </div>
         <div class="morada">
-            <h3>Morada</h3>
-            <p>{{$cliente->morada}}</p>
+            <h3>Estado</h3>
+            <p>{{$divida->estado}}</p>
         </div>
     </div>
 </div>

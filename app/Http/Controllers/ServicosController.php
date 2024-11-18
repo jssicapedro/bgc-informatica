@@ -21,7 +21,7 @@ class ServicosController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.servicos.servico_new');
     }
 
     /**
@@ -37,7 +37,9 @@ class ServicosController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $servico = Servico::findOrFail($id);
+
+        return view('admin.servicos.servico_view', compact('cliente'));
     }
 
     /**

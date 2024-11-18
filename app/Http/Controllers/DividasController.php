@@ -21,7 +21,7 @@ class DividasController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.dividas.divida_new');
     }
 
     /**
@@ -37,7 +37,9 @@ class DividasController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $divida = Dividas::findOrFail($id);
+
+        return view('admin.dividas.divida_view', compact('divida'));
     }
 
     /**

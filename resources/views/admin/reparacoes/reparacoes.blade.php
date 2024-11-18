@@ -16,17 +16,17 @@
 <div class="container">
     <div class="pag_new">
         <h1>Reparações</h1>
-        <a href="">Nova Reparação</a>
+        <a href="{{ route('reparacao.new') }}">Nova Reparação</a>
     </div>
     <div id="table">
         <table>
             <thead>
                 <tr>
-                    <th class="id">ID</th>
-                    <th class="nome">Equipamento</th>
-                    <th class="email">Tipo de Serviço</th>
-                    <th class="tel">Estado</th>
-                    <th class="acoes">-</th>
+                    <th>ID</th>
+                    <th>Equipamento</th>
+                    <th>Tipo de Serviço</th>
+                    <th>Estado</th>
+                    <th>-</th>
                 </tr>
             </thead>
             <tbody>
@@ -37,7 +37,7 @@
                     <td>{{ $reparacao->servico_id }}</td>
                     <td>{{ $reparacao->estado }}</td>
                     <td class="acoes btn">
-                        <a href="">
+                        <a href="{{ route('reparacao.show', ['id' => $reparacao->id]) }}">
                             <span class="material-icons">
                                 visibility
                             </span>

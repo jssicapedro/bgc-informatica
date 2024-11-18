@@ -16,19 +16,19 @@
 <div class="container">
     <div class="pag_new">
         <h1>Encomendas</h1>
-        <a href="">Nova Encomenda</a>
+        <a href="{{ route('encomenda.new') }}">Nova Encomenda</a>
     </div>
     <div id="table">
         <table>
             <thead>
                 <tr>
-                    <th class="id">ID</th>
-                    <th class="nome">Valor</th>
-                    <th class="email">Data do pedido</th>
-                    <th class="tel">Data de Chegada</th>
-                    <th class="morada">Estado</th>
-                    <th class="nif">Descrição</th>
-                    <th class="acoes">-</th>
+                    <th>ID</th>
+                    <th>Valor</th>
+                    <th>Data do pedido</th>
+                    <th>Data de Chegada</th>
+                    <th>Estado</th>
+                    <th>Descrição</th>
+                    <th>-</th>
                 </tr>
             </thead>
             <tbody>
@@ -41,7 +41,7 @@
                     <td>{{ $encomenda->estado }}</td>
                     <td>{{ $encomenda->descricao }}</td>
                     <td class="acoes btn">
-                        <a href="">
+                        <a href="{{ route('encomenda.show', ['id' => $encomenda->id]) }}">
                             <span class="material-icons">
                                 visibility
                             </span>

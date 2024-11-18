@@ -16,19 +16,19 @@
 <div class="container">
     <div class="pag_new">
         <h1>Orçamentos</h1>
-        <a href="">Novo Orçamento</a>
+        <a href="{{ route('orcamento.new') }}">Novo Orçamento</a>
     </div>
     <div id="table">
         <table>
             <thead>
                 <tr>
-                    <th class="id">ID</th>
-                    <th class="nome">Reparação_id</th>
-                    <th class="email">Valor</th>
-                    <th class="tel">Descrição</th>
-                    <th class="morada">Data de Emissão</th>
-                    <th class="nif">Estado</th>
-                    <th class="acoes">-</th>
+                    <th>ID</th>
+                    <th>Reparação_id</th>
+                    <th>Valor</th>
+                    <th>Descrição</th>
+                    <th>Data de Emissão</th>
+                    <th>Estado</th>
+                    <th>-</th>
                 </tr>
             </thead>
             <tbody>
@@ -41,7 +41,7 @@
                     <td>{{ $orcamento->dataEmissao }}</td>
                     <td>{{ $orcamento->estado }}</td>
                     <td class="acoes btn">
-                        <a href="">
+                        <a href="{{ route('orcamento.show', ['id' => $orcamento->id]) }}">
                             <span class="material-icons">
                                 visibility
                             </span>
