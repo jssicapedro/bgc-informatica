@@ -13,12 +13,10 @@ return new class extends Migration
     {
         Schema::create('servicos', function (Blueprint $table) {
             $table->id();
-            $table->string('tipo');
-            $table->date('dataInicio');
-            $table->date('conclusaoExpectada');
-            $table->date('conclusao')->nullable();
-            $table->enum('estado', ['em processamento', 'completo']);
-            $table->text('descricao');
+            $table->foreignId('tecnico_id')->constrained('tecnicos')->onDelete('cascade');
+            $table->enum('NomeServico', ['limpeza', 'conserto', 'substituição/manutenção', 'melhoria']);
+            $table->float('custo');
+            $table->string('descricao');
             $table->timestamps();
         });
     }

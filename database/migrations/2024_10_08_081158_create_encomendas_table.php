@@ -13,10 +13,9 @@ return new class extends Migration
     {
         Schema::create('encomendas', function (Blueprint $table) {
             $table->id();
-            $table->decimal('valor', 8, 2);
+            $table->decimal('custo', 8, 2);
             $table->date('dataPedido');
-            $table->date('dataChegada')->nullable();
-            $table->enum('estado', ['processamento', 'entregue']);
+            $table->date('dataEntrega')->nullable();
             $table->text('descricao');
             $table->timestamps();
         });
