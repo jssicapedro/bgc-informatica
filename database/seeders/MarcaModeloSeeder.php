@@ -37,6 +37,31 @@ class MarcaModeloSeeder extends Seeder
                 'Marca' => 'Lenovo',
                 'Modelo' => 'ThinkPad X1',
             ]
+            ,
+            [
+                'Marca' => 'Apple',
+                'Modelo' => 'iPhone 14 Pro Max',
+            ]
+            ,
+            [
+                'Marca' => 'Samsung',
+                'Modelo' => 'Galaxy S23',
+            ]
+            ,
+            [
+                'Marca' => 'Asus',
+                'Modelo' => 'ROG Phone 6',
+            ]
+            ,
+            [
+                'Marca' => 'HP',
+                'Modelo' => 'Spectre x360',
+            ]
+            ,
+            [
+                'Marca' => 'Dell',
+                'Modelo' => 'XPS 13',
+            ]
         ]);
     }
 }

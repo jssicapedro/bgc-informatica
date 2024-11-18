@@ -43,8 +43,9 @@ class TecnicoSeeder extends Seeder
                 'email' => 'maria.costa@email.com',
                 'password' => bcrypt('senha_secreta'),
                 'telemovel' => '917698563',
-                'especialidade' => 'smarphones',
+                'especialidade' => 'smartphones',
             ]
             ]);
+            
     }
 }

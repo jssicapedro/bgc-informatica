@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('servicos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('tecnico_id')->constrained('tecnicos')->onDelete('cascade');
+            $table->foreignId('categoria_id')->constrained('categoria')->onDelete('cascade');
             $table->enum('NomeServico', ['limpeza', 'conserto', 'substituição/manutenção', 'melhoria']);
             $table->float('custo');
             $table->string('descricao');
