@@ -13,7 +13,7 @@ class ReparacoesController extends Controller
     public function index()
     {
         $reparacoes=Reparacoe::all();
-        return view('admin.reparacoes.reparacoes', compact('reparacoes'));
+        return view('admin.rma.reparacoes', compact('reparacoes'));
     }
 
     /**
@@ -21,7 +21,7 @@ class ReparacoesController extends Controller
      */
     public function create()
     {
-        return view('admin.reparacoes.reparacao_new');
+        return view('admin.rma.reparacao_new');
     }
 
     /**
@@ -39,7 +39,7 @@ class ReparacoesController extends Controller
     {
         $reparacao = Reparacoe::findOrFail($id);
 
-        return view('admin.reparacoes.reparacao_view', compact('reparacao'));
+        return view('admin.rma.reparacao_view', compact('reparacao'));
     }
 
     /**

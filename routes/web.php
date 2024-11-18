@@ -52,20 +52,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/reparacoes{id}', [ReparacoesController::class, 'show'])->name('reparacao.show');
     Route::get('/nova-reparacao', [ReparacoesController::class, 'create'])->name('reparacao.new');
 
-    /* ORCAMENTOS */
-    Route::get('/orcamentos', [OrcamentosController::class, 'index'])->name('orcamentos');
-    Route::get('/orcamento{id}', [OrcamentosController::class, 'show'])->name('orcamento.show');
-    Route::get('/novo-orcamento', [OrcamentosController::class, 'create'])->name('orcamento.new');
-
     /* ENCOMENDAS */
     Route::get('/encomendas', [EncomendasController::class, 'index'])->name('encomendas');
     Route::get('/encomenda{id}', [EncomendasController::class, 'show'])->name('encomenda.show');
     Route::get('/nova-encomenda', [EncomendasController::class, 'create'])->name('encomenda.new');
-
-    /* DIVIDAS */
-    Route::get('/dividas', [DividasController::class, 'index'])->name('dividas');
-    Route::get('/dividas{id}', [DividasController::class, 'show'])->name('dividas.show');
-    Route::get('/nova-divida', [DividasController::class, 'create'])->name('divida.new');
 
     /* SERVICOS */
     Route::get('/servicos', [ServicosController::class, 'index'])->name('servicos');

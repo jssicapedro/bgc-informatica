@@ -25,7 +25,21 @@ class ClientesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Cliente::create([
+            'name' => $request->name,
+            'grandPrixName' => $request->grandPrixName,
+            'comunName' => $request->comunName,
+            'country' => $request->country,
+            'firstGrandPrix' => $request->firstGrandPrix,
+            'distance' => $request->distance,
+            'length' => $request->length,
+            'laps' => $request->laps,
+            'info' => $request->info,
+            'imgCircuts' => $imgCircutsName ?? null,
+            'imgBanner' => $imgBannerName ?? null,
+            'imgAbout' => $imgAboutName ?? null,
+        ]);
+
     }
 
     /**
