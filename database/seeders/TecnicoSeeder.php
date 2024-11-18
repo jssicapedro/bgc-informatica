@@ -29,6 +29,22 @@ class TecnicoSeeder extends Seeder
                 'telemovel' => '917654321',
                 'especialidade' => 'armazenamento',
             ]
-            ]);
+            ,
+            [
+                'nome' => 'João Silva',
+                'email' => 'joao.silva@email.com',
+                'password' => bcrypt('senha_secreta'),
+                'telemovel' => '917657845',
+                'especialidade' => 'Smartphones',
+            ]
+            ,
+            [
+                'nome' => 'Maria Costa',
+                'email' => 'maria.costa@email.com',
+                'password' => bcrypt('senha_secreta'),
+                'telemovel' => '917698563',
+                'especialidade' => 'Computadores',
+            ]
+        ]);
     }
 }
