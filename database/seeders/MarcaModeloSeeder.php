@@ -62,6 +62,16 @@ class MarcaModeloSeeder extends Seeder
                 'Marca' => 'Dell',
                 'Modelo' => 'XPS 13',
             ]
+            ,
+            [
+                'Marca' => 'HP',
+                'Modelo' => 'HP DeskJet 3630 Series',
+            ]
+            ,
+            [
+                'Marca' => 'Logitech',
+                'Modelo' => 'G502 Hero',
+            ]
         ]);
     }
 }

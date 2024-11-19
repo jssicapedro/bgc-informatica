@@ -13,77 +13,77 @@ class ServicoSeeder extends Seeder
     public function run(): void
     {
         {
-            DB::table('servico')->insert([
-                    // Serviços para Smartphones (Carlos Mendes)
+            DB::table('servicos')->insert([
+                // Serviços para Smartphones
                 [
                     'id' => 1,
-                    'categoria' => 1,
+                    'categoria' => 2, // Smartphones
                     'serviceNome' => 'Limpeza de smartphones',
-                    'custo' => 50.00,
+                    'custo' => 20.00,
                     'description' => 'Serviço de limpeza completo para smartphones.',
                 ],
                 [
                     'id' => 2,
-                    'tecnico' => 1,
+                    'categoria' => 2, // Smartphones
                     'serviceNome' => 'Conserto de smartphones',
-                    'custo' => 120.00,
+                    'custo' => 25.00,
                     'description' => 'Reparo de problemas comuns em smartphones.',
                 ],
                 [
                     'id' => 3,
-                    'tecnico' => 1,
+                    'categoria' => 2, // Smartphones
                     'serviceNome' => 'Substituição de peças de smartphones',
-                    'custo' => 150.00,
+                    'custo' => 17.00,
                     'description' => 'Troca de componentes danificados em smartphones.',
                 ],
 
-                // Serviços para Computadores (Luís Pinto)
+                // Serviços para Computadores
                 [
                     'id' => 4,
-                    'categoria' => 2,
+                    'categoria' => 1, // Computadores
                     'serviceNome' => 'Limpeza de computadores',
-                    'custo' => 60.00,
+                    'custo' => 10.00,
                     'description' => 'Serviço de limpeza interna e externa de computadores.',
                 ],
                 [
                     'id' => 5,
-                    'tecnico' => 2,
+                    'categoria' => 1, // Computadores
                     'serviceNome' => 'Conserto de computadores',
-                    'custo' => 150.00,
+                    'custo' => 18.00,
                     'description' => 'Reparo de hardware e software em computadores.',
                 ],
                 [
                     'id' => 6,
-                    'tecnico' => 2,
+                    'categoria' => 1, // Computadores
                     'serviceNome' => 'Substituição de peças de computadores',
-                    'custo' => 210.00,
+                    'custo' => 12.00,
                     'description' => 'Troca de componentes defeituosos em computadores.',
                 ],
 
-                // Serviços para Outros Equipamentos (Sara Ferreira)
+                // Serviços para Outros Equipamentos
                 [
                     'id' => 7,
-                    'categoria' => 3,
+                    'categoria' => 3, // Outros equipamentos
                     'serviceNome' => 'Limpeza de outros equipamentos',
-                    'custo' => 55.00,
+                    'custo' => 5.00,
                     'description' => 'Serviço de limpeza de vários tipos de equipamentos.',
                 ],
                 [
                     'id' => 8,
-                    'tecnico' => 3,
+                    'categoria' => 3, // Outros equipamentos
                     'serviceNome' => 'Conserto de outros equipamentos',
-                    'custo' => 110.00,
+                    'custo' => 10.00,
                     'description' => 'Reparo de diversos equipamentos eletrônicos.',
                 ],
                 [
                     'id' => 9,
-                    'tecnico' => 3,
+                    'categoria' => 3, // Outros equipamentos
                     'serviceNome' => 'Substituição de peças de outros equipamentos',
-                    'custo' => 165.00,
+                    'custo' => 14.00,
                     'description' => 'Troca de peças em vários tipos de equipamentos.',
-                ],
-
+                ]
             ]);
         }
     }
 }
+

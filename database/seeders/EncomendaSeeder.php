@@ -13,6 +13,23 @@ class EncomendaSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        DB::table('encomendas')->insert([
+            [
+                'custo' => '250',
+                'descricao' => 'Motherboard HP - Envy x360',
+            ],
+            [
+                'custo' => '60',
+                'descricao' => 'Teclado Lenovo - ThinkPad X1',
+            ],
+            [
+                'custo' => '140',
+                'descricao' => 'Ecrã Asus - ROG Phone 6',
+            ],
+            [
+                'custo' => '75',
+                'descricao' => 'Sensor Rato G505 Hero',
+            ]
+        ]);
     }
 }
