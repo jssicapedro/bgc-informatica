@@ -13,7 +13,7 @@ class ServicoSeeder extends Seeder
     public function run(): void
     {
         {
-            DB::table('servico')->insert([
+            DB::table('servicos')->insert([
                 // Serviços para Smartphones
                 [
                     'id' => 1,
