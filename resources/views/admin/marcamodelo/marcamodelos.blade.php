@@ -35,11 +35,6 @@
                     <td>{{ $marcasmodelo->marca }}</td>
                     <td>{{ $marcasmodelo->modelo }}</td>
                     <td class="acoes btn">
-                        <a href="{{ route('marcasmodelos.show', ['id' => $marcasmodelo->id]) }}">
-                            <span class="material-icons">
-                                visibility
-                            </span>
-                        </a>
                         <a href="">
                             <span class="material-icons">
                                 edit

@@ -13,10 +13,15 @@ return new class extends Migration
     {
         Schema::create('equipamentos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('categoria_id')->constrained('categoria')->onDelete('cascade');
-            $table->foreignId('marcamodelo_id')->constrained('marcamodelos')->onDelete('cascade');
-            $table->foreignId('cliente_id')->constrained('clientes')->onDelete('cascade');
+            $table->unsignedBigInteger('categoria');    // FK para tabela categorias
+            $table->unsignedBigInteger('cliente');     // FK para tabela clientes
+            $table->unsignedBigInteger('marcaModelo'); // FK para tabela marcamodelos
             $table->timestamps();
+
+            // Chaves estrangeiras
+            $table->foreign('categoria')->references('id')->on('categoria')->onDelete('cascade');
+            $table->foreign('cliente')->references('id')->on('clientes')->onDelete('cascade');
+            $table->foreign('marcaModelo')->references('id')->on('marcamodelos')->onDelete('cascade');
         });
     }
 

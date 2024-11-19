@@ -13,7 +13,7 @@ class MarcaModeloSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('marcasmodelos')->insert([
+        DB::table('marcamodelos')->insert([
             [
                 'Marca' => 'Apple',
                 'Modelo' => 'MacBook Air',

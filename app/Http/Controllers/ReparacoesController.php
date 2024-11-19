@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Reparacoe;
+use App\Models\Rma;
 use Illuminate\Http\Request;
 
 class ReparacoesController extends Controller
@@ -12,7 +12,7 @@ class ReparacoesController extends Controller
      */
     public function index()
     {
-        $reparacoes=Reparacoe::all();
+        $reparacoes=Rma::all();
         return view('admin.rma.reparacoes', compact('reparacoes'));
     }
 
@@ -37,7 +37,7 @@ class ReparacoesController extends Controller
      */
     public function show(string $id)
     {
-        $reparacao = Reparacoe::findOrFail($id);
+        $reparacao = Rma::findOrFail($id);
 
         return view('admin.rma.reparacao_view', compact('reparacao'));
     }

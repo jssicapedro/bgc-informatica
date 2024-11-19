@@ -5,20 +5,24 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class MarcaModelo extends Model
+class Categoria extends Model
 {
     use HasFactory;
 
-    protected $table = 'marcamodelos';
+    protected $table = 'categoria';
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'marca',
-        'modelo',
+        'categoria',
     ];
 
     public function equipamentos()
     {
-        return $this->hasMany(Equipamento::class, 'marcaModelo');
+        return $this->hasMany(Equipamento::class, 'categoria');
+    }
+
+    public function servicos()
+    {
+        return $this->hasMany(Servico::class, 'categoria_id');
     }
 }

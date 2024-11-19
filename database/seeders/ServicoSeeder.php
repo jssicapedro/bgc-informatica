@@ -17,70 +17,70 @@ class ServicoSeeder extends Seeder
                 // Serviços para Smartphones
                 [
                     'id' => 1,
-                    'categoria' => 2, // Smartphones
-                    'serviceNome' => 'Limpeza de smartphones',
+                    'categoria_id' => 2, // Smartphones
+                    'NomeServico' => 'limpeza',
                     'custo' => 20.00,
-                    'description' => 'Serviço de limpeza completo para smartphones.',
+                    'descricao' => 'Serviço de limpeza completo para smartphones.',
                 ],
                 [
                     'id' => 2,
-                    'categoria' => 2, // Smartphones
-                    'serviceNome' => 'Conserto de smartphones',
+                    'categoria_id' => 2, // Smartphones
+                    'NomeServico' => 'conserto',
                     'custo' => 25.00,
-                    'description' => 'Reparo de problemas comuns em smartphones.',
+                    'descricao' => 'Reparo de problemas comuns em smartphones.',
                 ],
                 [
                     'id' => 3,
-                    'categoria' => 2, // Smartphones
-                    'serviceNome' => 'Substituição de peças de smartphones',
+                    'categoria_id' => 2, // Smartphones
+                    'NomeServico' => 'substituição/manutenção',
                     'custo' => 17.00,
-                    'description' => 'Troca de componentes danificados em smartphones.',
+                    'descricao' => 'Troca de componentes danificados em smartphones.',
                 ],
 
                 // Serviços para Computadores
                 [
                     'id' => 4,
-                    'categoria' => 1, // Computadores
-                    'serviceNome' => 'Limpeza de computadores',
+                    'categoria_id' => 1, // Computadores
+                    'NomeServico' => 'limpeza',
                     'custo' => 10.00,
-                    'description' => 'Serviço de limpeza interna e externa de computadores.',
+                    'descricao' => 'Serviço de limpeza interna e externa de computadores.',
                 ],
                 [
                     'id' => 5,
-                    'categoria' => 1, // Computadores
-                    'serviceNome' => 'Conserto de computadores',
+                    'categoria_id' => 1, // Computadores
+                    'NomeServico' => 'conserto',
                     'custo' => 18.00,
-                    'description' => 'Reparo de hardware e software em computadores.',
+                    'descricao' => 'Reparo de hardware e software em computadores.',
                 ],
                 [
                     'id' => 6,
-                    'categoria' => 1, // Computadores
-                    'serviceNome' => 'Substituição de peças de computadores',
+                    'categoria_id' => 1, // Computadores
+                    'NomeServico' => 'substituição/manutenção',
                     'custo' => 12.00,
-                    'description' => 'Troca de componentes defeituosos em computadores.',
+                    'descricao' => 'Troca de componentes defeituosos em computadores.',
                 ],
 
                 // Serviços para Outros Equipamentos
                 [
                     'id' => 7,
-                    'categoria' => 3, // Outros equipamentos
-                    'serviceNome' => 'Limpeza de outros equipamentos',
+                    'categoria_id' => 3, // Outros equipamentos
+                    'NomeServico' => 'limpeza',
                     'custo' => 5.00,
-                    'description' => 'Serviço de limpeza de vários tipos de equipamentos.',
+                    'descricao' => 'Serviço de limpeza de vários tipos de equipamentos.',
                 ],
                 [
                     'id' => 8,
-                    'categoria' => 3, // Outros equipamentos
-                    'serviceNome' => 'Conserto de outros equipamentos',
+                    'categoria_id' => 3, // Outros equipamentos
+                    'NomeServico' => 'substituição/manutenção',
                     'custo' => 10.00,
-                    'description' => 'Reparo de diversos equipamentos eletrônicos.',
+                    'descricao' => 'Reparo de diversos equipamentos eletrônicos.',
                 ],
                 [
                     'id' => 9,
-                    'categoria' => 3, // Outros equipamentos
-                    'serviceNome' => 'Substituição de peças de outros equipamentos',
+                    'categoria_id' => 3, // Outros equipamentos
+                    'NomeServico' => 'substituição/manutenção',
                     'custo' => 14.00,
-                    'description' => 'Troca de peças em vários tipos de equipamentos.',
+                    'descricao' => 'Troca de peças em vários tipos de equipamentos.',
                 ]
             ]);
         }

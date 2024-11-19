@@ -21,4 +21,9 @@ class Cliente extends Model
         'morada',
         'nif',
     ];
+
+    public function equipamentos()
+    {
+        return $this->hasMany(Equipamento::class, 'cliente');
+    }
 }
