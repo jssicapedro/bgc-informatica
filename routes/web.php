@@ -11,6 +11,7 @@ use App\Http\Controllers\DividasController;
 use App\Http\Controllers\ServicosController;
 use App\Http\Controllers\TecnicosController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\CategoriasController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -32,9 +33,9 @@ Route::middleware('auth')->group(function () {
 
     /* CLIENTES */
     Route::get('/clientes', [ClientesController::class, 'index'])->name('clientes');
-    Route::get('/cliente{id}', [ClientesController::class, 'show'])->name('cliente.show');
+    Route::get('/cliente/{id}', [ClientesController::class, 'show'])->name('cliente.show');
     Route::get('/novo-cliente', [ClientesController::class, 'create'])->name('cliente.new');
-
+    Route::post('/novo-cliente/store', [ClientesController::class, 'store'])->name('cliente.store');
 
 
     /* EQUIPAMENTOS */
@@ -62,9 +63,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/servicos{id}', [ServicosController::class, 'show'])->name('servicos.show');
     Route::get('/novo-servico', [ServicosController::class, 'create'])->name('servico.new');
 
+     /* CATEGORIAS */
+     Route::get('/categorias', [CategoriasController::class, 'index'])->name('categorias');
+
     /* TECNICOS */
     Route::get('/tecnicos', [TecnicosController::class, 'index'])->name('tecnicos');
-    Route::get('/tecnicos{id}', [TecnicosController::class, 'show'])->name('tecnico.show');
+    Route::get('/tecnicos/{id}', [TecnicosController::class, 'show'])->name('tecnico.show');
     Route::get('/novo-tecnico', [TecnicosController::class, 'create'])->name('tecnico.new');
+    Route::post('/novo-tecnico/store', [TecnicosController::class, 'store'])->name('tecnico.store');
 
 });

@@ -19,7 +19,7 @@
         <a href="{{ route('clientes') }}">Voltar à listagem</a>
         <h1>Criar um novo cliente</h1>
     </div>
-    <form action="{{ route('cliente.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="#" method="POST" enctype="multipart/form-data">
         @csrf
         @if($errors->any())
         <div class="alert alert-danger">
@@ -42,8 +42,8 @@
             </div>
             <div class="tel_nif">
                 <div class="tel">
-                    <label for="telemovel" class="form-label">Telemóvel:</label>
-                    <input type="number" class="form-control" id="telemovel" name="telemovel" value="{{ old('tel') }}">
+                    <label for="tel" class="form-label">Telemóvel:</label>
+                    <input type="number" class="form-control" id="tel" name="tel" value="{{ old('tel') }}">
                 </div>
                 <div class="nif">
                     <label for="nif" class="form-label">NIF:</label>

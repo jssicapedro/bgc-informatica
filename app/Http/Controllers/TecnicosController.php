@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TecnicoRequest;
 use App\Models\Tecnico;
 use Illuminate\Http\Request;
 
@@ -27,9 +28,17 @@ class TecnicosController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(TecnicoRequest $request)
     {
-        //
+        Tecnico::create([
+            'nome' => $request->nome,
+            'email' => $request->email,
+            'telemovel' => $request->telemovel,
+            'especialidade' => $request->especialidade,
+            'password' => $request->password,
+        ]);
+
+        return redirect()->route('tecnicos')->with('success', 'Tecnicos created successfully.');
     }
 
     /**

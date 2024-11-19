@@ -15,23 +15,27 @@
 @section('main')
 <div class="container">
     <div class="pag_new pag_list">
-        <a href="{{ route('tecnicos') }}">Voltar à listagem</a>
-        <h1>{{$tecnico->id .' - '. $tecnico->nome}}</h1>
+        <a href="{{ route('clientes') }}">Voltar à listagem</a>
+        <h1>{{$cliente->id .' - '. $cliente->nome}}</h1>
     </div>
     <div class="info">
         <div class="email_tel">
             <div class="email">
                 <h3>Email</h3>
-                <p>{{$tecnico->email}}</p>
+                <p>{{$cliente->email}}</p>
             </div>
             <div class="tel">
                 <h3>Telemovel</h3>
-                <p>{{$tecnico->telemovel}}</p>
+                <p>{{$cliente->telemovel}}</p>
             </div>
         </div>
-        <div class="esp">
-            <h3>Especialidade</h3>
-            <p>{{$tecnico->especialidade}}</p>
+        <div class="nif">
+            <h3>NIF</h3>
+            <p>{{$cliente->nif}}</p>
+        </div>
+        <div class="morada">
+            <h3>Morada</h3>
+            <p>{{$cliente->morada}}</p>
         </div>
     </div>
 </div>

@@ -11,25 +11,6 @@ class Tecnico extends Authenticatable
    /** @use HasFactory<\Database\Factories\UserFactory> */
    use HasFactory, Notifiable;
 
-   /**
-     * The name of the "created at" column.
-     *
-     * @var string
-     */
-    const CREATED_AT = 'criado_em';
-    
-    /**
-     * The name of the "updated at" column.
-     *
-     * @var string
-     */
-    const UPDATED_AT = 'atualizado em';
-
-   /**
-    * The attributes that are mass assignable.
-    *
-    * @var array<int, string>
-    */
    protected $fillable = [
        'nome',
        'email',
@@ -38,26 +19,8 @@ class Tecnico extends Authenticatable
        'password',
    ];
 
-   /**
-    * The attributes that should be hidden for serialization.
-    *
-    * @var array<int, string>
-    */
    protected $hidden = [
        'password',
        'remember_token',
    ];
-
-   /**
-    * Get the attributes that should be cast.
-    *
-    * @return array<string, string>
-    */
-   protected function casts(): array
-   {
-       return [
-           'email_verificado_em' => 'datetime',
-           'password' => 'hashed',
-       ];
-   }
 }
