@@ -11,6 +11,9 @@ class Tecnico extends Authenticatable
    /** @use HasFactory<\Database\Factories\UserFactory> */
    use HasFactory, Notifiable;
 
+   protected $table = 'tecnicos';
+   protected $primaryKey = 'id';
+
    protected $fillable = [
        'nome',
        'email',

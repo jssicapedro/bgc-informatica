@@ -19,7 +19,7 @@
                         <a class="nav-link" href="{{ asset('marcasmodelos') }}">Marcas e Modelos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ asset('reparacoes') }}">Reparações</a>
+                        <a class="nav-link" href="{{ asset('reparacoes') }}">RMA's</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ asset('encomendas') }}">Encomendas</a>

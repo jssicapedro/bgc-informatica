@@ -40,27 +40,27 @@ Route::middleware('auth')->group(function () {
 
     /* EQUIPAMENTOS */
     Route::get('/equipamentos', [EquipamentosController::class, 'index'])->name('equipamentos');
-    Route::get('/equipamento{id}', [EquipamentosController::class, 'show'])->name('equipamento.show');
+    Route::get('/equipamento/{id}', [EquipamentosController::class, 'show'])->name('equipamento.show');
     Route::get('/novo-equipamento', [EquipamentosController::class, 'create'])->name('equipamento.new');
 
     /* MARCAS MODELOS */
     Route::get('/marcasmodelos', [MarcaModelosController::class, 'index'])->name('marcasmodelos');
-    Route::get('/marcasmodelos{id}', [MarcaModelosController::class, 'show'])->name('marcasmodelos.show');
     Route::get('/nova-marcamodelo', [MarcaModelosController::class, 'create'])->name('marcamodelo.new');
+    Route::post('/nova-marcamodelo/store', [MarcaModelosController::class, 'store'])->name('marcamodelo.store');
 
     /* REPARACOES */
     Route::get('/reparacoes', [ReparacoesController::class, 'index'])->name('reparacoes');
-    Route::get('/reparacoes{id}', [ReparacoesController::class, 'show'])->name('reparacao.show');
+    Route::get('/reparacoes/{id}', [ReparacoesController::class, 'show'])->name('reparacao.show');
     Route::get('/nova-reparacao', [ReparacoesController::class, 'create'])->name('reparacao.new');
 
     /* ENCOMENDAS */
     Route::get('/encomendas', [EncomendasController::class, 'index'])->name('encomendas');
-    Route::get('/encomenda{id}', [EncomendasController::class, 'show'])->name('encomenda.show');
+    Route::get('/encomenda/{id}', [EncomendasController::class, 'show'])->name('encomenda.show');
     Route::get('/nova-encomenda', [EncomendasController::class, 'create'])->name('encomenda.new');
 
     /* SERVICOS */
     Route::get('/servicos', [ServicosController::class, 'index'])->name('servicos');
-    Route::get('/servicos{id}', [ServicosController::class, 'show'])->name('servicos.show');
+    Route::get('/servicos/{id}', [ServicosController::class, 'show'])->name('servicos.show');
     Route::get('/novo-servico', [ServicosController::class, 'create'])->name('servico.new');
 
      /* CATEGORIAS */

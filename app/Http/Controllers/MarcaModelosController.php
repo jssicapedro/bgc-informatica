@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MarcaModeloRequest;
 use App\Models\MarcaModelo;
 use Illuminate\Http\Request;
 
@@ -27,9 +28,14 @@ class MarcaModelosController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(MarcaModeloRequest $request)
     {
-        //
+        MarcaModelo::create([
+            'marca' => $request->marca,
+            'modelo' => $request->modelo,
+        ]);
+
+        return redirect()->route('marcasmodelos')->with('success', 'MarcasModelos created successfully.');
     }
 
     /**
@@ -37,9 +43,7 @@ class MarcaModelosController extends Controller
      */
     public function show(string $id)
     {
-        $marcamodelo = MarcaModelo::findOrFail($id);
-
-        return view('admin.marcamodelo.marcamodelo_view', compact('marcamodelo'));
+        # como é pouca informação não se viu necessidade de ter uma página propria para visualizar os detalhes da marca modelo, se posteriormente se adicionar descrição, peço e outros dados do modelo ai sim ser´necessário
     }
 
     /**
