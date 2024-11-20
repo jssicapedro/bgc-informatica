@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EncomendaRequest;
 use App\Models\Encomenda;
 use Illuminate\Http\Request;
 
@@ -27,9 +28,15 @@ class EncomendasController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(EncomendaRequest $request)
     {
-        //
+        Encomenda::create([
+            'custo' => $request->custo,
+            'dataPedido' => now()->toDateString(),
+            'descricao' => $request->descricao,
+        ]);
+
+        return redirect()->route('encomendas')->with('success', 'Encomenda created successfully.');
     }
 
     /**

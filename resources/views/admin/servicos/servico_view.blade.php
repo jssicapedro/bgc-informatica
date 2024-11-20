@@ -5,6 +5,7 @@
 <!-- css -->
 @push('links')
 <link rel="stylesheet" href="{{ asset('css/tabel_pag.css') }}">
+<link rel="stylesheet" href="{{ asset('css/pag_view.css') }}">
 @endpush
 
 <!-- js -->
@@ -13,27 +14,28 @@
 
 @section('main')
 <div class="container">
-    <div class="pag_new">
-        <h1>{{$cliente->id .' - '. $cliente->nome}}</h1>
+<div class="pag_new pag_list">
+<a href="{{ route('servicos') }}">Voltar à listagem</a>
+        <h1>{{$servico->id .' - '. $servico->categoria_id .' - '. $servico->NomeServico}}</h1>
     </div>
     <div class="info">
         <div class="email_tel">
             <div class="email">
-                <h3>Email</h3>
-                <p>{{$cliente->email}}</p>
+                <h3>Categoria</h3>
+                <input type="text" class="form-control" value="{{$servico->categoria_id}}">
             </div>
             <div class="tel">
-                <h3>Telemovel</h3>
-                <p>{{$cliente->telemovel}}</p>
+                <h3>Tipo de Serviço</h3>
+                <input type="text" class="form-control" value="{{$servico->NomeServico}}">
             </div>
         </div>
         <div class="nif">
-            <h3>NIF</h3>
-            <p>{{$cliente->nif}}</p>
+            <h3>Custo por hora</h3>
+            <input type="text" class="form-control" value="{{$servico->custo}}">
         </div>
         <div class="morada">
-            <h3>Morada</h3>
-            <p>{{$cliente->morada}}</p>
+            <h3>Descrição</h3>
+            <input type="text" class="form-control" value="{{$servico->descricao}}">
         </div>
     </div>
 </div>

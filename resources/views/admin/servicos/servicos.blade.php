@@ -23,9 +23,9 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Tipo</th>
-                    <th>Data Inicio</th>
-                    <th>Conclusão</th>
+                    <th>Categoria</th>
+                    <th>Nome do serviço</th>
+                    <th>Custo</th>
                     <th>-</th>
                 </tr>
             </thead>
@@ -33,9 +33,9 @@
                 @foreach($servicos as $servico)
                 <tr>
                     <td>{{ $servico->id }}</td>
-                    <td>{{ $servico->tipo }}</td>
-                    <td>{{ $servico->dataInicio }}</td>
-                    <td>{{ $servico->conclusao }}</td>
+                    <td>{{ $servico->categoria_id }}</td>
+                    <td>{{ $servico->NomeServico }}</td>
+                    <td>{{ $servico->custo }}€/h</td>
                     <td class="acoes btn">
                         <a href="{{ route('servico.show', ['id' => $servico->id]) }}">
                             <span class="material-icons">

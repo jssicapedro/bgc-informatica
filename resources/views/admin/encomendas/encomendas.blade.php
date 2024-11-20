@@ -26,7 +26,6 @@
                     <th>Valor</th>
                     <th>Data do pedido</th>
                     <th>Data de Chegada</th>
-                    <th>Estado</th>
                     <th>Descrição</th>
                     <th>-</th>
                 </tr>
@@ -35,10 +34,9 @@
                 @foreach($encomendas as $encomenda)
                 <tr>
                     <td>{{ $encomenda->id }}</td>
-                    <td>{{ $encomenda->valor }}</td>
-                    <td>{{ $encomenda->dataPedido }}</td>
-                    <td>{{ $encomenda->dataChegada }}</td>
-                    <td>{{ $encomenda->estado }}</td>
+                    <td>{{ $encomenda->custo }}</td>
+                    <td>{{ \Carbon\Carbon::parse($encomenda->dataPedido)->format('d/m/Y') }}</td>
+                    <td>{{ $encomenda->dataChegada ? \Carbon\Carbon::parse($encomenda->dataChegada)->format('m/Y') : 'A encomenda ainda não chegou' }}</td>
                     <td>{{ $encomenda->descricao }}</td>
                     <td class="acoes btn">
                         <a href="{{ route('encomenda.show', ['id' => $encomenda->id]) }}">

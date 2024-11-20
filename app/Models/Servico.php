@@ -13,13 +13,10 @@ class Servico extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'tipo',
-        'dataInicio',
-        'conclusaoExpectada',
-        'conclusao',
-        'estado',
+        'categoria_id',
+        'NomeServico',
+        'custo',
         'descricao',
-        'categoria_id'
     ];
 
     public function categoria()

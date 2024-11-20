@@ -24,7 +24,7 @@ Route::middleware('guest')->name('tecnico.')->group(function () {
     Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
 });
 
-Route::middleware('auth')->name('tecnico.')->group(function (){
+Route::middleware('auth')->name('tecnico.')->group(function () {
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });
 
@@ -57,19 +57,21 @@ Route::middleware('auth')->group(function () {
     Route::get('/encomendas', [EncomendasController::class, 'index'])->name('encomendas');
     Route::get('/encomenda/{id}', [EncomendasController::class, 'show'])->name('encomenda.show');
     Route::get('/nova-encomenda', [EncomendasController::class, 'create'])->name('encomenda.new');
+    Route::post('/nova-encomenda/store', [EncomendasController::class, 'store'])->name('encomenda.store');
 
     /* SERVICOS */
     Route::get('/servicos', [ServicosController::class, 'index'])->name('servicos');
-    Route::get('/servicos/{id}', [ServicosController::class, 'show'])->name('servicos.show');
+    Route::get('/servicos/{id}', [ServicosController::class, 'show'])->name('servico.show');
     Route::get('/novo-servico', [ServicosController::class, 'create'])->name('servico.new');
 
-     /* CATEGORIAS */
-     Route::get('/categorias', [CategoriasController::class, 'index'])->name('categorias');
+    /* CATEGORIAS */
+    Route::get('/categorias', [CategoriasController::class, 'index'])->name('categorias');
+    Route::get('/categorias/{id}', [CategoriasController::class, 'show'])->name('categoria.show');
+    Route::get('/nova-categorias', [CategoriasController::class, 'create'])->name('categoria.new');
 
     /* TECNICOS */
     Route::get('/tecnicos', [TecnicosController::class, 'index'])->name('tecnicos');
     Route::get('/tecnicos/{id}', [TecnicosController::class, 'show'])->name('tecnico.show');
     Route::get('/novo-tecnico', [TecnicosController::class, 'create'])->name('tecnico.new');
     Route::post('/novo-tecnico/store', [TecnicosController::class, 'store'])->name('tecnico.store');
-
 });

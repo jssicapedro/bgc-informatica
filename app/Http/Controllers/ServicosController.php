@@ -39,7 +39,7 @@ class ServicosController extends Controller
     {
         $servico = Servico::findOrFail($id);
 
-        return view('admin.servicos.servico_view', compact('cliente'));
+        return view('admin.servicos.servico_view', compact('servico'));
     }
 
     /**
