@@ -1,3 +1,10 @@
+.table_view{
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 #navbarNav {
     display: flex !important;
     flex-basis: auto;

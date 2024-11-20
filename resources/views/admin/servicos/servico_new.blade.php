@@ -19,7 +19,7 @@
         <a href="{{ route('servicos') }}">Voltar à listagem</a>
         <h1>Criar um novo serviço</h1>
     </div>
-    <form action="#" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('servico.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         @if($errors->any())
         <div class="alert alert-danger">
@@ -31,34 +31,42 @@
         <div class="info">
             <div class="email_tel">
                 <div class="email">
-                    <label for="tipo" class="form-label">Tipo de serviço:</label>
-                    <input type="text" class="form-control" id="tipo" name="tipo" value="{{ old('tipo') }}">
+                    <label for="categoria_id" class="form-label">Pertence a que categoria?</label>
+                    <select class="form-control" id="categoria_id" name="categoria_id">
+                        <option value="">Selecione a categoria</option>
+                        @foreach($categorias as $categoria)
+                        <option value="{{ $categoria->id }}"
+                            {{ old('categoria_id') == $categoria->id ? 'selected' : '' }}>
+                            {{ $categoria->id }} - {{ $categoria->categoria }} <!-- Exibindo id e nome da categoria -->
+                        </option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="email">
-                    <label for="estado" class="form-label">Estado:</label>
-                    <input type="text" class="form-control" id="estado" name="estado" value="{{ old('estado') }}">
-                </div>
+            <label for="NomeServico" class="form-label">Nome do Serviço:</label>
+            <select class="form-control" id="NomeServico" name="NomeServico">
+                <option value="">Selecione o serviço</option>
+                @foreach(App\Models\Servico::NOMESERVICO as $nomeServico) <!-- Supondo que "NOMESERVICO" seja o enum no modelo -->
+                    <option value="{{ $nomeServico }}" 
+                            {{ old('NomeServico') == $nomeServico ? 'selected' : '' }}>
+                        {{ $nomeServico }} <!-- Exibindo as opções do enum -->
+                    </option>
+                @endforeach
+            </select>
+        </div>
             </div>
             <div class="email_tel">
                 <div class="tel">
-                    <label for="dataInicio" class="form-label">Data de inicio:</label>
-                    <input type="date" class="form-control" id="dataInicio" name="dataInicio" value="{{ old('dataInicio') }}">
-                </div>
-                <div class="tel">
-                    <label for="conslusaoExpectada" class="form-label">Data de conclusão espectada:</label>
-                    <input type="date" class="form-control" id="conslusaoExpectada" name="conslusaoExpectada" value="{{ old('conslusaoExpectada') }}">
-                </div>
-                <div class="tel">
-                    <label for="conclusao" class="form-label">Data de conclusão:</label>
-                    <input type="date" class="form-control" id="conclusao" name="conclusao" value="{{ old('conclusao') }}">
+                    <label for="custo" class="form-label">Custo:</label>
+                    <input type="number" class="form-control" id="custo" name="custo" value="{{ old('custo') }}" step="0.01" min="0">
                 </div>
             </div>
             <div class="tel">
-                    <label for="descricao" class="form-label">Descricao:</label>
-                    <input type="text" class="form-control" id="descricao" name="descricao" value="{{ old('descricao') }}">
-                </div>
+                <label for="descricao" class="form-label">Descrição:</label>
+                <input type="text" class="form-control" id="descricao" name="descricao" value="{{ old('descricao') }}">
+            </div>
         </div>
-        <button type="submit" class="btn btn-submit">Add marca/modelo</button>
+        <button type="submit" class="btn btn-submit">Add serviço</button>
     </form>
 </div>
 @endsection

@@ -63,11 +63,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/servicos', [ServicosController::class, 'index'])->name('servicos');
     Route::get('/servicos/{id}', [ServicosController::class, 'show'])->name('servico.show');
     Route::get('/novo-servico', [ServicosController::class, 'create'])->name('servico.new');
+    Route::post('/novo-servico/store', [ServicosController::class, 'store'])->name('servico.store');
 
     /* CATEGORIAS */
     Route::get('/categorias', [CategoriasController::class, 'index'])->name('categorias');
     Route::get('/categorias/{id}', [CategoriasController::class, 'show'])->name('categoria.show');
     Route::get('/nova-categorias', [CategoriasController::class, 'create'])->name('categoria.new');
+    Route::post('/nova-categorias/store', [CategoriasController::class, 'store'])->name('categoria.store');
 
     /* TECNICOS */
     Route::get('/tecnicos', [TecnicosController::class, 'index'])->name('tecnicos');

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ServicoRequest;
+use App\Models\Categoria;
 use App\Models\Servico;
 use Illuminate\Http\Request;
 
@@ -21,15 +23,23 @@ class ServicosController extends Controller
      */
     public function create()
     {
-        return view('admin.servicos.servico_new');
+        $categorias = Categoria::all();  // Obtém todas as categorias
+        return view('admin.servicos.servico_new', compact('categorias'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ServicoRequest $request)
     {
-        //
+        Servico::created([
+            'categoria_id' => $request->categoria_id,
+            'NomeServico' => $request->NomeServico,
+            'custo' => $request->custo,
+            'descricao' => $request->descricao,
+        ]);
+
+        return redirect()->route('servicos')->with('success', 'Servico created successfully.');
     }
 
     /**

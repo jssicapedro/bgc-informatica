@@ -21,9 +21,8 @@ class Encomenda extends Model
    ];
 
    // Se o campo "custo" for armazenado como decimal, você pode forçar sua conversão
-    // para um número decimal em vez de um inteiro, caso necessário.
-    protected $casts = [
+   // para um número decimal em vez de um inteiro, caso necessário.
+   protected $casts = [
       'custo' => 'decimal:2',  // Isso garante que o valor de custo tenha 2 casas decimais
-  ];
-
+   ];
 }

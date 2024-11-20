@@ -13,7 +13,7 @@
 @endpush
 
 @section('main')
-<div class="container">
+<div class="container table_view">
     <div class="pag_new">
         <h1>Reparações</h1>
         <a href="{{ route('reparacao.new') }}">Nova Reparação</a>
