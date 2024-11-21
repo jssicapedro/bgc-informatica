@@ -20,7 +20,7 @@ class Servico extends Model
     ];
 
     // Exemplo de enum
-    const NOMESERVICO = [
+    const LISTA_SERVICOS = [
         'limpeza',
         'conserto',
         'substituição/manutenção',
@@ -33,6 +33,11 @@ class Servico extends Model
 
     public function categoria()
     {
-        return $this->belongsTo(Categoria::class, 'categoria_id');
+        return $this->belongsTo(Categoria::class);
+    }
+
+    public function equipamento()
+    {
+        return $this->belongsTo(Equipamento::class);
     }
 }

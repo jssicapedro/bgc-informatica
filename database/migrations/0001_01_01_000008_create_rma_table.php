@@ -13,10 +13,8 @@ return new class extends Migration
     {
         Schema::create('rma', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('equipamentos');
-            $table->foreignId('tecnicos');
-            $table->foreignId('servicos');
-            $table->foreignId('encomendas');
+            $table->foreignId('equipamento_id');
+            $table->foreignId('encomenda_id');
             $table->date('dataChegada');
             $table->date('previsaoEntrega')->nullable();
             $table->date('dataEntrega')->nullable();
@@ -28,6 +26,16 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
+
+
+        Schema::create('rma_servico', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('rma_id');
+            $table->foreignId('servico_id');
+            $table->foreignId('tecnico_id');
+            $table->timestamps();
+            $table->softDeletes();
+        });
     }
 
     /**
@@ -35,6 +43,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('rma_servicos');
         Schema::dropIfExists('rma');
     }
 };

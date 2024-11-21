@@ -16,7 +16,7 @@
                         <a class="nav-link" href="{{ asset('equipamentos') }}">Equipamentos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ asset('marcasmodelos') }}">Marcas e Modelos</a>
+                        <a class="nav-link" href="{{ asset('marcas-modelos') }}">Marcas e Modelos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ asset('reparacoes') }}">RMA's</a>

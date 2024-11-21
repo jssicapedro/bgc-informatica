@@ -30,7 +30,7 @@
             @foreach($categorias as $categoria)
                 <tr>
                     <td>{{ $categoria->id }}</td>
-                    <td>{{ $categoria->categoria }}</td>
+                    <td>{{ $categoria->nome }}</td>
                     <td class="acoes btn">
                         <a href="">
                             <span class="material-icons">

@@ -17,22 +17,22 @@ class ServicoSeeder extends Seeder
                 // Serviços para Smartphones
                 [
                     'id' => 1,
-                    'categoria' => 2, // Smartphones
-                    'NomeServico' => 'limpeza',
+                    'categoria_id' => 2, // Smartphones
+                    'nome' => 'limpeza',
                     'custo' => 20.00,
                     'descricao' => 'Serviço de limpeza completo para smartphones.',
                 ],
                 [
                     'id' => 2,
-                    'categoria' => 2, // Smartphones
-                    'NomeServico' => 'conserto',
+                    'categoria_id' => 2, // Smartphones
+                    'nome' => 'conserto',
                     'custo' => 25.00,
                     'descricao' => 'Reparo de problemas comuns em smartphones.',
                 ],
                 [
                     'id' => 3,
-                    'categoria' => 2, // Smartphones
-                    'NomeServico' => 'substituição/manutenção',
+                    'categoria_id' => 2, // Smartphones
+                    'nome' => 'substituição/manutenção',
                     'custo' => 17.00,
                     'descricao' => 'Troca de componentes danificados em smartphones.',
                 ],
@@ -40,22 +40,22 @@ class ServicoSeeder extends Seeder
                 // Serviços para Computadores
                 [
                     'id' => 4,
-                    'categoria' => 1, // Computadores
-                    'NomeServico' => 'limpeza',
+                    'categoria_id' => 1, // Computadores
+                    'nome' => 'limpeza',
                     'custo' => 10.00,
                     'descricao' => 'Serviço de limpeza interna e externa de computadores.',
                 ],
                 [
                     'id' => 5,
-                    'categoria' => 1, // Computadores
-                    'NomeServico' => 'conserto',
+                    'categoria_id' => 1, // Computadores
+                    'nome' => 'conserto',
                     'custo' => 18.00,
                     'descricao' => 'Reparo de hardware e software em computadores.',
                 ],
                 [
                     'id' => 6,
-                    'categoria' => 1, // Computadores
-                    'NomeServico' => 'substituição/manutenção',
+                    'categoria_id' => 1, // Computadores
+                    'nome' => 'substituição/manutenção',
                     'custo' => 12.00,
                     'descricao' => 'Troca de componentes defeituosos em computadores.',
                 ],
@@ -63,22 +63,22 @@ class ServicoSeeder extends Seeder
                 // Serviços para Outros Equipamentos
                 [
                     'id' => 7,
-                    'categoria' => 3, // Outros equipamentos
-                    'NomeServico' => 'limpeza',
+                    'categoria_id' => 3, // Outros equipamentos
+                    'nome' => 'limpeza',
                     'custo' => 5.00,
                     'descricao' => 'Serviço de limpeza de vários tipos de equipamentos.',
                 ],
                 [
                     'id' => 8,
-                    'categoria' => 3, // Outros equipamentos
-                    'NomeServico' => 'substituição/manutenção',
+                    'categoria_id' => 3, // Outros equipamentos
+                    'nome' => 'substituição/manutenção',
                     'custo' => 10.00,
                     'descricao' => 'Reparo de diversos equipamentos eletrônicos.',
                 ],
                 [
                     'id' => 9,
-                    'categoria' => 3, // Outros equipamentos
-                    'NomeServico' => 'substituição/manutenção',
+                    'categoria_id' => 3, // Outros equipamentos
+                    'nome' => 'substituição/manutenção',
                     'custo' => 14.00,
                     'descricao' => 'Troca de peças em vários tipos de equipamentos.',
                 ]

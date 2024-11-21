@@ -37,7 +37,7 @@
                         @foreach($categorias as $categoria)
                         <option value="{{ $categoria->id }}"
                             {{ old('categoria_id') == $categoria->id ? 'selected' : '' }}>
-                            {{ $categoria->id }} - {{ $categoria->categoria }} <!-- Exibindo id e nome da categoria -->
+                            {{ $categoria->nome }}
                         </option>
                         @endforeach
                     </select>
@@ -46,10 +46,10 @@
             <label for="NomeServico" class="form-label">Nome do Serviço:</label>
             <select class="form-control" id="NomeServico" name="NomeServico">
                 <option value="">Selecione o serviço</option>
-                @foreach(App\Models\Servico::NOMESERVICO as $nomeServico) <!-- Supondo que "NOMESERVICO" seja o enum no modelo -->
-                    <option value="{{ $nomeServico }}" 
-                            {{ old('NomeServico') == $nomeServico ? 'selected' : '' }}>
-                        {{ $nomeServico }} <!-- Exibindo as opções do enum -->
+                @foreach(App\Models\Servico::LISTA_SERVICOS as $servico) <!-- Supondo que "NOMESERVICO" seja o enum no modelo -->
+                    <option value="{{ $servico }}"
+                            {{ old('NomeServico') == $servico ? 'selected' : '' }}>
+                        {{ $servico }} <!-- Exibindo as opções do enum -->
                     </option>
                 @endforeach
             </select>
