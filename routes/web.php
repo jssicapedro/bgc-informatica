@@ -77,3 +77,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/novo-tecnico', [TecnicosController::class, 'create'])->name('tecnico.new');
     Route::post('/novo-tecnico/store', [TecnicosController::class, 'store'])->name('tecnico.store');
 });
+
+
+Route::get("/dev/repair", [ReparacoesController::class, 'create']);

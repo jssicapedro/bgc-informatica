@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categoria;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
 
 class CategoriasController extends Controller
 {
+    use SoftDeletes;
     /**
      * Display a listing of the resource.
      */

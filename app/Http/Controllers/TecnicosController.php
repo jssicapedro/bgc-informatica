@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\TecnicoRequest;
 use App\Models\Tecnico;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
 
 class TecnicosController extends Controller
 {
+    use SoftDeletes;
     /**
      * Display a listing of the resource.
      */

@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Equipamento;
 use App\Models\Rma;
+use App\Models\Servico;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
 
 class ReparacoesController extends Controller
 {
+    use SoftDeletes;
     /**
      * Display a listing of the resource.
      */
@@ -21,7 +25,16 @@ class ReparacoesController extends Controller
      */
     public function create()
     {
-        return view('admin.rma.reparacao_new');
+        $equipamentos = Equipamento::get();
+        $servicos = Servico::all();
+
+        dd($equipamentos->marca_modelo);
+        
+        
+        return view('admin.rma.reparacao_new', compact('equipamentos', 'servicos'));
+
+
+
     }
 
     /**

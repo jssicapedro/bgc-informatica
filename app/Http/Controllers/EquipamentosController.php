@@ -2,17 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
+use App\Models\Cliente;
 use App\Models\Equipamento;
+use App\Models\MarcaModelo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
 
 class EquipamentosController extends Controller
 {
+    use SoftDeletes;
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $equipamentos=Equipamento::all();
+        // Carregar todos os equipamentos
+        $equipamentos = Equipamento::with(['categoria'])->get();
+
+        // Verifique os dados carregados
+        /* dd($equipamentos); */ 
+
         return view('admin.equipamentos.equipamentos', compact('equipamentos'));
     }
 

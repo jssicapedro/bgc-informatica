@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\MarcaModeloRequest;
 use App\Models\MarcaModelo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
 
 class MarcaModelosController extends Controller
 {
+    use SoftDeletes;
+    
     /**
      * Display a listing of the resource.
      */

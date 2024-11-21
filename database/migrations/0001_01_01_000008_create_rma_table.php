@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('rma', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('equipamento_id')->constrained('equipamentos')->onDelete('cascade');
-            $table->foreignId('tecnico_id')->constrained('tecnicos')->onDelete('cascade');
-            $table->foreignId('servico_id')->constrained('servicos')->onDelete('cascade');
-            $table->foreignId('encomenda_id')->constrained('encomendas')->onDelete('cascade');
+            $table->foreignId('equipamentos');
+            $table->foreignId('tecnicos');
+            $table->foreignId('servicos');
+            $table->foreignId('encomendas');
             $table->date('dataChegada');
             $table->date('previsaoEntrega')->nullable();
             $table->date('dataEntrega')->nullable();
@@ -26,7 +26,7 @@ return new class extends Migration
             $table->float('totalPagar')->nullable();
             $table->string('qr');
             $table->timestamps();
-            
+            $table->softDeletes();
         });
     }
 

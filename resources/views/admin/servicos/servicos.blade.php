@@ -33,7 +33,7 @@
                 @foreach($servicos as $servico)
                 <tr>
                     <td>{{ $servico->id }}</td>
-                    <td>{{ $servico->categoria_id }}</td>
+                    <td>{{ $servico->categoria->categoria }}</td>
                     <td>{{ $servico->NomeServico }}</td>
                     <td>{{ $servico->custo }}€/h</td>
                     <td class="acoes btn">

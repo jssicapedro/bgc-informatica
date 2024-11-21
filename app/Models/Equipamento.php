@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Equipamento extends Model
 {
-    /** @use HasFactory<\Database\Factories\ClienteFactory> */
     use HasFactory;
 
     protected $table = 'equipamentos';
@@ -15,25 +14,28 @@ class Equipamento extends Model
 
     protected $fillable = [
         'categoria',
-        'cliente',
+        'clientes',
+        'marcaModelo',
+    ];
+
+    protected $with = [
+        'categoria',
+        'clientes',
         'marcaModelo'
     ];
 
-    // Relacionamento com categorias
     public function categoria()
     {
-        return $this->belongsTo(Categoria::class, 'categoria');
+        return $this->belongsTo(Categoria::class, 'categoria', 'id');
     }
-
-    // Relacionamento com clientes
-    public function cliente()
+    
+    public function clientes()
     {
-        return $this->belongsTo(Cliente::class, 'cliente');
+        return $this->belongsTo(Cliente::class, 'clientes', 'id');
     }
-
-    // Relacionamento com marcamodelos
+    
     public function marcaModelo()
     {
-        return $this->belongsTo(MarcaModelo::class, 'marcaModelo');
+        return $this->belongsTo(MarcaModelo::class, 'marcaModelo', 'id');
     }
 }

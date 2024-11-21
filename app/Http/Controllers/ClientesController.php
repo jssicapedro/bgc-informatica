@@ -4,10 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Cliente;
 use App\Http\Requests\ClienteRequest;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
 
 class ClientesController extends Controller
 {
+    use SoftDeletes;
+
+    
     public function index()
     {
         $clientes = Cliente::all();

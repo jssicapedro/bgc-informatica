@@ -32,16 +32,32 @@
             <div class="email_tel">
                 <div class="email">
                     <label for="equipamento_id" class="form-label">Equipamento a ser reparado:</label>
-                    <input type="text" class="form-control" id="equipamento_id" name="equipamento_id" value="{{ old('equipamento_id') }}">
+                    <select class="form-control" id="equipamento_id" name="equipamento_id">
+                        <option value="">Selecione o equipamento</option>
+                        @foreach($equipamentos as $equipamento)
+                        <option value="{{ $equipamento->id }}"
+                            {{ old('equipamento_id') == $equipamento->id ? 'selected' : '' }}>
+                            {{ $equipamento->id }} <!-- Exibindo id e nome da categoria -->
+                        </option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="tel">
                     <label for="servico_id" class="form-label">Tipo de serviço:</label>
-                    <input type="text" class="form-control" id="servico_id" name="servico_id" value="{{ old('servico_id') }}">
+                    <select class="form-control" id="equipamento_id" name="equipamento_id">
+                        <option value="">Selecione o serviço</option>
+                        @foreach($servicos as $servico)
+                        <option value="{{ $servico->id }}"
+                            {{ old('servico_id') == $servico->id ? 'selected' : '' }}>
+                            {{ $servico->id }} -  {{ $servico->NomeServico }} -  {{ $servico->descricao }}<!-- Exibindo id e nome da categoria -->
+                        </option>
+                        @endforeach
+                    </select>
                 </div>
-                <div class="tel">
+                <!-- <div class="tel">
                     <label for="estado" class="form-label">Estado do serviço:</label>
                     <input type="text" class="form-control" id="estado" name="estado" value="{{ old('estado') }}">
-                </div>
+                </div> -->
             </div>
             <div class="email_tel">
                 <div class="email">

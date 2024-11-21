@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ServicoRequest;
 use App\Models\Categoria;
 use App\Models\Servico;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
 
 class ServicosController extends Controller
 {
+    use SoftDeletes;
     /**
      * Display a listing of the resource.
      */

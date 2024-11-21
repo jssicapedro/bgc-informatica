@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('morada');
             $table->string('nif')->unique();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

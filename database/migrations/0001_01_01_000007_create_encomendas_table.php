@@ -18,6 +18,7 @@ return new class extends Migration
             $table->date('dataEntrega')->nullable();
             $table->text('descricao');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

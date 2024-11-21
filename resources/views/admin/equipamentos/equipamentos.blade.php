@@ -13,7 +13,7 @@
 @endpush
 
 @section('main')
-<div class="container">
+<div class="container table_view">
     <div class="pag_new">
         <h1>Equipamentos</h1>
         <a href="{{ route('equipamento.new') }}">Novo Equipamento</a>
@@ -23,10 +23,9 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Tipo</th>
-                    <th>N. Serie</th>
-                    <th>Data de Entrada</th>
-                    <th>Levantamento</th>
+                    <th>Marca Modelo</th>
+                    <th>Cliente</th>
+                    <th>Categoria</th>
                     <th>-</th>
                 </tr>
             </thead>
@@ -34,17 +33,15 @@
                 @foreach($equipamentos as $equipamento)
                 <tr>
                     <td>{{ $equipamento->id }}</td>
-                    <td>{{ $equipamento->tipo }}</td>
-                    <td>{{ $equipamento->numero_serie }}</td>
-                    <td>{{ $equipamento->entrada }}</td>
-                    <td>{{ $equipamento->levantamento }}</td>
-                    <td>{{ $equipamento->estado }}</td>
+                    <td>{{ $equipamento->marcaModelo->marca }}</td>
+                    <td>{{ $equipamento->clientes->nome }}</td>
+                    <td>{{ $equipamento->categoria->categoria }}</td>
                     <td class="acoes btn">
-                        <a href="{{ route('equipamento.show', ['id' => $equipamento->id]) }}">
+                       <!--  <a href="{{ route('equipamento.show', ['id' => $equipamento->id]) }}">
                             <span class="material-icons">
                                 visibility
                             </span>
-                        </a>
+                        </a> -->
                         <a href="">
                             <span class="material-icons">
                                 edit

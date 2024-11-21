@@ -33,8 +33,8 @@
                 @foreach($reparacoes as $reparacao)
                 <tr>
                     <td>{{ $reparacao->id }}</td>
-                    <td>{{ $reparacao->equipamento_id }}</td>
-                    <td>{{ $reparacao->servico_id }}</td>
+                    <td>{{ $reparacao->equipamentos }}</td>
+                    <td>{{ $reparacao->servicos->NomeServico }}</td>
                     <td>{{ $reparacao->estado }}</td>
                     <td class="acoes btn">
                         <a href="{{ route('reparacao.show', ['id' => $reparacao->id]) }}">

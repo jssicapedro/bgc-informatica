@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\EncomendaRequest;
 use App\Models\Encomenda;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
 
 class EncomendasController extends Controller
 {
+    use SoftDeletes;
     /**
      * Display a listing of the resource.
      */

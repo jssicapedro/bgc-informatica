@@ -13,15 +13,11 @@ return new class extends Migration
     {
         Schema::create('equipamentos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('categoria');    // FK para tabela categorias
-            $table->unsignedBigInteger('cliente');     // FK para tabela clientes
-            $table->unsignedBigInteger('marcaModelo'); // FK para tabela marcamodelos
+            $table->foreignId('categoria');
+            $table->foreignId('clientes');
+            $table->foreignId('marcaModelo');
             $table->timestamps();
-
-            // Chaves estrangeiras
-            $table->foreign('categoria')->references('id')->on('categoria')->onDelete('cascade');
-            $table->foreign('cliente')->references('id')->on('clientes')->onDelete('cascade');
-            $table->foreign('marcaModelo')->references('id')->on('marcamodelos')->onDelete('cascade');
+            $table->softDeletes();
         });
     }
 
