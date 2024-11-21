@@ -29,11 +29,11 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($marcasmodelos as $marcasmodelo)
+                @foreach($modelos_with_marcas as $modelo_with_marca)
                 <tr>
-                    <td>{{ $marcasmodelo->id }}</td>
-                    <td>{{ $marcasmodelo->marca }}</td>
-                    <td>{{ $marcasmodelo->modelo }}</td>
+                    <td>{{ $modelo_with_marca->id }}</td>
+                    <td>{{ $modelo_with_marca->marca->nome }}</td>
+                    <td>{{ $modelo_with_marca->nome }}</td>
                     <td class="acoes btn">
                         <a href="">
                             <span class="material-icons">

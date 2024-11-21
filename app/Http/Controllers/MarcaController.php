@@ -3,21 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\MarcaModeloRequest;
-use App\Models\MarcaModelo;
+use App\Models\Marca;
+use App\Models\Modelo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class MarcaModelosController extends Controller
+class MarcaController extends Controller
 {
     use SoftDeletes;
-    
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $marcasmodelos=MarcaModelo::all();
-        return view('admin.marcamodelo.marcamodelos', compact('marcasmodelos'));
+        $modelos_with_marcas = Modelo::with('marca')->get();
+
+        return view('admin.marcamodelo.marcamodelos')
+            ->with(['modelos_with_marcas' => $modelos_with_marcas]);
     }
 
     /**
@@ -33,10 +37,28 @@ class MarcaModelosController extends Controller
      */
     public function store(MarcaModeloRequest $request)
     {
-        MarcaModelo::create([
-            'marca' => $request->marca,
-            'modelo' => $request->modelo,
-        ]);
+        DB::beginTransaction();
+
+        $marca = new Marca();
+        $marca->nome = ucfirst($request->input('marca'));
+
+        if(!$marca->save())
+        {
+            DB::rollback();
+            return redirect()->back()->withErrors($marca->errors())->withInput();
+        }
+
+        $modelo = new Modelo();
+        $modelo->marca_id = $marca->id;
+        $modelo->nome = ucfirst($request->input('modelo'));
+
+        if(!$modelo->save())
+        {
+            DB::rollBack();
+            return redirect()->back()->withErrors($modelo->errors())->withInput();
+        }
+
+        DB::commit();
 
         return redirect()->route('marcasmodelos')->with('success', 'MarcasModelos created successfully.');
     }
@@ -72,4 +94,5 @@ class MarcaModelosController extends Controller
     {
         //
     }
+
 }

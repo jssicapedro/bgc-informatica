@@ -33,8 +33,16 @@
                 @foreach($reparacoes as $reparacao)
                 <tr>
                     <td>{{ $reparacao->id }}</td>
-                    <td>{{ $reparacao->equipamentos }}</td>
-                    <td>{{ $reparacao->servicos->NomeServico }}</td>
+                    <td>{{ $reparacao->equipamento->modelo->marca->nome }} {{ $reparacao->equipamento->modelo->nome }}</td>
+                    <td>
+                        @if($reparacao->servicos->count() > 0)
+                            @foreach($reparacao->servicos as $servico)
+                                {{ (isset($servico)) ? $servico->nome : 'Sem serviços' }};
+                            @endforeach
+                        @else
+                            Sem serviços
+                        @endif
+                    </td>
                     <td>{{ $reparacao->estado }}</td>
                     <td class="acoes btn">
                         <a href="{{ route('reparacao.show', ['id' => $reparacao->id]) }}">

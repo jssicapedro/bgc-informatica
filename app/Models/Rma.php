@@ -30,4 +30,14 @@ class Rma extends Model
     {
         return $this->hasOne(Encomenda::class, 'encomenda_id');
     }
+
+    public function equipamento()
+    {
+        return $this->belongsTo(Equipamento::class, 'equipamento_id', 'id');
+    }
+
+    public function servicos()
+    {
+        return $this->belongsToMany(Servico::class);
+    }
 }

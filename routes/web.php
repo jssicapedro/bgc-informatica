@@ -3,7 +3,7 @@
 use App\Http\Controllers\CalendarioController;
 use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\EquipamentosController;
-use App\Http\Controllers\MarcaModelosController;
+use App\Http\Controllers\MarcaController;
 use App\Http\Controllers\ReparacoesController;
 use App\Http\Controllers\OrcamentosController;
 use App\Http\Controllers\EncomendasController;
@@ -44,9 +44,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/novo-equipamento', [EquipamentosController::class, 'create'])->name('equipamento.new');
 
     /* MARCAS MODELOS */
-    Route::get('/marcasmodelos', [MarcaModelosController::class, 'index'])->name('marcasmodelos');
-    Route::get('/nova-marcamodelo', [MarcaModelosController::class, 'create'])->name('marcamodelo.new');
-    Route::post('/nova-marcamodelo/store', [MarcaModelosController::class, 'store'])->name('marcamodelo.store');
+    Route::get('/marcas-modelos', [MarcaController::class, 'index'])->name('marcasmodelos');
+    Route::get('/marcas-modelos/novo', [MarcaController::class, 'create'])->name('marcamodelo.new');
+    Route::post('/marcas-modelos/store', [MarcaController::class, 'store'])->name('marcamodelo.store');
 
     /* REPARACOES */
     Route::get('/reparacoes', [ReparacoesController::class, 'index'])->name('reparacoes');

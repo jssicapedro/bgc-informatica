@@ -16,7 +16,8 @@ class ServicosController extends Controller
      */
     public function index()
     {
-        $servicos=Servico::all();
+        $servicos = Servico::with('categoria')->get();
+
         return view('admin.servicos.servicos', compact('servicos'));
     }
 

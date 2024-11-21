@@ -16,8 +16,12 @@ class ReparacoesController extends Controller
      */
     public function index()
     {
-        $reparacoes=Rma::all();
-        return view('admin.rma.reparacoes', compact('reparacoes'));
+        $reparacoes = Rma::with('equipamento', 'equipamento.modelo', 'servicos')->get();
+
+        return view('admin.rma.reparacoes')
+            ->with([
+                'reparacoes' => $reparacoes
+            ]);
     }
 
     /**
@@ -29,8 +33,8 @@ class ReparacoesController extends Controller
         $servicos = Servico::all();
 
         dd($equipamentos->marca_modelo);
-        
-        
+
+
         return view('admin.rma.reparacao_new', compact('equipamentos', 'servicos'));
 
 
