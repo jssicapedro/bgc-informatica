@@ -33,9 +33,13 @@
                 @foreach($equipamentos as $equipamento)
                 <tr>
                     <td>{{ $equipamento->id }}</td>
-                    <td>{{ $equipamento->marcaModelo->marca }}</td>
-                    <td>{{ $equipamento->clientes->nome }}</td>
-                    <td>{{ $equipamento->categoria->categoria }}</td>
+                    <td>
+                        {{ $equipamento->modelo->marca->nome }},
+                       {{ $equipamento->modelo->nome }}
+                    <td>
+                        {{ $equipamento->cliente->nome }}
+                    </td>
+                    <td>{{ $equipamento->categoria->nome }}</td>
                     <td class="acoes btn">
                        <!--  <a href="{{ route('equipamento.show', ['id' => $equipamento->id]) }}">
                             <span class="material-icons">

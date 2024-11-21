@@ -9,11 +9,10 @@ class Categoria extends Model
 {
     use HasFactory;
 
-    protected $table = 'categoria';
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'categoria',
+        'nome',
     ];
 
     public function equipamentos()

@@ -19,12 +19,12 @@ class EquipamentosController extends Controller
     public function index()
     {
         // Carregar todos os equipamentos
-        $equipamentos = Equipamento::with(['categoria'])->get();
+        $equipamentos = Equipamento::with('cliente', 'modelo', 'categoria')->get();
 
-        // Verifique os dados carregados
-        /* dd($equipamentos); */ 
+//        dd($equipamentos->toArray());
 
-        return view('admin.equipamentos.equipamentos', compact('equipamentos'));
+        return view('admin.equipamentos.equipamentos')
+            ->with('equipamentos', $equipamentos);
     }
 
     /**
