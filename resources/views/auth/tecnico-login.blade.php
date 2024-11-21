@@ -16,7 +16,7 @@
     <img src="{{ asset('img/nav/logotipo2.png') }}" alt="Logotipo">
 </div>
 <div class="div-form">
-    <form method="POST" action="{{ route('tecnico.login.submit') }}">
+    <form method="POST" action="{{ route('login.submit') }}">
         @csrf
         @if(session('fail'))
             <div class="alert alert-danger">{{ session('fail') }}</div>

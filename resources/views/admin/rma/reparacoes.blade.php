@@ -33,11 +33,11 @@
                 @foreach($reparacoes as $reparacao)
                 <tr>
                     <td>{{ $reparacao->id }}</td>
-                    <td>{{ $reparacao->equipamento->modelo->marca->nome }} {{ $reparacao->equipamento->modelo->nome }}</td>
+                    <td>{{ $reparacao->equipamento->modelo->marca->nome }}, {{ $reparacao->equipamento->modelo->nome }}</td>
                     <td>
                         @if($reparacao->servicos->count() > 0)
                             @foreach($reparacao->servicos as $servico)
-                                {{ (isset($servico)) ? $servico->nome : 'Sem serviços' }};
+                                {{ (isset($servico)) ? $servico->nome : 'Sem serviços' }}
                             @endforeach
                         @else
                             Sem serviços

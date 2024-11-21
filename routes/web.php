@@ -19,12 +19,12 @@ Route::get('/', function () {
 });
 
 
-Route::middleware('guest')->name('tecnico.')->group(function () {
+Route::middleware('guest')->group(function () {
     Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
 });
 
-Route::middleware('auth')->name('tecnico.')->group(function () {
+Route::middleware('auth')->group(function () {
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });
 
@@ -44,7 +44,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/novo-equipamento', [EquipamentosController::class, 'create'])->name('equipamento.new');
 
     /* MARCAS MODELOS */
-    Route::get('/marcas-modelos', [MarcaController::class, 'index'])->name('marcasmodelos');
+    Route::get('/marcas-modelos', [MarcaController::class, 'index'])->name('marcas-modelos');
     Route::get('/marcas-modelos/novo', [MarcaController::class, 'create'])->name('marcamodelo.new');
     Route::post('/marcas-modelos/store', [MarcaController::class, 'store'])->name('marcamodelo.store');
 
