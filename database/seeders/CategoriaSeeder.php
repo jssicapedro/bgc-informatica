@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Categoria;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -13,20 +14,16 @@ class CategoriaSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('categoria')->insert([
-            [
-                'categoria' => 'computarores', // #id 1
-                
-            ],
-            [
-                'categoria' => 'smartphones', // #id 2
-                
-            ],
-            [
-                'categoria' => 'outros equipamentos', // #id 3
-                
-            ],
-            
-        ]);
+        $categoria = new Categoria;
+        $categoria->nome = 'Computadores';
+        $categoria->save();
+
+        $categoria = new Categoria;
+        $categoria->nome = 'Smartphones';
+        $categoria->save();
+
+        $categoria = new Categoria;
+        $categoria->nome = 'Notebooks';
+        $categoria->save();
     }
 }

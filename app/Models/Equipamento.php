@@ -13,29 +13,23 @@ class Equipamento extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'categoria',
-        'clientes',
-        'marcaModelo',
-    ];
-
-    protected $with = [
-        'categoria',
-        'clientes',
-        'marcaModelo'
+        'categoria_id',
+        'cliente_id',
+        'modelo_id',
     ];
 
     public function categoria()
     {
-        return $this->belongsTo(Categoria::class, 'categoria', 'id');
+        return $this->belongsTo(Categoria::class);
     }
-    
-    public function clientes()
+
+    public function cliente()
     {
-        return $this->belongsTo(Cliente::class, 'clientes', 'id');
+        return $this->belongsTo(Cliente::class, 'cliente_id', 'id');
     }
-    
-    public function marcaModelo()
+
+    public function modelo()
     {
-        return $this->belongsTo(MarcaModelo::class, 'marcaModelo', 'id');
+        return $this->belongsTo(Modelo::class);
     }
 }

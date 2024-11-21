@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('equipamentos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('categoria');
-            $table->foreignId('clientes');
-            $table->foreignId('marcaModelo');
+            $table->foreignId('categoria_id');
+            $table->foreignId('modelo_id');
+            $table->foreignId('cliente_id');
             $table->timestamps();
             $table->softDeletes();
         });
