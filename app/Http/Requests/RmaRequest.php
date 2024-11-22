@@ -23,7 +23,8 @@ class RmaRequest extends FormRequest
     {
         return [
             'equipamento_id' => 'required|exists:equipamentos,id',
-            'modelo' => 'required|string|max:255',
+            'servico_id' => 'required|exists:servicos,id',
+            'descricaoProblema' => 'required|string|max:255'
         ];
     }
 }

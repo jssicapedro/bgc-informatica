@@ -42,6 +42,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/equipamentos', [EquipamentosController::class, 'index'])->name('equipamentos');
     Route::get('/equipamento/{id}', [EquipamentosController::class, 'show'])->name('equipamento.show');
     Route::get('/novo-equipamento', [EquipamentosController::class, 'create'])->name('equipamento.new');
+    Route::post('/novo-equipamento/store', [EquipamentosController::class, 'store'])->name('equipamento.store');
 
     /* MARCAS MODELOS */
     Route::get('/marcas-modelos', [MarcaController::class, 'index'])->name('marcas-modelos');
@@ -52,6 +53,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/reparacoes', [ReparacoesController::class, 'index'])->name('reparacoes');
     Route::get('/reparacoes/{id}', [ReparacoesController::class, 'show'])->name('reparacao.show');
     Route::get('/nova-reparacao', [ReparacoesController::class, 'create'])->name('reparacao.new');
+    Route::post('/nova-reparacao/store', [ReparacoesController::class, 'store'])->name('reparacao.store');
 
     /* ENCOMENDAS */
     Route::get('/encomendas', [EncomendasController::class, 'index'])->name('encomendas');

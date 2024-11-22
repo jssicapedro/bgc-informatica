@@ -20,6 +20,7 @@ class ServicoSeeder extends Seeder
                     'categoria_id' => 2, // Smartphones
                     'nome' => 'limpeza',
                     'custo' => 20.00,
+                    'estimativa' => 30,
                     'descricao' => 'Serviço de limpeza completo para smartphones.',
                 ],
                 [
@@ -27,6 +28,7 @@ class ServicoSeeder extends Seeder
                     'categoria_id' => 2, // Smartphones
                     'nome' => 'conserto',
                     'custo' => 25.00,
+                    'estimativa' => 120,
                     'descricao' => 'Reparo de problemas comuns em smartphones.',
                 ],
                 [
@@ -34,15 +36,16 @@ class ServicoSeeder extends Seeder
                     'categoria_id' => 2, // Smartphones
                     'nome' => 'substituição/manutenção',
                     'custo' => 17.00,
+                    'estimativa' => 120,
                     'descricao' => 'Troca de componentes danificados em smartphones.',
                 ],
-
                 // Serviços para Computadores
                 [
                     'id' => 4,
                     'categoria_id' => 1, // Computadores
                     'nome' => 'limpeza',
                     'custo' => 10.00,
+                    'estimativa' => 60,
                     'descricao' => 'Serviço de limpeza interna e externa de computadores.',
                 ],
                 [
@@ -50,6 +53,7 @@ class ServicoSeeder extends Seeder
                     'categoria_id' => 1, // Computadores
                     'nome' => 'conserto',
                     'custo' => 18.00,
+                    'estimativa' => 120,
                     'descricao' => 'Reparo de hardware e software em computadores.',
                 ],
                 [
@@ -57,6 +61,7 @@ class ServicoSeeder extends Seeder
                     'categoria_id' => 1, // Computadores
                     'nome' => 'substituição/manutenção',
                     'custo' => 12.00,
+                    'estimativa' => 180,
                     'descricao' => 'Troca de componentes defeituosos em computadores.',
                 ],
 
@@ -66,6 +71,7 @@ class ServicoSeeder extends Seeder
                     'categoria_id' => 3, // Outros equipamentos
                     'nome' => 'limpeza',
                     'custo' => 5.00,
+                    'estimativa' => 60,
                     'descricao' => 'Serviço de limpeza de vários tipos de equipamentos.',
                 ],
                 [
@@ -73,6 +79,7 @@ class ServicoSeeder extends Seeder
                     'categoria_id' => 3, // Outros equipamentos
                     'nome' => 'substituição/manutenção',
                     'custo' => 10.00,
+                    'estimativa' => 240,
                     'descricao' => 'Reparo de diversos equipamentos eletrônicos.',
                 ],
                 [
@@ -80,6 +87,7 @@ class ServicoSeeder extends Seeder
                     'categoria_id' => 3, // Outros equipamentos
                     'nome' => 'substituição/manutenção',
                     'custo' => 14.00,
+                    'estimativa' => 160,
                     'descricao' => 'Troca de peças em vários tipos de equipamentos.',
                 ]
             ]);
@@ -88,6 +96,11 @@ class ServicoSeeder extends Seeder
                 'rma_id' => 1,
                 'servico_id' => 5,
                 'tecnico_id' => 1,
+            ],
+            [
+                'rma_id' => 1,
+                'servico_id' => 4,
+                'tecnico_id' => 3,
             ],
             [
                 'rma_id' => 2,

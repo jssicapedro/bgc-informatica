@@ -43,12 +43,12 @@
                     </select>
                 </div>
                 <div class="email">
-            <label for="NomeServico" class="form-label">Nome do Serviço:</label>
-            <select class="form-control" id="NomeServico" name="NomeServico">
+            <label for="nome" class="form-label">Nome do Serviço:</label>
+            <select class="form-control" id="nome" name="nome">
                 <option value="">Selecione o serviço</option>
-                @foreach(App\Models\Servico::LISTA_SERVICOS as $servico) <!-- Supondo que "NOMESERVICO" seja o enum no modelo -->
+                @foreach(App\Models\Servico::LISTA_SERVICOS as $servico) <!-- Supondo que "nome" seja o enum no modelo -->
                     <option value="{{ $servico }}"
-                            {{ old('NomeServico') == $servico ? 'selected' : '' }}>
+                            {{ old('nome') == $servico ? 'selected' : '' }}>
                         {{ $servico }} <!-- Exibindo as opções do enum -->
                     </option>
                 @endforeach
@@ -57,8 +57,12 @@
             </div>
             <div class="email_tel">
                 <div class="tel">
-                    <label for="custo" class="form-label">Custo:</label>
+                    <label for="custo" class="form-label">Custo (€/h):</label>
                     <input type="number" class="form-control" id="custo" name="custo" value="{{ old('custo') }}" step="0.01" min="0">
+                </div>
+                <div class="tel">
+                    <label for="estimativa" class="form-label">Estimativa (em minutos):</label>
+                    <input type="number" class="form-control" id="estimativa" name="estimativa" value="{{ old('estimativa') }}" step="0.01" min="0">
                 </div>
             </div>
             <div class="tel">

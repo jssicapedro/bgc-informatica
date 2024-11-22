@@ -35,12 +35,15 @@ class ServicosController extends Controller
      */
     public function store(ServicoRequest $request)
     {
-        Servico::created([
+        Servico::create([
             'categoria_id' => $request->categoria_id,
-            'NomeServico' => $request->NomeServico,
-            'custo' => $request->custo,
+            'nome' => $request->nome,
+            'custo' => $request->custo, 
+            'estimativa' => $request->estimativa,
             'descricao' => $request->descricao,
         ]);
+
+        /* dd($request->toArray()); */
 
         return redirect()->route('servicos')->with('success', 'Servico created successfully.');
     }

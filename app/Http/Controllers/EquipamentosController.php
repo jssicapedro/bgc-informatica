@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EquipamentoRequest;
 use App\Models\Categoria;
 use App\Models\Cliente;
 use App\Models\Equipamento;
-use App\Models\MarcaModelo;
+use App\Models\Modelo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
 
@@ -32,15 +33,32 @@ class EquipamentosController extends Controller
      */
     public function create()
     {
-        return view('admin.equipamentos.equipamento_new');
+        $categorias = Categoria::all();
+        $modelos = Modelo::all();
+        $clientes = Cliente::all();
+
+        return view('admin.equipamentos.equipamento_new')
+        ->with([
+            'categorias' => $categorias,
+            'modelos' => $modelos,
+            'clientes' => $clientes
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(EquipamentoRequest $request)
     {
-        //
+        Equipamento::create([
+            'categoria_id' => $request->categoria_id,
+            'modelo_id' => $request->modelo_id,
+            'cliente_id' => $request->cliente_id,
+        ]);
+/* 
+        dd($request->toArray()); */
+
+        return redirect()->route('equipamentos')->with('success', 'Equipamento created successfully.');
     }
 
     /**

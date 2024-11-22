@@ -60,7 +60,7 @@ class MarcaController extends Controller
 
         DB::commit();
 
-        return redirect()->route('marcasmodelos')->with('success', 'MarcasModelos created successfully.');
+        return redirect()->route('marcas-modelos')->with('success', 'MarcasModelos created successfully.');
     }
 
     /**

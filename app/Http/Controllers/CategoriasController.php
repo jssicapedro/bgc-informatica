@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CategoriaRequest;
 use App\Models\Categoria;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
@@ -30,9 +31,13 @@ class CategoriasController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CategoriaRequest $request)
     {
-        //
+        Categoria::create([
+            'nome' => $request->nome,
+        ]);
+
+        return redirect()->route('categorias')->with('success', 'Categoria created successfully.');
     }
 
     /**
