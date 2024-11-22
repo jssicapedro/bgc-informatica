@@ -14,15 +14,15 @@ return new class extends Migration
         Schema::create('rma', function (Blueprint $table) {
             $table->id();
             $table->foreignId('equipamento_id');
-            $table->foreignId('encomenda_id');
-            $table->date('dataChegada');
-            $table->date('previsaoEntrega')->nullable();
-            $table->date('dataEntrega')->nullable();
+            $table->foreignId('encomenda_id')->nullable();
+            $table->timestamp('dataChegada')->nullable();
+            $table->timestamp('previsaoEntrega')->nullable();
+            $table->timestamp('dataEntrega')->nullable();
             $table->float('horasTrabalho')->nullable();
             $table->string('descricaoProblema');
             $table->enum('estado', ['em processamento', 'em reparacao', 'completo']);
             $table->float('totalPagar')->nullable();
-            $table->string('qr');
+            $table->string('qr')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -43,7 +43,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('rma_servicos');
+        Schema::dropIfExists('rma_servico');
         Schema::dropIfExists('rma');
     }
 };

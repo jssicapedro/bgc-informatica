@@ -12,14 +12,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-
-
-
         Schema::create('servicos', function (Blueprint $table) {
             $table->id();
             $table->foreignId('categoria_id');
             $table->enum('nome', Servico::LISTA_SERVICOS);
             $table->float('custo');
+            $table->integer('estimativa');
             $table->string('descricao');
             $table->timestamps();
             $table->softDeletes();

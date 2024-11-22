@@ -26,4 +26,9 @@ class Tecnico extends Authenticatable
        'password',
        'remember_token',
    ];
+
+   public function equipamento()
+    {
+        return $this->belongsTo(Equipamento::class);
+    }
 }

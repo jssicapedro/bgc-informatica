@@ -23,7 +23,7 @@ class CategoriaSeeder extends Seeder
         $categoria->save();
 
         $categoria = new Categoria;
-        $categoria->nome = 'Notebooks';
+        $categoria->nome = 'Outros equipamentos';
         $categoria->save();
     }
 }

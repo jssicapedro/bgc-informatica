@@ -22,9 +22,10 @@ class ServicoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'categoria_id' => 'required|exists:categoria,id',
-            'NomeServico' => 'required|in:' . implode(',', \App\Models\Servico::NOMESERVICO), // Validação para garantir que o valor seja um dos valores do enum
+            'categoria_id' => 'required|exists:categorias,id',
+            'nome' => 'required|in:' . implode(',', \App\Models\Servico::LISTA_SERVICOS), // Validação para garantir que o valor seja um dos valores do enum
             'custo' => 'required|numeric|min:0',
+            'estimativa' => 'required|numeric|min:0',
             'descricao' => 'required|string|max:255',
         ];
     }

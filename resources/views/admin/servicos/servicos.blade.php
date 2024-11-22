@@ -26,6 +26,7 @@
                     <th>Categoria</th>
                     <th>Nome do serviço</th>
                     <th>Custo</th>
+                    <th>Estimativa (minutos)</th>
                     <th>-</th>
                 </tr>
             </thead>
@@ -36,6 +37,7 @@
                     <td>{{ $servico->categoria->nome }}</td>
                     <td>{{ $servico->nome }}</td>
                     <td>{{ $servico->custo }}€/h</td>
+                    <td>{{ $servico->estimativa }}</td>
                     <td class="acoes btn">
                         <a href="{{ route('servico.show', ['id' => $servico->id]) }}">
                             <span class="material-icons">

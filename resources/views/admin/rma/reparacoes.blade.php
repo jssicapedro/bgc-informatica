@@ -25,6 +25,7 @@
                     <th>ID</th>
                     <th>Equipamento</th>
                     <th>Tipo de Serviço</th>
+                    <th>Tecnico responsável</th>
                     <th>Estado</th>
                     <th>-</th>
                 </tr>
@@ -36,11 +37,23 @@
                     <td>{{ $reparacao->equipamento->modelo->marca->nome }}, {{ $reparacao->equipamento->modelo->nome }}</td>
                     <td>
                         @if($reparacao->servicos->count() > 0)
-                            @foreach($reparacao->servicos as $servico)
-                                {{ (isset($servico)) ? $servico->nome : 'Sem serviços' }}
-                            @endforeach
+                        @foreach($reparacao->servicos as $servico)
+                        @if($reparacao->servicos->count() > 1)
+                        {{ (isset($servico)) ? $servico->nome : 'Sem serviços' }} ,
                         @else
-                            Sem serviços
+                        {{ (isset($servico)) ? $servico->nome : 'Sem serviços' }}
+                        @endif
+                        @endforeach
+                        @else
+                        Sem serviços
+                        @endif
+                    </td>
+                    <td>
+                        @foreach($reparacao->tecnicos as $tecnico)
+                        {{ $tecnico->nome }}@if(!$loop->last),@endif
+                        @endforeach
+                        @if($reparacao->tecnicos->isEmpty())
+                        Sem técnico
                         @endif
                     </td>
                     <td>{{ $reparacao->estado }}</td>

@@ -14,21 +14,18 @@ class Rma extends Model
 
     protected $fillable = [
         'equipamento_id',
-        'tecnico_id',
-        'servico_id',
         'encomenda_id',
         'dataChegada',
         'dataEntrega',
         'horasTrabalho',
         'descricaoProblema',
-        'estado',
-        'qr',
+        'estado'
     ];
 
     // Relacionamento com a encomenda (um RMA tem uma encomenda)
     public function encomenda()
     {
-        return $this->hasOne(Encomenda::class, 'encomenda_id');
+        return $this->hasMany(Encomenda::class, 'rma_id');
     }
 
     public function equipamento()
@@ -39,5 +36,10 @@ class Rma extends Model
     public function servicos()
     {
         return $this->belongsToMany(Servico::class);
+    }
+
+    public function tecnicos()
+    {
+        return $this->belongsToMany(Tecnico::class, 'rma_servico', 'rma_id', 'tecnico_id');
     }
 }

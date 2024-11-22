@@ -31,8 +31,8 @@
         <div class="info">
             <div class="nome_tel">
                 <div class="nome">
-                    <label for="categoria" class="form-label">Nome da nova categoria:</label>
-                    <input type="text" class="form-control" id="categoria" name="categoria" value="{{ old('categoria') }}">
+                    <label for="nome" class="form-label">Nome da nova categoria:</label>
+                    <input type="text" class="form-control" id="nome" name="nome" value="{{ old('nome') }}">
                 </div>
             </div>
         </div>
