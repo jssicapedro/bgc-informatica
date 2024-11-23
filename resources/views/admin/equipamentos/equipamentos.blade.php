@@ -46,7 +46,7 @@
                                 visibility
                             </span>
                         </a> -->
-                        <a href="">
+                        <a href="{{ route('equipamento.edit', ['id' => $equipamento->id]) }}">
                             <span class="material-icons">
                                 edit
                             </span>

@@ -43,7 +43,7 @@
             <div class="tel_nif">
                 <div class="tel">
                     <label for="telemovel" class="form-label">Telemóvel:</label>
-                    <input type="number" class="form-control" id="telemovel" name="telemovel" value="{{ old('tel') }}">
+                    <input type="number" class="form-control" id="telemovel" name="telemovel" value="{{ old('telemovel') }}">
                 </div>
                 <div class="nif">
                     <label for="nif" class="form-label">NIF:</label>

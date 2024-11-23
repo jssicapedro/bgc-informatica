@@ -36,13 +36,16 @@ Route::middleware('auth')->group(function () {
     Route::get('/cliente/{id}', [ClientesController::class, 'show'])->name('cliente.show');
     Route::get('/novo-cliente', [ClientesController::class, 'create'])->name('cliente.new');
     Route::post('/novo-cliente/store', [ClientesController::class, 'store'])->name('cliente.store');
-
+    Route::get('/ver-cliente/{id}', [ClientesController::class, 'edit'])->name('cliente.edit');
+    Route::put('/ver-cliente/{id}/update', [ClientesController::class, 'update'])->name('cliente.update');
 
     /* EQUIPAMENTOS */
     Route::get('/equipamentos', [EquipamentosController::class, 'index'])->name('equipamentos');
     Route::get('/equipamento/{id}', [EquipamentosController::class, 'show'])->name('equipamento.show');
     Route::get('/novo-equipamento', [EquipamentosController::class, 'create'])->name('equipamento.new');
     Route::post('/novo-equipamento/store', [EquipamentosController::class, 'store'])->name('equipamento.store');
+    Route::get('/ver-equipamento/{id}', [EquipamentosController::class, 'edit'])->name('equipamento.edit');
+    Route::put('/ver-equipamento/{id}/update', [EquipamentosController::class, 'update'])->name('equipamento.update');
 
     /* MARCAS MODELOS */
     Route::get('/marcas-modelos', [MarcaController::class, 'index'])->name('marcas-modelos');

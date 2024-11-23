@@ -11,7 +11,7 @@ class ClientesController extends Controller
 {
     use SoftDeletes;
 
-    
+
     public function index()
     {
         $clientes = Cliente::all();
@@ -56,15 +56,26 @@ class ClientesController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $cliente = Cliente::findOrFail($id);
+        return view('admin.cliente.cliente_edit', compact('cliente'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ClienteRequest $request, $id)
     {
-        //
+        $cliente = Cliente::findOrFail($id);
+
+        $cliente->update([
+            'nome' => $request->nome,
+            'email' => $request->email,
+            'telemovel' => $request->telemovel,
+            'nif' => $request->nif,
+            'morada' => $request->morada,
+        ]);
+
+        return redirect()->route('clientes')->with('success', 'Cliente updated successfully.');
     }
 
     /**

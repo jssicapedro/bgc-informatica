@@ -22,7 +22,7 @@ class EquipamentosController extends Controller
         // Carregar todos os equipamentos
         $equipamentos = Equipamento::with('cliente', 'modelo', 'categoria')->get();
 
-//        dd($equipamentos->toArray());
+        //        dd($equipamentos->toArray());
 
         return view('admin.equipamentos.equipamentos')
             ->with('equipamentos', $equipamentos);
@@ -38,11 +38,11 @@ class EquipamentosController extends Controller
         $clientes = Cliente::all();
 
         return view('admin.equipamentos.equipamento_new')
-        ->with([
-            'categorias' => $categorias,
-            'modelos' => $modelos,
-            'clientes' => $clientes
-        ]);
+            ->with([
+                'categorias' => $categorias,
+                'modelos' => $modelos,
+                'clientes' => $clientes
+            ]);
     }
 
     /**
@@ -55,7 +55,7 @@ class EquipamentosController extends Controller
             'modelo_id' => $request->modelo_id,
             'cliente_id' => $request->cliente_id,
         ]);
-/* 
+        /* 
         dd($request->toArray()); */
 
         return redirect()->route('equipamentos')->with('success', 'Equipamento created successfully.');
@@ -66,7 +66,7 @@ class EquipamentosController extends Controller
      */
     public function show(string $id)
     {
-        $equipamento = Equipamento::findOrFail($id);
+        $equipamento = Equipamento::with('cliente', 'modelo.marca', 'categoria')->findOrFail($id);
 
         return view('admin.equipamentos.equipamento_view', compact('equipamento'));
     }
@@ -76,15 +76,29 @@ class EquipamentosController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $equipamento = Equipamento::findOrFail($id);
+        $categorias = Categoria::all(); // Carrega todas as categorias
+        $modelos = Modelo::with('marca')->get(); // Carrega modelos com as marcas
+        $clientes = Cliente::all(); // Carrega todos os clientes
+
+        return view('admin.equipamentos.equipamento_edit', compact('equipamento', 'categorias', 'modelos', 'clientes'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(EquipamentoRequest $request, $id)
     {
-        //
+        $equipamento = Equipamento::findOrFail($id);
+
+        // Atualiza apenas os campos que foram enviados
+        $equipamento->update([
+            'categoria_id' => $request->categoria_id ?? $equipamento->categoria_id,
+            'modelo_id' => $request->modelo_id ?? $equipamento->modelo_id,
+            'cliente_id' => $request->cliente_id ?? $equipamento->cliente_id,
+        ]);
+
+        return redirect()->route('equipamentos')->with('success', 'Equipamento updated successfully.');
     }
 
     /**
