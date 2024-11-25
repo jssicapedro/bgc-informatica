@@ -51,6 +51,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/marcas-modelos', [MarcaController::class, 'index'])->name('marcas-modelos');
     Route::get('/marcas-modelos/novo', [MarcaController::class, 'create'])->name('marcamodelo.new');
     Route::post('/marcas-modelos/store', [MarcaController::class, 'store'])->name('marcamodelo.store');
+    Route::get('/ver-marca-modelo/{id}', [MarcaController::class, 'edit'])->name('marcamodelo.edit');
+    Route::put('/ver-marca-modelo/{id}/update', [MarcaController::class, 'update'])->name('marcamodelo.update');
 
     /* REPARACOES */
     Route::get('/reparacoes', [ReparacoesController::class, 'index'])->name('reparacoes');
@@ -63,6 +65,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/encomenda/{id}', [EncomendasController::class, 'show'])->name('encomenda.show');
     Route::get('/nova-encomenda', [EncomendasController::class, 'create'])->name('encomenda.new');
     Route::post('/nova-encomenda/store', [EncomendasController::class, 'store'])->name('encomenda.store');
+    Route::get('/ver-encomenda/{id}', [EncomendasController::class, 'edit'])->name('encomenda.edit');
+    Route::put('/ver-encomenda/{id}/update', [EncomendasController::class, 'update'])->name('encomenda.update');
 
     /* SERVICOS */
     Route::get('/servicos', [ServicosController::class, 'index'])->name('servicos');

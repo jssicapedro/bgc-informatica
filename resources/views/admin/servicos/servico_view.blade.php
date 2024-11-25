@@ -14,8 +14,8 @@
 
 @section('main')
 <div class="container">
-<div class="pag_new pag_list">
-<a href="{{ route('servicos') }}">Voltar à listagem</a>
+    <div class="pag_new pag_list">
+        <a href="{{ route('servicos') }}">Voltar à listagem</a>
         <h1>{{$servico->id .' - '. $servico->categoria->nome .' - '. $servico->nome}}</h1>
     </div>
     <div class="info">
@@ -29,9 +29,15 @@
                 <input type="text" class="form-control" value="{{$servico->id}} - {{$servico->nome}}" readonly>
             </div>
         </div>
-        <div class="nif">
-            <h3>Custo por hora</h3>
-            <input type="text" class="form-control" value="{{$servico->custo}}€" readonly>
+        <div class="email_tel">
+            <div class="nif">
+                <h3>Custo por hora</h3>
+                <input type="text" class="form-control" value="{{$servico->custo}}€" readonly>
+            </div>
+            <div class="nif">
+                <h3>Estimativa (em minutos)</h3>
+                <input type="text" class="form-control" value="{{$servico->estimativa}}m" readonly>
+            </div>
         </div>
         <div class="morada">
             <h3>Descrição</h3>

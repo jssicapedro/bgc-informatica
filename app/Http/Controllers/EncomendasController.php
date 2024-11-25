@@ -44,7 +44,7 @@ class EncomendasController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
         $encomenda = Encomenda::findOrFail($id);
 
@@ -54,17 +54,35 @@ class EncomendasController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $encomenda = Encomenda::findOrFail($id);
+
+        return view('admin.encomendas.encomenda_edit', compact('encomenda'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(EncomendaRequest $request, $id)
     {
-        //
+        // Encontre a encomenda
+        $encomenda = Encomenda::findOrFail($id);
+
+        // Atualiza os campos que podem ser editados
+        $encomenda->custo = $request->input('custo');
+        $encomenda->descricao = $request->input('descricao');
+
+        // Verifica se a checkbox 'dataEntrega' foi marcada
+        if ($request->has('dataEntrega') && $request->input('dataEntrega') == 'yes') {
+            // Se a checkbox estiver marcada, define a data de entrega para o momento atual
+            $encomenda->dataEntrega = now(); // 'now()' pega a data e hora atual
+        }
+
+        // Salve as alterações
+        $encomenda->save();
+
+        return redirect()->route('encomendas')->with('success', 'Encomenda updated successfully.');
     }
 
     /**

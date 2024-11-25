@@ -36,7 +36,7 @@
                     <td>{{ $encomenda->id }}</td>
                     <td>{{ $encomenda->custo }}</td>
                     <td>{{ \Carbon\Carbon::parse($encomenda->dataPedido)->format('d/m/Y') }}</td>
-                    <td>{{ $encomenda->dataChegada ? \Carbon\Carbon::parse($encomenda->dataChegada)->format('m/Y') : 'A encomenda ainda não chegou' }}</td>
+                    <td>{{ $encomenda->dataEntrega ? \Carbon\Carbon::parse($encomenda->dataEntrega)->format('d/m/Y') : 'A encomenda ainda não chegou' }}</td>
                     <td>{{ $encomenda->descricao }}</td>
                     <td class="acoes btn">
                         <a href="{{ route('encomenda.show', ['id' => $encomenda->id]) }}">
@@ -44,7 +44,7 @@
                                 visibility
                             </span>
                         </a>
-                        <a href="">
+                        <a href="{{ route('encomenda.edit', ['id' => $encomenda->id]) }}">
                             <span class="material-icons">
                                 edit
                             </span>

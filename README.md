@@ -33,13 +33,13 @@ EQUIPAMENTOS
                   |  equipamentos_new ✅  |                       | equipamentos_edit✅ |
 __________________________________________________________________________________________________
 MARCAS E MODELOS
-                  |  marcamodelos_new ✅  |                       | marcamodelos_edit    |
+                  |  marcamodelos_new ✅  |                       | marcamodelos_edit✅ |
 __________________________________________________________________________________________________
 RMA
                   |  reparacoes_new  ✅   | reparacoes_view✅    | reparacoes_edit      |
 __________________________________________________________________________________________________
 ENCOMENDAS
-                  |  encomendas_new ✅    | encomendas_view ✅    | encomendas_edit      |
+                  |  encomendas_new ✅    | encomendas_view ✅    | encomendas_edit ✅  |
 __________________________________________________________________________________________________
 SERVICOS
                   |  servicos_new ✅      | servicos_view ✅      | servicos_edit        |

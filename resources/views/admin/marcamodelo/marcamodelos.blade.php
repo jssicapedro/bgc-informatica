@@ -35,7 +35,7 @@
                     <td>{{ $modelo_with_marca->marca->nome }}</td>
                     <td>{{ $modelo_with_marca->nome }}</td>
                     <td class="acoes btn">
-                        <a href="">
+                        <a href="{{ route('marcamodelo.edit', ['id' => $modelo_with_marca->id]) }}">
                             <span class="material-icons">
                                 edit
                             </span>
@@ -46,7 +46,6 @@
                             </span>
                         </a>
                     </td>
-                    <!-- Adicione outros campos relevantes -->
                 </tr>
                 @endforeach
             </tbody>

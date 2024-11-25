@@ -42,8 +42,7 @@ class MarcaController extends Controller
         $marca = new Marca();
         $marca->nome = ucfirst($request->input('marca'));
 
-        if(!$marca->save())
-        {
+        if (!$marca->save()) {
             DB::rollback();
             return redirect()->back()->withErrors($marca->errors())->withInput();
         }
@@ -52,8 +51,7 @@ class MarcaController extends Controller
         $modelo->marca_id = $marca->id;
         $modelo->nome = ucfirst($request->input('modelo'));
 
-        if(!$modelo->save())
-        {
+        if (!$modelo->save()) {
             DB::rollBack();
             return redirect()->back()->withErrors($modelo->errors())->withInput();
         }
@@ -74,17 +72,33 @@ class MarcaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $modelo = Modelo::findOrFail($id);
+        $marca = $modelo->marca;
+        return view('admin.marcamodelo.marcamodelo_edit', compact('marca', 'modelo'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(MarcaModeloRequest $request, string $id)
     {
-        //
+        // Encontre o Modelo
+        $modelo = Modelo::findOrFail($id);
+        // Atualize o nome do Modelo
+        $modelo->nome = ucfirst($request['modelo']);
+
+        // Encontre a Marca relacionada ao Modelo
+        $marca = $modelo->marca;
+        // Atualize o nome da Marca
+        $marca->nome = ucfirst($request['marca']);
+
+        // Salve os dados
+        $modelo->save();
+        $marca->save();
+
+        return redirect()->route('marcas-modelos')->with('success', 'Marca e modelo updated successfully.');
     }
 
     /**
@@ -94,5 +108,4 @@ class MarcaController extends Controller
     {
         //
     }
-
 }
