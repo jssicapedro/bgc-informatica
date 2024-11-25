@@ -17,7 +17,7 @@ class Authenticate
     public function handle($request, Closure $next)
     {
         if (!Auth::check()) {
-            return route('tecnico.login');
+            return redirect()->route('login');
         }
 
         return $next($request);

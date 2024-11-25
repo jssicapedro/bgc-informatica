@@ -1,0 +1,31 @@
+label{
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.email_tel {
+    display: flex;
+    justify-content: space-between;
+}
+
+.nome_tel, .tel_nif, .morada {
+    width: 80%!important;
+    display: flex!important;
+    justify-content: space-between!important;
+}
+
+.morada{
+    flex-direction: column;
+}
+
+.nome, .email, .tel, .nif, .morada, .esp{
+    width: 45%;
+}
+
+
+.btn-submit{
+    background-color: var(--default_footer_background);
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--default_background);
+}

@@ -2,17 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ServicoRequest;
+use App\Models\Categoria;
 use App\Models\Servico;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
 
 class ServicosController extends Controller
 {
+    use SoftDeletes;
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $servicos=Servico::all();
+        $servicos = Servico::with('categoria')->get();
+
         return view('admin.servicos.servicos', compact('servicos'));
     }
 
@@ -21,15 +26,26 @@ class ServicosController extends Controller
      */
     public function create()
     {
-        //
+        $categorias = Categoria::all();  // Obtém todas as categorias
+        return view('admin.servicos.servico_new', compact('categorias'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ServicoRequest $request)
     {
-        //
+        Servico::create([
+            'categoria_id' => $request->categoria_id,
+            'nome' => $request->nome,
+            'custo' => $request->custo, 
+            'estimativa' => $request->estimativa,
+            'descricao' => $request->descricao,
+        ]);
+
+        /* dd($request->toArray()); */
+
+        return redirect()->route('servicos')->with('success', 'Servico created successfully.');
     }
 
     /**
@@ -37,7 +53,9 @@ class ServicosController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $servico = Servico::findOrFail($id);
+
+        return view('admin.servicos.servico_view', compact('servico'));
     }
 
     /**

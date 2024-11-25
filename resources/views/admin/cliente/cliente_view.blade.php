@@ -22,20 +22,20 @@
         <div class="email_tel">
             <div class="email">
                 <h3>Email</h3>
-                <p>{{$cliente->email}}</p>
+                <input type="text" class="form-control" value="{{$cliente->email}}" readonly>
             </div>
             <div class="tel">
                 <h3>Telemovel</h3>
-                <p>{{$cliente->telemovel}}</p>
+                <input type="text" class="form-control" value="{{$cliente->telemovel}}" readonly>
             </div>
         </div>
         <div class="nif">
             <h3>NIF</h3>
-            <p>{{$cliente->nif}}</p>
+            <input type="text" class="form-control" value="{{$cliente->nif}}" readonly>
         </div>
         <div class="morada">
             <h3>Morada</h3>
-            <p>{{$cliente->morada}}</p>
+            <input type="text" class="form-control" value="{{$cliente->morada}}" readonly>
         </div>
     </div>
 </div>

@@ -7,40 +7,37 @@
             </a>
 
             <!-- Menu -->
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ asset('clientes') }}">Clientes</a>
+                        <a class="nav-link" href="{{ route('clientes') }}">Clientes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ asset('equipamentos') }}">Equipamentos</a>
+                        <a class="nav-link" href="{{ route('equipamentos') }}">Equipamentos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ asset('marcasmodelos') }}">Marcas e Modelos</a>
+                        <a class="nav-link" href="{{ route('marcas-modelos') }}">Marcas e Modelos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ asset('reparacoes') }}">Reparações</a>
+                        <a class="nav-link" href="{{ route('reparacoes') }}">RMA's</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ asset('orcamentos') }}">Orçamentos</a>
+                        <a class="nav-link" href="{{ route('encomendas') }}">Encomendas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ asset('encomendas') }}">Encomendas</a>
+                        <a class="nav-link" href="{{ route('servicos') }}">Serviços</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ asset('dividas') }}">Dívidas</a>
+                        <a class="nav-link" href="{{ route('categorias') }}">Categorias</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ asset('servicos') }}">Serviços</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ asset('tecnicos') }}">Técnicos</a>
+                        <a class="nav-link" href="{{ route('tecnicos') }}">Técnicos</a>
                     </li>
 
                     <!-- logout -->
                     <li class="nav-item">
                         <a>
-                            <form action="{{ route('tecnico.logout') }}" method="POST">
+                            <form action="{{ route('logout') }}" method="POST">
                                 @csrf
                                 <button type="submit" class="nav-link" style="border: none; background: none;">Logout</button>
                             </form>

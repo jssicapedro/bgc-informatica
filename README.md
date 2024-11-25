@@ -12,40 +12,41 @@
 5. Abrir o ficheiro .env.example e alterar todas as informações sobre a base de dados. Depois guarda este ficheiro como .env
 6. De seguida deves executar o comando 
   <pre>php artisan key:generate</pre>
-5. No terminal executa os comandos:
+7. No terminal executa os comandos:
  <pre>php artisan migrate:fresh
 php artisan db:seed </pre>
-7. Para que tudo funcione deves executar o comando 
+8. Para que tudo funcione deves executar o comando 
  <pre>npm run dev </pre> 
  <small>(este comando deve ser usado sempre que se for visualizar/editar o projeto)</small>
 
+### Caso o comando 'npm run dev' não funcione deve
+<pre>npm install -g vite</pre>
+<pre>npm install vite --save-dev</pre>
+
 ## Gestão de Ficheiros e CRUD
-MENU              |  CREATE             | READ                | UPDATE              | DELETE
-_____________________________________________________________________________________________
+MENU              |  CREATE               | READ                  | UPDATE               | DELETE
+__________________________________________________________________________________________________
 CLIENTE
-                  |  clienete_new       | cliente_view        | cliente_edit        |
-_____________________________________________________________________________________________
+                  |  clienete_new ✅      | cliente_view  ✅     | cliente_edit  ✅    |
+__________________________________________________________________________________________________
 EQUIPAMENTOS
-                  |  equipamentos_new   | equipamentos_view   | equipamentos_edit   |
-_____________________________________________________________________________________________
+                  |  equipamentos_new ✅  |                       | equipamentos_edit✅ |
+__________________________________________________________________________________________________
 MARCAS E MODELOS
-                  |  marcamodelos_new   | marcamodelos_view   | marcamodelos_edit   |
-_____________________________________________________________________________________________
-REPARACOES
-                  |  reparacoes_new     | reparacoes_view     | reparacoes_edit     |
-_____________________________________________________________________________________________
-ORCAMENTOS
-                  |  orcamentos_new     | orcamentos_view     | orcamentos_edit     |
-_____________________________________________________________________________________________
+                  |  marcamodelos_new ✅  |                       | marcamodelos_edit✅ |
+__________________________________________________________________________________________________
+RMA
+                  |  reparacoes_new  ✅   | reparacoes_view✅    | reparacoes_edit      |
+__________________________________________________________________________________________________
 ENCOMENDAS
-                  |  encomendas_new     | encomendas_view     | encomendas_edit     |
-_____________________________________________________________________________________________
-DIVIDAS
-                  |  dividas_new        | dividas_view        | dividas_edit        |
-_____________________________________________________________________________________________
+                  |  encomendas_new ✅    | encomendas_view ✅    | encomendas_edit ✅  |
+__________________________________________________________________________________________________
 SERVICOS
-                  |  servicos_new       | servicos_view       | servicos_edit       |
-_____________________________________________________________________________________________
+                  |  servicos_new ✅      | servicos_view ✅      | servicos_edit        |
+__________________________________________________________________________________________________
+CATEGORIAS
+                  |  categoria_new ✅     |                        | categoria_edit       |
+__________________________________________________________________________________________________
 TECNICOS
-                  |  tecnicos_new       | tecnicos_view       | tecnicos_edit       |
-_____________________________________________________________________________________________
+                  |  tecnicos_new ✅      | tecnicos_view ✅      | tecnicos_edit        |
+__________________________________________________________________________________________________

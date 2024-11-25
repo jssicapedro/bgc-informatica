@@ -13,39 +13,40 @@
 @endpush
 
 @section('main')
-<div class="container">
+<div class="container table_view">
     <div class="pag_new">
         <h1>Equipamentos</h1>
-        <a href="">Novo Equipamento</a>
+        <a href="{{ route('equipamento.new') }}">Novo Equipamento</a>
     </div>
     <div id="table">
         <table>
             <thead>
                 <tr>
-                    <th class="id">ID</th>
-                    <th class="nome">Tipo</th>
-                    <th class="email">N. Serie</th>
-                    <th class="morada">Data de Entrada</th>
-                    <th class="nif">Levantamento</th>
-                    <th class="acoes">-</th>
+                    <th>ID</th>
+                    <th>Marca Modelo</th>
+                    <th>Cliente</th>
+                    <th>Categoria</th>
+                    <th>-</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($equipamentos as $equipamento)
                 <tr>
                     <td>{{ $equipamento->id }}</td>
-                    <td>{{ $equipamento->tipo }}</td>
-                    <td>{{ $equipamento->numero_serie }}</td>
-                    <td>{{ $equipamento->entrada }}</td>
-                    <td>{{ $equipamento->levantamento }}</td>
-                    <td>{{ $equipamento->estado }}</td>
+                    <td>
+                        {{ $equipamento->modelo->marca->nome }},
+                       {{ $equipamento->modelo->nome }}
+                    <td>
+                        {{ $equipamento->cliente->nome }}
+                    </td>
+                    <td>{{ $equipamento->categoria->nome }}</td>
                     <td class="acoes btn">
-                        <a href="">
+                       <!--  <a href="{{ route('equipamento.show', ['id' => $equipamento->id]) }}">
                             <span class="material-icons">
                                 visibility
                             </span>
-                        </a>
-                        <a href="">
+                        </a> -->
+                        <a href="{{ route('equipamento.edit', ['id' => $equipamento->id]) }}">
                             <span class="material-icons">
                                 edit
                             </span>

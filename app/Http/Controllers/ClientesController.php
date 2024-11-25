@@ -3,10 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cliente;
+use App\Http\Requests\ClienteRequest;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
 
 class ClientesController extends Controller
 {
+    use SoftDeletes;
+
+
     public function index()
     {
         $clientes = Cliente::all();
@@ -17,15 +22,23 @@ class ClientesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.cliente.cliente_new');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ClienteRequest $request)
     {
-        //
+        Cliente::create([
+            'nome' => $request->nome,
+            'email' => $request->email,
+            'telemovel' => $request->telemovel,
+            'nif' => $request->nif,
+            'morada' => $request->morada,
+        ]);
+
+        return redirect()->route('clientes')->with('success', 'Clientes created successfully.');
     }
 
     /**
@@ -43,15 +56,26 @@ class ClientesController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $cliente = Cliente::findOrFail($id);
+        return view('admin.cliente.cliente_edit', compact('cliente'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ClienteRequest $request, $id)
     {
-        //
+        $cliente = Cliente::findOrFail($id);
+
+        $cliente->update([
+            'nome' => $request->nome,
+            'email' => $request->email,
+            'telemovel' => $request->telemovel,
+            'nif' => $request->nif,
+            'morada' => $request->morada,
+        ]);
+
+        return redirect()->route('clientes')->with('success', 'Cliente updated successfully.');
     }
 
     /**

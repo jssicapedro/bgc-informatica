@@ -13,11 +13,32 @@ class Servico extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'tipo',
-        'dataInicio',
-        'conclusaoExpectada',
-        'conclusao',
-        'estado',
+        'categoria_id',
+        'nome',
+        'custo',
+        'estimativa',
         'descricao',
     ];
+
+    // Exemplo de enum
+    const LISTA_SERVICOS = [
+        'limpeza',
+        'conserto',
+        'substituição/manutenção',
+        'melhoria',
+    ];
+
+    protected $casts = [
+        'custo' => 'decimal:2',  // Isso garante que o valor de custo tenha 2 casas decimais
+    ];
+
+    public function categoria()
+    {
+        return $this->belongsTo(Categoria::class);
+    }
+
+    public function equipamento()
+    {
+        return $this->belongsTo(Equipamento::class);
+    }
 }
