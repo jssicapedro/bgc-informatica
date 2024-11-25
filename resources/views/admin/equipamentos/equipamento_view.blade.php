@@ -5,6 +5,7 @@
 <!-- css -->
 @push('links')
 <link rel="stylesheet" href="{{ asset('css/tabel_pag.css') }}">
+<link rel="stylesheet" href="{{ asset('css/pag_view.css') }}">
 @endpush
 
 <!-- js -->
@@ -13,7 +14,8 @@
 
 @section('main')
 <div class="container">
-    <div class="pag_new">
+    <div class="pag_new pag_list">
+        <a href="{{ route('equipamentos') }}">Voltar à listagem</a>
         <h1>{{$equipamento->id .' - '. $equipamento->modelo->nome . ' de ' . $equipamento->cliente->nome}}</h1>
     </div>
     <div class="info">

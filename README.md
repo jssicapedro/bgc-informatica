@@ -36,7 +36,7 @@ MARCAS E MODELOS
                   |  marcamodelos_new ✅  |                       | marcamodelos_edit    |
 __________________________________________________________________________________________________
 RMA
-                  |  reparacoes_new  ✅   | reparacoes_view       | reparacoes_edit      |
+                  |  reparacoes_new  ✅   | reparacoes_view✅    | reparacoes_edit      |
 __________________________________________________________________________________________________
 ENCOMENDAS
                   |  encomendas_new ✅    | encomendas_view ✅    | encomendas_edit      |

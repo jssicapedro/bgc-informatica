@@ -25,7 +25,7 @@ class Rma extends Model
     // Relacionamento com a encomenda (um RMA tem uma encomenda)
     public function encomenda()
     {
-        return $this->hasMany(Encomenda::class, 'rma_id');
+        return $this->hasOne(Encomenda::class, 'id');
     }
 
     public function equipamento()
