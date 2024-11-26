@@ -24,7 +24,9 @@ class RmaRequest extends FormRequest
         return [
             'equipamento_id' => 'required|exists:equipamentos,id',
             'servico_id' => 'required|exists:servicos,id',
-            'descricaoProblema' => 'required|string|max:255'
+            'tecnico_id' => 'required|exists:tecnicos,id',
+            'descricaoProblema' => 'required|string|max:1000',
+            'horasTrabalho' => 'required|numeric|min:0',
         ];
     }
 }

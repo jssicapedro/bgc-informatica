@@ -59,6 +59,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/reparacoes/{id}', [ReparacoesController::class, 'show'])->name('reparacao.show');
     Route::get('/nova-reparacao', [ReparacoesController::class, 'create'])->name('reparacao.new');
     Route::post('/nova-reparacao/store', [ReparacoesController::class, 'store'])->name('reparacao.store');
+    Route::get('/ver-reparacao/{id}', [ReparacoesController::class, 'edit'])->name('reparacao.edit');
+    Route::put('/ver-reparacao/{id}/update', [ReparacoesController::class, 'update'])->name('reparacao.update');
 
     /* ENCOMENDAS */
     Route::get('/encomendas', [EncomendasController::class, 'index'])->name('encomendas');
@@ -91,6 +93,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/novo-tecnico/store', [TecnicosController::class, 'store'])->name('tecnico.store');
     Route::get('/ver-tecnico/{id}', [TecnicosController::class, 'edit'])->name('tecnico.edit');
     Route::put('/ver-tecnico/{id}/update', [TecnicosController::class, 'update'])->name('tecnico.update');
+    Route::delete('/tecnicos/{id}/delete', [TecnicosController::class, 'destroy'])->name('tecnico.destroy');
+    Route::patch('/tecnicos/{id}/restore', [TecnicosController::class, 'restore'])->name('tecnico.restore');
+
 });
 
 

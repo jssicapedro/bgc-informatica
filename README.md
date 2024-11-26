@@ -27,7 +27,7 @@ php artisan db:seed </pre>
 MENU              |  CREATE               | READ                  | UPDATE               | DELETE
 __________________________________________________________________________________________________
 CLIENTE
-                  |  clienete_new ✅      | cliente_view  ✅     | cliente_edit  ✅    |
+                  |  clienete_new ✅      | cliente_view  ✅     | cliente_edit  ✅    |✅
 __________________________________________________________________________________________________
 EQUIPAMENTOS
                   |  equipamentos_new ✅  |                       | equipamentos_edit✅ |

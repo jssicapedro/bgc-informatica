@@ -61,6 +61,11 @@ td {
     width: 50px;
 }
 
+ul{
+    list-style: none;
+    margin: 0;
+}
+
 .acoes a {
     text-decoration: none;
     color: black;

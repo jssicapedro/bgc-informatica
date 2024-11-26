@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RmaRequest;
+use App\Models\Cliente;
 use App\Models\Equipamento;
 use App\Models\Rma;
 use App\Models\RmaServico;
@@ -72,23 +73,47 @@ class ReparacoesController extends Controller
     {
         $reparacao = Rma::findOrFail($id);
 
+
         return view('admin.rma.reparacao_view', compact('reparacao'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $rma = Rma::findOrFail($id);
+        $equipamentos = Equipamento::all();
+        $servicos = Servico::all();
+        // Recupera os IDs dos serviços associados ao RMA
+        $servicosSelecionados = $rma->servicos->pluck('id')->toArray();
+
+        $tecnicos = Tecnico::all();
+
+        return view('admin.rma.reparacao_edit', compact('rma', 'equipamentos', 'servicos', 'servicosSelecionados', 'tecnicos'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(RmaRequest $request, $id)
     {
-        //
+        // Recuperar o RMA pelo ID
+        $rma = Rma::findOrFail($id);
+
+        // Atualizar os dados do RMA usando os dados validados do RmaRequest
+        $rma->update([
+            'equipamento_id' => $request->input('equipamento_id'),
+            'servico_id' => $request->input('servico_id'),
+            'tecnico_id' => $request->input('tecnico_id'),
+            'descricaoProblema' => $request->input('descricaoProblema'),
+            'horasTrabalho' => $request->input('horasTrabalho'),
+        ]);
+
+        // O campo totalPagar será atualizado automaticamente, se configurado no evento `saving` do modelo
+
+        // Redirecionar de volta com mensagem de sucesso
+        return redirect()->route('rma.index')->with('success', 'RMA atualizado com sucesso.');
     }
 
     /**

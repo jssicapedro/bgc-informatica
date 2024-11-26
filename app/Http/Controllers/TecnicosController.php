@@ -18,7 +18,7 @@ class TecnicosController extends Controller
      */
     public function index()
     {
-        $tecnicos = Tecnico::all();
+        $tecnicos = Tecnico::withTrashed()->get();
         return view('admin.tecnicos.tecnicos', compact('tecnicos'));
     }
 
@@ -87,11 +87,31 @@ class TecnicosController extends Controller
         return redirect()->route('tecnicos')->with('success', 'Tecnico updated successfully.');
     }
 
+     /**
+     * Restore the specified resource from storage.
+     */
+    public function restore($id)
+    {
+        // Recupera o técnico excluído (soft deleted)
+        $tecnico = Tecnico::withTrashed()->findOrFail($id);
+
+        // Restaura o técnico
+        $tecnico->restore();
+
+        return redirect()->route('tecnicos')->with('success', 'Técnico restaurado com sucesso.');
+    }
+
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        // Encontre o técnico ou falhe com 404 se não encontrado
+        $tecnico = Tecnico::findOrFail($id);
+
+        // Soft delete do técnico (não remove fisicamente do banco, apenas marca como excluído)
+        $tecnico->delete();
+
+        return redirect()->route('tecnicos')->with('success', 'Técnico excluído com sucesso.');
     }
 }
