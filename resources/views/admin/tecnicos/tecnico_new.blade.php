@@ -19,7 +19,7 @@
         <a href="{{ route('tecnicos') }}">Voltar à listagem</a>
         <h1>Criar um novo técnico</h1>
     </div>
-    <form action="#" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('tecnico.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         @if($errors->any())
         <div class="alert alert-danger">
@@ -34,6 +34,8 @@
                     <label for="nome" class="form-label">Nome do técnico:</label>
                     <input type="text" class="form-control" id="nome" name="nome" value="{{ old('nome') }}">
                 </div>
+                </div>
+            <div class="email_tel">
                 <div class="email">
                     <label for="email" class="form-label">Email:</label>
                     <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}">
@@ -46,7 +48,32 @@
             <div class="email_tel">
                 <div class="email">
                     <label for="especialidade" class="form-label">Especialidade:</label>
-                    <input type="text" class="form-control" id="especialidade" name="especialidade" value="{{ old('especialidade') }}">
+                    <div class="d-flex gap-20">
+                        <div class="input-group">
+                            <div class="input-group-text me-2">
+                                <input class="form-check-input mt-0" type="radio" value="computadores" name="especialidade" aria-label="Radio button for following text input">
+                                <label for="especialidade">Computadores</label>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <div class="input-group-text me-2">
+                                <input class="form-check-input mt-0" type="radio" value="smartphones" name="especialidade" aria-label="Radio button for following text input">
+                                <label for="especialidade">Smartpfones</label>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <div class="input-group-text me-2">
+                                <input class="form-check-input mt-0" type="radio" value="outros equipamentos" name="especialidade" aria-label="Radio button for following text input">
+                                <label for="especialidade">Outros Equipamentos</label>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <div class="input-group-text me-2">
+                                <input class="form-check-input mt-0" type="radio" value="todas" name="especialidade" aria-label="Radio button for following text input">
+                                <label for="especialidade">Todas</label>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="tel">

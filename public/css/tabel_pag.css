@@ -1,11 +1,24 @@
-.pag_new{
+.table_view{
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#navbarNav {
+    display: flex !important;
+    flex-basis: auto;
+    justify-content: flex-end!important;
+}
+
+.pag_new {
     display: flex;
     flex-direction: row;
     padding: 25px 0;
     justify-content: space-between;
 }
 
-.pag_new a{
+.pag_new a {
     padding: 15px;
     border-radius: 5px;
     color: var(--default_footer_color);
@@ -20,7 +33,7 @@ div#table {
     padding-bottom: 15px;
 }
 
-table{
+table {
     width: 100%;
 }
 
@@ -35,7 +48,7 @@ td {
     border: 1px solid var(--default_table_border);
 }
 
-th{
+th {
     background-color: var(--default_table_th);
 }
 
@@ -48,12 +61,12 @@ td {
     width: 50px;
 }
 
-.acoes a{
+.acoes a {
     text-decoration: none;
     color: black;
 }
 
-.btn{
+.btn {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -64,16 +77,23 @@ td {
     justify-content: space-between;
 }
 
-.nome_tel, .tel_nif, .morada {
-    width: 80%!important;
-    display: flex!important;
-    justify-content: space-between!important;
+.nome_tel,
+.tel_nif,
+.morada {
+    width: 80% !important;
+    display: flex !important;
+    justify-content: space-between !important;
 }
 
-.morada{
+.morada {
     flex-direction: column;
 }
 
-.nome, .email, .tel, .nif, .morada, .esp{
+.nome,
+.email,
+.tel,
+.nif,
+.morada,
+.esp {
     width: 45%;
 }

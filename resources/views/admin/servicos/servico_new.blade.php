@@ -19,7 +19,7 @@
         <a href="{{ route('servicos') }}">Voltar à listagem</a>
         <h1>Criar um novo serviço</h1>
     </div>
-    <form action="#" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('servico.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         @if($errors->any())
         <div class="alert alert-danger">
@@ -31,34 +31,46 @@
         <div class="info">
             <div class="email_tel">
                 <div class="email">
-                    <label for="tipo" class="form-label">Tipo de serviço:</label>
-                    <input type="text" class="form-control" id="tipo" name="tipo" value="{{ old('tipo') }}">
+                    <label for="categoria_id" class="form-label">Pertence a que categoria?</label>
+                    <select class="form-control" id="categoria_id" name="categoria_id">
+                        <option value="">Selecione a categoria</option>
+                        @foreach($categorias as $categoria)
+                        <option value="{{ $categoria->id }}"
+                            {{ old('categoria_id') == $categoria->id ? 'selected' : '' }}>
+                            {{ $categoria->nome }}
+                        </option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="email">
-                    <label for="estado" class="form-label">Estado:</label>
-                    <input type="text" class="form-control" id="estado" name="estado" value="{{ old('estado') }}">
-                </div>
+            <label for="nome" class="form-label">Nome do Serviço:</label>
+            <select class="form-control" id="nome" name="nome">
+                <option value="">Selecione o serviço</option>
+                @foreach(App\Models\Servico::LISTA_SERVICOS as $servico) <!-- Supondo que "nome" seja o enum no modelo -->
+                    <option value="{{ $servico }}"
+                            {{ old('nome') == $servico ? 'selected' : '' }}>
+                        {{ $servico }} <!-- Exibindo as opções do enum -->
+                    </option>
+                @endforeach
+            </select>
+        </div>
             </div>
             <div class="email_tel">
                 <div class="tel">
-                    <label for="dataInicio" class="form-label">Data de inicio:</label>
-                    <input type="date" class="form-control" id="dataInicio" name="dataInicio" value="{{ old('dataInicio') }}">
+                    <label for="custo" class="form-label">Custo (€/h):</label>
+                    <input type="number" class="form-control" id="custo" name="custo" value="{{ old('custo') }}" step="0.01" min="0">
                 </div>
                 <div class="tel">
-                    <label for="conslusaoExpectada" class="form-label">Data de conclusão espectada:</label>
-                    <input type="date" class="form-control" id="conslusaoExpectada" name="conslusaoExpectada" value="{{ old('conslusaoExpectada') }}">
-                </div>
-                <div class="tel">
-                    <label for="conclusao" class="form-label">Data de conclusão:</label>
-                    <input type="date" class="form-control" id="conclusao" name="conclusao" value="{{ old('conclusao') }}">
+                    <label for="estimativa" class="form-label">Estimativa (em minutos):</label>
+                    <input type="number" class="form-control" id="estimativa" name="estimativa" value="{{ old('estimativa') }}" step="0.01" min="0">
                 </div>
             </div>
             <div class="tel">
-                    <label for="descricao" class="form-label">Descricao:</label>
-                    <input type="text" class="form-control" id="descricao" name="descricao" value="{{ old('descricao') }}">
-                </div>
+                <label for="descricao" class="form-label">Descrição:</label>
+                <input type="text" class="form-control" id="descricao" name="descricao" value="{{ old('descricao') }}">
+            </div>
         </div>
-        <button type="submit" class="btn btn-submit">Add marca/modelo</button>
+        <button type="submit" class="btn btn-submit">Add serviço</button>
     </form>
 </div>
 @endsection

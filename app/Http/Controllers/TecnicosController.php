@@ -2,17 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TecnicoRequest;
+use App\Models\Categoria;
+use App\Models\Servico;
 use App\Models\Tecnico;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class TecnicosController extends Controller
 {
+    use SoftDeletes;
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $tecnicos=Tecnico::all();
+        $tecnicos = Tecnico::all();
         return view('admin.tecnicos.tecnicos', compact('tecnicos'));
     }
 
@@ -27,9 +33,17 @@ class TecnicosController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(TecnicoRequest $request)
     {
-        //
+        Tecnico::create([
+            'nome' => ucwords(strtolower($request->input('nome'))),
+            'email' => $request->email,
+            'telemovel' => str_replace(' ', '', $request->input('telemovel')),
+            'especialidade' => $request->especialidade,
+            'password' => $request->password,
+        ]);
+
+        return redirect()->route('tecnicos')->with('success', 'Tecnicos created successfully.');
     }
 
     /**
@@ -45,17 +59,32 @@ class TecnicosController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $tecnico = Tecnico::findOrFail($id);
+
+        return view('admin.tecnicos.tecnico_edit', compact('tecnico'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(TecnicoRequest $request, $id)
     {
-        //
+        $tecnico = Tecnico::findOrFail($id);
+
+        // Se o campo de senha estiver preenchido, faça o hash da nova senha
+        $password = $request->input('password') ? Hash::make($request->input('password')) : $tecnico->password;
+
+        $tecnico->update([
+            'nome' => ucwords(strtolower($request->input('nome'))),
+            'email' => $request->input('email'),
+            'telemovel' => str_replace(' ', '', $request->input('telemovel')),
+            'especialidade' => $request->input('especialidade'),
+            'password' => $password,
+        ]);
+
+        return redirect()->route('tecnicos')->with('success', 'Tecnico updated successfully.');
     }
 
     /**

@@ -13,7 +13,7 @@
 @endpush
 
 @section('main')
-<div class="container">
+<div class="container table_view">
     <div class="pag_new">
         <h1>Técnicos</h1>
         <a href="{{ route('tecnico.new') }}">Novo Técnico</a>
@@ -44,7 +44,7 @@
                                 visibility
                             </span>
                         </a>
-                        <a href="">
+                        <a href="{{ route('tecnico.edit', ['id' => $tecnico->id]) }}">
                             <span class="material-icons">
                                 edit
                             </span>

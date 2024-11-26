@@ -13,7 +13,7 @@
 @endpush
 
 @section('main')
-<div class="container">
+<div class="container table_view">
     <div class="pag_new">
         <h1>Marcas e Modelos</h1>
         <a href="{{ route('marcamodelo.new') }}">Nova Marca/Modelo</a>
@@ -29,18 +29,13 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($marcasmodelos as $marcasmodelo)
+                @foreach($modelos_with_marcas as $modelo_with_marca)
                 <tr>
-                    <td>{{ $marcasmodelo->id }}</td>
-                    <td>{{ $marcasmodelo->marca }}</td>
-                    <td>{{ $marcasmodelo->modelo }}</td>
+                    <td>{{ $modelo_with_marca->id }}</td>
+                    <td>{{ $modelo_with_marca->marca->nome }}</td>
+                    <td>{{ $modelo_with_marca->nome }}</td>
                     <td class="acoes btn">
-                        <a href="{{ route('marcasmodelos.show', ['id' => $marcasmodelo->id]) }}">
-                            <span class="material-icons">
-                                visibility
-                            </span>
-                        </a>
-                        <a href="">
+                        <a href="{{ route('marcamodelo.edit', ['id' => $modelo_with_marca->id]) }}">
                             <span class="material-icons">
                                 edit
                             </span>
@@ -51,7 +46,6 @@
                             </span>
                         </a>
                     </td>
-                    <!-- Adicione outros campos relevantes -->
                 </tr>
                 @endforeach
             </tbody>

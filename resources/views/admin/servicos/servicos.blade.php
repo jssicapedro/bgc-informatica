@@ -13,7 +13,7 @@
 @endpush
 
 @section('main')
-<div class="container">
+<div class="container table_view">
     <div class="pag_new">
         <h1>Serviços</h1>
         <a href="{{ route('servico.new') }}">Novo Serviço</a>
@@ -23,9 +23,10 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Tipo</th>
-                    <th>Data Inicio</th>
-                    <th>Conclusão</th>
+                    <th>Categoria</th>
+                    <th>Nome do serviço</th>
+                    <th>Custo</th>
+                    <th>Estimativa (minutos)</th>
                     <th>-</th>
                 </tr>
             </thead>
@@ -33,16 +34,17 @@
                 @foreach($servicos as $servico)
                 <tr>
                     <td>{{ $servico->id }}</td>
-                    <td>{{ $servico->tipo }}</td>
-                    <td>{{ $servico->dataInicio }}</td>
-                    <td>{{ $servico->conclusao }}</td>
+                    <td>{{ $servico->categoria->nome }}</td>
+                    <td>{{ $servico->nome }}</td>
+                    <td>{{ $servico->custo }}€/h</td>
+                    <td>{{ $servico->estimativa }}</td>
                     <td class="acoes btn">
                         <a href="{{ route('servico.show', ['id' => $servico->id]) }}">
                             <span class="material-icons">
                                 visibility
                             </span>
                         </a>
-                        <a href="">
+                        <a href="{{ route('servico.edit', ['id' => $servico->id]) }}">
                             <span class="material-icons">
                                 edit
                             </span>

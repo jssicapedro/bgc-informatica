@@ -18,17 +18,34 @@ class TecnicoSeeder extends Seeder
             [
                 'nome' => 'Bruno Cerqueira',
                 'email' => 'bruno@empresa.com',
-                'password' => bcrypt('12345678'), // Encriptação da senha
+                'password' => bcrypt('12345678'),
                 'telemovel' => '912345678',
-                'especialidade' => 'computador',
+                'especialidade' => 'Todas',
             ],
             [
                 'nome' => 'Maria Souza',
                 'email' => 'maria@empresa.com',
                 'password' => bcrypt('senha_secreta'),
                 'telemovel' => '917654321',
-                'especialidade' => 'armazenamento',
+                'especialidade' => 'Outros equipamentos',
+            ]
+            ,
+            [
+                'nome' => 'João Silva',
+                'email' => 'joao.silva@email.com',
+                'password' => bcrypt('senha_secreta'),
+                'telemovel' => '917657845',
+                'especialidade' => 'Computadores',
+            ]
+            ,
+            [
+                'nome' => 'Maria Costa',
+                'email' => 'maria.costa@email.com',
+                'password' => bcrypt('senha_secreta'),
+                'telemovel' => '917698563',
+                'especialidade' => 'Smartphones',
             ]
             ]);
+            
     }
 }

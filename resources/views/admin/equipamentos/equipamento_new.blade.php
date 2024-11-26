@@ -19,7 +19,7 @@
         <a href="{{ route('equipamentos') }}">Voltar à listagem</a>
         <h1>Criar um novo equipamento</h1>
     </div>
-    <form action="#" method="POST" enctype="multipart/form-data">
+    <form action=" {{route('equipamento.store')}} " method="POST" enctype="multipart/form-data">
         @csrf
         @if($errors->any())
         <div class="alert alert-danger">
@@ -29,35 +29,41 @@
         </div>
         @endif
         <div class="info">
-            <div class="email_tel">
-                <div class="email">
-                    <label for="tipo" class="form-label">Tipo:</label>
-                    <input type="text" class="form-control" id="tipo" name="tipo" value="{{ old('tipo') }}">
-                </div>
-                <div class="tel">
-                    <label for="numero_serie" class="form-label">Número de serie:</label>
-                    <input type="text" class="form-control" id="numero_serie" name="numero_serie" value="{{ old('numero_serie') }}">
-                </div>
-                <div class="tel">
-                    <label for="descricao" class="form-label">Descrição:</label>
-                    <input type="text" class="form-control" id="descricao" name="descricao" value="{{ old('descricao') }}">
-                </div>
+            <div class="email">
+                <label for="categoria_id" class="form-label">Categoria:</label>
+                <select class="form-control" id="categoria_id" name="categoria_id">
+                    <option value="">Selecione a categoria</option>
+                    @foreach($categorias as $categoria)
+                    <option value="{{ $categoria->id }}"
+                        {{ old('categoria_id') == $categoria->id ? 'selected' : '' }}>
+                        {{ $categoria->id }} - {{ $categoria->nome }} <!-- Exibindo id e nome da categoria -->
+                    </option>
+                    @endforeach
+                </select>
             </div>
-            <div class="nif">
-                <label for="entrada" class="form-label">Deu entrada a:</label>
-                <input type="date" class="form-control" id="entrada" name="entrada" value="{{ old('entrada') }}">
+            <div class="email">
+                <label for="modelo_id" class="form-label">Marca e modelo:</label>
+                <select class="form-control" id="modelo_id" name="modelo_id">
+                    <option value="">Selecione a marca e o modelo</option>
+                    @foreach($modelos as $modelo)
+                    <option value="{{ $modelo->id }}"
+                        {{ old('modelo_id') == $modelo->id ? 'selected' : '' }}>
+                        {{ $modelo->id }} - {{ $modelo->marca->nome}} - {{ $modelo->nome }} <!-- Exibindo id e nome da categoria -->
+                    </option>
+                    @endforeach
+                </select>
             </div>
-            <div class="morada">
-                <label for="resolucao" class="form-label">Resolução:</label>
-                <input type="text" class="form-control" id="resolucao" name="resolucao" value="{{ old('resolucao') }}">
-            </div>
-            <div class="morada">
-                <label for="levantamento" class="form-label">O cliente levantou o equipamento a:</label>
-                <input type="text" class="form-control" id="levantamento" name="levantamento" value="{{ old('levantamento') }}">
-            </div>
-            <div class="morada">
-                <label for="qr" class="form-label">QR Code:</label>
-                <input type="text" class="form-control" id="qr" name="qr" value="{{ old('qr') }}">
+            <div class="email">
+                <label for="cliente_id" class="form-label">Cliente:</label>
+                <select class="form-control" id="cliente_id" name="cliente_id">
+                    <option value="">Selecione o cliente</option>
+                    @foreach($clientes as $cliente)
+                    <option value="{{ $cliente->id }}"
+                        {{ old('cliente_id') == $cliente->id ? 'selected' : '' }}>
+                        {{ $cliente->id }} - {{ $cliente->nome }} <!-- Exibindo id e nome da categoria -->
+                    </option>
+                    @endforeach
+                </select>
             </div>
         </div>
         <button type="submit" class="btn btn-submit">Add equipamento</button>

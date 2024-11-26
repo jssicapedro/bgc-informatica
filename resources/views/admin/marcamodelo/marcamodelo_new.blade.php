@@ -16,10 +16,10 @@
 @section('main')
 <div class="container">
     <div class="pag_new pag_list">
-        <a href="{{ route('marcasmodelos') }}">Voltar à listagem</a>
+        <a href="{{ route('marcas-modelos') }}">Voltar à listagem</a>
         <h1>Criar uma nova marca/modelo</h1>
     </div>
-    <form action="#" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('marcamodelo.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         @if($errors->any())
         <div class="alert alert-danger">
