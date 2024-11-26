@@ -12,11 +12,13 @@ use App\Http\Controllers\ServicosController;
 use App\Http\Controllers\TecnicosController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CategoriasController;
+use App\Http\Controllers\IndexController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return view('client.index');
-});
+}); */
+Route::get('/', [IndexController::class, 'index']);
 
 
 Route::middleware('guest')->group(function () {
