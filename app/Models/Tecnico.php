@@ -22,6 +22,13 @@ class Tecnico extends Authenticatable
        'password',
    ];
 
+   const LISTA_ESPECIALIDADES = [
+    'Computadores',
+    'Smartphones',
+    'Outros equipamentos',
+    'Todas',
+];
+
    protected $hidden = [
        'password',
        'remember_token',

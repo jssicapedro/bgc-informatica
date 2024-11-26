@@ -42,11 +42,11 @@ ENCOMENDAS
                   |  encomendas_new ✅    | encomendas_view ✅    | encomendas_edit ✅  |
 __________________________________________________________________________________________________
 SERVICOS
-                  |  servicos_new ✅      | servicos_view ✅      | servicos_edit        |
+                  |  servicos_new ✅      | servicos_view ✅      | servicos_edit ✅    |
 __________________________________________________________________________________________________
 CATEGORIAS
-                  |  categoria_new ✅     |                        | categoria_edit       |
+                  |  categoria_new ✅     |                        | categoria_edit ✅   |
 __________________________________________________________________________________________________
 TECNICOS
-                  |  tecnicos_new ✅      | tecnicos_view ✅      | tecnicos_edit        |
+                  |  tecnicos_new ✅      | tecnicos_view ✅      | tecnicos_edit ✅     |
 __________________________________________________________________________________________________

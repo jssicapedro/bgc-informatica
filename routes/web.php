@@ -73,18 +73,24 @@ Route::middleware('auth')->group(function () {
     Route::get('/servicos/{id}', [ServicosController::class, 'show'])->name('servico.show');
     Route::get('/novo-servico', [ServicosController::class, 'create'])->name('servico.new');
     Route::post('/novo-servico/store', [ServicosController::class, 'store'])->name('servico.store');
+    Route::get('/ver-servico/{id}', [ServicosController::class, 'edit'])->name('servico.edit');
+    Route::put('/ver-servico/{id}/update', [ServicosController::class, 'update'])->name('servico.update');
 
     /* CATEGORIAS */
     Route::get('/categorias', [CategoriasController::class, 'index'])->name('categorias');
     Route::get('/categorias/{id}', [CategoriasController::class, 'show'])->name('categoria.show');
     Route::get('/nova-categorias', [CategoriasController::class, 'create'])->name('categoria.new');
     Route::post('/nova-categorias/store', [CategoriasController::class, 'store'])->name('categoria.store');
+    Route::get('/ver-categoria/{id}', [CategoriasController::class, 'edit'])->name('categoria.edit');
+    Route::put('/ver-categoria/{id}/update', [CategoriasController::class, 'update'])->name('categoria.update');
 
     /* TECNICOS */
     Route::get('/tecnicos', [TecnicosController::class, 'index'])->name('tecnicos');
     Route::get('/tecnicos/{id}', [TecnicosController::class, 'show'])->name('tecnico.show');
     Route::get('/novo-tecnico', [TecnicosController::class, 'create'])->name('tecnico.new');
     Route::post('/novo-tecnico/store', [TecnicosController::class, 'store'])->name('tecnico.store');
+    Route::get('/ver-tecnico/{id}', [TecnicosController::class, 'edit'])->name('tecnico.edit');
+    Route::put('/ver-tecnico/{id}/update', [TecnicosController::class, 'update'])->name('tecnico.update');
 });
 
 

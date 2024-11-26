@@ -27,12 +27,12 @@
                 </tr>
             </thead>
             <tbody>
-            @foreach($categorias as $categoria)
+                @foreach($categorias as $categoria)
                 <tr>
                     <td>{{ $categoria->id }}</td>
                     <td>{{ $categoria->nome }}</td>
                     <td class="acoes btn">
-                        <a href="">
+                        <a href="{{ route('categoria.edit', $categoria->id) }}">
                             <span class="material-icons">
                                 edit
                             </span>

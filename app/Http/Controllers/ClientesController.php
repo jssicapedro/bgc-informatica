@@ -33,8 +33,8 @@ class ClientesController extends Controller
         Cliente::create([
             'nome' => $request->nome,
             'email' => $request->email,
-            'telemovel' => $request->telemovel,
-            'nif' => $request->nif,
+            'telemovel' => str_replace(' ', '', $request->input('telemovel')),
+            'nif' => str_replace(' ', '', $request->input('nif')),
             'morada' => $request->morada,
         ]);
 
@@ -68,10 +68,10 @@ class ClientesController extends Controller
         $cliente = Cliente::findOrFail($id);
 
         $cliente->update([
-            'nome' => $request->nome,
+            'nome' => ucfirst(strtolower($request->input('nome'))),
             'email' => $request->email,
-            'telemovel' => $request->telemovel,
-            'nif' => $request->nif,
+            'telemovel' => str_replace(' ', '', $request->input('telemovel')),
+            'nif' => str_replace(' ', '', $request->input('nif')),
             'morada' => $request->morada,
         ]);
 

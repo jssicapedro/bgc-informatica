@@ -22,10 +22,10 @@ class Servico extends Model
 
     // Exemplo de enum
     const LISTA_SERVICOS = [
-        'limpeza',
-        'conserto',
-        'substituição/manutenção',
-        'melhoria',
+        'Limpeza',
+        'Conserto',
+        'Substituição/manutenção',
+        'Melhoria',
     ];
 
     protected $casts = [
