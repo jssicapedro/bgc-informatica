@@ -15,10 +15,9 @@ use App\Http\Controllers\CategoriasController;
 use App\Http\Controllers\IndexController;
 use Illuminate\Support\Facades\Route;
 
-/* Route::get('/', function () {
-    return view('client.index');
-}); */
-Route::get('/', [IndexController::class, 'index']);
+Route::get('/', [IndexController::class, 'index'])->name('index');
+// Rota para retornar os serviços de uma categoria (dispositivo)
+Route::get('/servicos/{categoria_id}', [IndexController::class, 'getServicosPorCategoria'])->name('servicos.por_categoria');
 
 
 Route::middleware('guest')->group(function () {
@@ -97,7 +96,6 @@ Route::middleware('auth')->group(function () {
     Route::put('/ver-tecnico/{id}/update', [TecnicosController::class, 'update'])->name('tecnico.update');
     Route::delete('/tecnicos/{id}/delete', [TecnicosController::class, 'destroy'])->name('tecnico.destroy');
     Route::patch('/tecnicos/{id}/restore', [TecnicosController::class, 'restore'])->name('tecnico.restore');
-
 });
 
 
