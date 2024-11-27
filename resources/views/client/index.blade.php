@@ -12,11 +12,11 @@
 
 <body>
   <div class="topnav">
-    <a href="">QUEM SOMOS</a>
-    <a href="">SERVIÇOS</a>
-    <a href="">PRODUTOS</a>
-    <a href="">ORÇAMENTO</a>
-    <a href="">CONTACTOS</a>
+    <a href="#quemSomos">QUEM SOMOS</a>
+    <a href="#servicos">SERVIÇOS</a>
+    <a href="#produtos">PRODUTOS</a>
+    <a href="#orcamento">ORÇAMENTO</a>
+    <a href="#contactos">CONTACTOS</a>
   </div>
 
   <div class="banner">
@@ -26,7 +26,7 @@
   <br>
   <br>
 
-  <h1 class="titulo"> > Quem Somos? </h1>
+  <h1 id="qemSomos" class="titulo"> > Quem Somos? </h1>
 
   <br>
   <br>
@@ -57,7 +57,7 @@
   <br>
   <br>
 
-  <h1 class="titulo2"> > Serviços </h1>
+  <h1 id="servicos" class="titulo2"> > Serviços </h1>
 
   <br>
   <br>
@@ -118,7 +118,7 @@
   <br>
   <br>
 
-  <h1 class="titulo3"> > Produtos </h1>
+  <h1 id="produtos" class="titulo3"> > Produtos </h1>
 
   <br>
   <br>
@@ -147,7 +147,7 @@
   <br>
   <br>
 
-  <h1 class="titulo4"> > Orçamento </h1>
+  <h1 id="orcamento" class="titulo4"> > Orçamento </h1>
   <small class="small">Não incluindo taxas nem necessidade de encomendas</small>
   <br>
   <br>
@@ -197,7 +197,7 @@
   <br>
   <br>
 
-  <h1 class="titulo5"> > Contactos </h1>
+  <h1 id="contactos" class="titulo5"> > Contactos </h1>
   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4773.268331621087!2d-8.839642587073088!3d41.87734247112207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd25bfc6be0e8c57%3A0xee9d2604bf037558!2sBGCINFORM%C3%81TICA!5e1!3m2!1spt-PT!2spt!4v1732645811942!5m2!1spt-PT!2spt" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
   <br>
   <br>
@@ -210,7 +210,7 @@
       <p> &#128205: Rua da Vida, Localidade 8200-852;</p>
       <div class="time">
         <p>&#128338:</p>
-        <p>Seg a Sex: 8:30-13:00 às 14:30-18:30 <br> Sáb a Dom: Encerrados;</p>
+        <p>Seg a Sex: 8:30-13:00 e das 14:30-18:30 <br> Sáb a Dom: Encerrados;</p>
       </div>
     </div>
     <p> © Copyright 2024 BGC Informática. </p>
