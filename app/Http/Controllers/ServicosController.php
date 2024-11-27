@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CategoriaRequest;
 use App\Http\Requests\ServicoRequest;
 use App\Models\Categoria;
 use App\Models\Servico;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Http\Request;
 
 class ServicosController extends Controller
 {
@@ -17,7 +15,7 @@ class ServicosController extends Controller
      */
     public function index()
     {
-        $servicos = Servico::with('categoria')->get();
+        $servicos = Servico::withTrashed()->with('categoria')->get();
 
         return view('admin.servicos.servicos', compact('servicos'));
     }
@@ -94,8 +92,28 @@ class ServicosController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+       // Encontre o técnico ou falhe com 404 se não encontrado
+       $servico = Servico::findOrFail($id);
+
+       // Soft delete do técnico (não remove fisicamente do banco, apenas marca como excluído)
+       $servico->delete();
+
+       return redirect()->route('servicos')->with('success', 'Servico excluído com sucesso.');
+    }
+
+    /**
+     * Restore the specified resource from storage.
+     */
+    public function restore($id)
+    {
+        // Recupera o técnico excluído (soft deleted)
+        $servico = Servico::withTrashed()->findOrFail($id);
+
+        // Restaura o técnico
+        $servico->restore();
+
+        return redirect()->route('servicos')->with('success', 'Servico restaurado com sucesso.');
     }
 }

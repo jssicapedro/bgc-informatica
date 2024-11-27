@@ -71,7 +71,7 @@
                             @else
                             <li>
                                 <!-- Excluir técnico -->
-                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $tecnico->id }}">
+                                <button class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $tecnico->id }}">
                                     <span class="material-icons">
                                         delete
                                     </span>

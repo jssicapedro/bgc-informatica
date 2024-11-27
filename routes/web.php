@@ -78,6 +78,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/novo-servico/store', [ServicosController::class, 'store'])->name('servico.store');
     Route::get('/ver-servico/{id}', [ServicosController::class, 'edit'])->name('servico.edit');
     Route::put('/ver-servico/{id}/update', [ServicosController::class, 'update'])->name('servico.update');
+    Route::delete('/servicos/{id}/delete', [ServicosController::class, 'destroy'])->name('servicos.destroy');
+    Route::patch('/servicos/{id}/restore', [ServicosController::class, 'restore'])->name('servicos.restore');
 
     /* CATEGORIAS */
     Route::get('/categorias', [CategoriasController::class, 'index'])->name('categorias');
