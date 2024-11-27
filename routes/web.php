@@ -86,6 +86,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/nova-categorias/store', [CategoriasController::class, 'store'])->name('categoria.store');
     Route::get('/ver-categoria/{id}', [CategoriasController::class, 'edit'])->name('categoria.edit');
     Route::put('/ver-categoria/{id}/update', [CategoriasController::class, 'update'])->name('categoria.update');
+    Route::delete('/categorias/{id}/delete', [CategoriasController::class, 'destroy'])->name('categorias.destroy');
+    Route::patch('/categorias/{id}/restore', [CategoriasController::class, 'restore'])->name('categorias.restore');
+    
 
     /* TECNICOS */
     Route::get('/tecnicos', [TecnicosController::class, 'index'])->name('tecnicos');

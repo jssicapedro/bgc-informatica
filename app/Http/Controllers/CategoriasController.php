@@ -15,7 +15,7 @@ class CategoriasController extends Controller
      */
     public function index()
     {
-        $categorias = Categoria::all();
+        $categorias = Categoria::withTrashed()->get();
 
         return view('admin.categoria.categoria', compact('categorias'));
     }
@@ -33,9 +33,16 @@ class CategoriasController extends Controller
      */
     public function store(CategoriaRequest $request)
     {
-        Categoria::create([
-            'nome' => $request->nome,
-        ]);
+        // Normaliza o nome da categoria para evitar duplicatas com diferenças de maiúsculas/minúsculas
+        $nomeNormalizado = ucwords(strtolower($request->input('nome')));
+
+        // Verifica se a categoria já existe
+        if (Categoria::where('nome', $nomeNormalizado)->exists()) {
+            return redirect()->back()->with('error', 'A categoria que está a criar já existe.');
+        }
+
+        // Cria a categoria se não existir
+        Categoria::create(['nome' => $nomeNormalizado]);
 
         return redirect()->route('categorias')->with('success', 'Categoria created successfully.');
     }
@@ -75,8 +82,19 @@ class CategoriasController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $categoria = Categoria::findOrFail($id);
+        $categoria->delete();
+
+        return redirect()->route('categorias')->with('success', 'Categoria apagada com sucesso!');
+    }
+
+    public function restore($id)
+    {
+        $categoria = Categoria::onlyTrashed()->findOrFail($id);
+        $categoria->restore();
+
+        return redirect()->route('categorias')->with('success', 'Categoria restaurada com sucesso!');
     }
 }

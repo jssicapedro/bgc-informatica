@@ -56,29 +56,30 @@
                             </li>
                             <!-- Exibição da opção de restaurar ou excluir dependendo se o técnico foi excluído -->
                             @if($tecnico->trashed())
-                            <li>
-                                <!-- Restaura o técnico -->
-                                <form action="{{ route('tecnico.restore', ['id' => $tecnico->id]) }}" method="POST" style="display: inline;">
-                                    @csrf
-                                    @method('PATCH')
-                                    <button type="submit" class="btn text-warning">
-                                        <span class="material-icons">
-                                            history
-                                        </span>
-                                    </button>
-                                </form>
-                            </li>
+                                <li>
+                                    <!-- Restaura o técnico -->
+                                    <form action="{{ route('tecnico.restore', ['id' => $tecnico->id]) }}" method="POST" style="display: inline;">
+                                        @csrf
+                                        @method('PATCH')
+                                        <button type="submit" class="btn text-warning">
+                                            <span class="material-icons">
+                                                history
+                                            </span>
+                                        </button>
+                                    </form>
+                                </li>
                             @else
                             <li>
                                 <!-- Excluir técnico -->
                                 <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $tecnico->id }}">
-                                    Apagar
+                                    <span class="material-icons">
+                                        delete
+                                    </span>
                                 </button>
                             </li>
                             @endif
                         </ul>
                     </td>
-                    <!-- Adicione outros campos relevantes -->
                 </tr>
 
                 <!-- Modal de confirmação -->
@@ -98,7 +99,7 @@
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Apagar</button>
                                 </form>
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismisApagas="modal">Cancelar</button>
                             </div>
                         </div>
                     </div>
