@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\RmaRequest;
 use App\Models\Cliente;
+use App\Models\Encomenda;
 use App\Models\Equipamento;
 use App\Models\Rma;
 use App\Models\RmaServico;
@@ -84,13 +85,14 @@ class ReparacoesController extends Controller
     {
         $rma = Rma::findOrFail($id);
         $equipamentos = Equipamento::all();
+        $encomendas = Encomenda::all();
         $servicos = Servico::all();
         // Recupera os IDs dos serviços associados ao RMA
         $servicosSelecionados = $rma->servicos->pluck('id')->toArray();
 
         $tecnicos = Tecnico::all();
 
-        return view('admin.rma.reparacao_edit', compact('rma', 'equipamentos', 'servicos', 'servicosSelecionados', 'tecnicos'));
+        return view('admin.rma.reparacao_edit', compact('rma', 'equipamentos', 'encomendas', 'servicos', 'servicosSelecionados', 'tecnicos'));
     }
 
     /**

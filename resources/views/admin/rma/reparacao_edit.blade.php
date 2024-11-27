@@ -19,68 +19,76 @@
         <a href="{{ route('reparacoes') }}">Voltar à listagem</a>
         <h1>Editar a reparação</h1>
     </div>
-    <form action="" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('reparacao.update', $rma->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
-        @if($errors->any())
-        <div class="alert alert-danger">
-            @foreach($errors->all() as $error)
-            <p>{{ $error }}</p>
-            @endforeach
+        <!-- Equipamento -->
+        <div class="mb-3">
+            <label for="equipamento_id" class="form-label">Equipamento</label>
+            <select name="equipamento_id" id="equipamento_id" class="form-control">
+                @foreach($equipamentos as $equipamento)
+                <option value="{{ $equipamento->id }}"
+                    {{ $rma->equipamento_id == $equipamento->id ? 'selected' : '' }}>
+                    {{ $equipamento->modelo->marca->nome }}, {{ $equipamento->modelo->nome }}
+                </option>
+                @endforeach
+            </select>
         </div>
-        @endif
-        <div class="info">
-            <div class="email_tel">
-                <!-- Campo para Equipamento -->
-                <div class="email">
-                    <label for="equipamento_id" class="form-label">Equipamento a ser reparado:</label>
-                    <select class="form-control" id="equipamento_id" name="equipamento_id" required>
-                        <option value="">Selecione o equipamento</option>
-                        @foreach($equipamentos as $equipamento)
-                        <option value="{{ $equipamento->id }}"
-                            {{ (old('equipamento_id', $rma->equipamento_id) == $equipamento->id) ? 'selected' : '' }}>
-                            {{ $equipamento->id }} - {{ $equipamento->modelo->nome }} - {{ $equipamento->modelo->marca->nome }}
-                            (de {{ $equipamento->cliente->nome }})
-                        </option>
-                        @endforeach
-                    </select>
-                </div>
 
-                <!-- Campo para Tipo de Serviço -->
-                <div class="email">
-                    <label for="servico_id" class="form-label">Tipo de serviço:</label>
-                    <select class="form-control" id="servico_id" name="servico_id[]" multiple required>
-                        <option value="">Selecione o(s) serviço(s)</option>
-                        @foreach($servicos as $servico)
-                        <option value="{{ $servico->id }}"
-                            {{ (old('servico_id') && in_array($servico->id, old('servico_id'))) || (isset($servicosSelecionados) && in_array($servico->id, $servicosSelecionados)) ? 'selected' : '' }}>
-                            {{ $servico->id }} - {{ $servico->nome }} - {{ $servico->categoria->nome }}
-                        </option>
-                        @endforeach
-                    </select>
-                    <small class="form-text text-muted">Segure a tecla Ctrl (ou Command no Mac) para selecionar múltiplos serviços.</small>
-                </div>
+        <!-- Encomenda -->
+        <div class="mb-3">
+            <label for="encomenda_id" class="form-label">Encomenda</label>
+            <select name="encomenda_id" id="encomenda_id" class="form-control" multiple>
+                @foreach($encomendas as $encomenda)
+                <option value="{{ $encomenda->id }}"
+                    {{ $rma->encomenda_id == $encomenda->id ? 'selected' : '' }}>
+                    {{ $encomenda->descricao }}, {{ $encomenda->custo }}€
+                </option>
+                @endforeach
+            </select>
+        </div>
 
-                <!-- Campo para Técnico Responsável -->
-                <div class="tel">
-                    <label for="tecnico_id" class="form-label">Técnico responsável:</label>
-                    <select class="form-control" id="tecnico_id" name="tecnico_id" required>
-                        <option value="">Selecione o técnico</option>
-                        @foreach($tecnicos as $tecnico)
-                        <option value="{{ $tecnico->id }}"
-                            {{ (old('tecnico_id', $rma->tecnico_id) == $tecnico->id) ? 'selected' : '' }}>
-                            {{ $tecnico->id }} - {{ $tecnico->nome }} - {{ $tecnico->especialidade }}
-                        </option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
+        <!-- Data de Chegada -->
+        <div class="mb-3">
+            <label for="dataChegada" class="form-label">Data de Chegada</label>
+            <input type="date" name="dataChegada" id="dataChegada" class="form-control"
+                value="{{ $rma->dataChegada }}">
+        </div>
 
-            <!-- Campo para Descrição do Problema -->
-            <div>
-                <label for="descricaoProblema" class="form-label">Descrição do problema:</label>
-                <textarea class="form-control" id="descricaoProblema" name="descricaoProblema" required>{{ old('descricaoProblema', $rma->descricaoProblema) }}</textarea>
-            </div>
+        <!-- Data de Entrega -->
+        <div class="mb-3">
+            <label for="dataEntrega" class="form-label">Data de Entrega</label>
+            <input type="date" name="dataEntrega" id="dataEntrega" class="form-control"
+                value="{{ $rma->dataEntrega }}" disabled>
+        </div>
+
+        <!-- Checkbox para indicar se foi entregue -->
+        <div class="form-check mb-3">
+            <input type="checkbox" name="foi_entregue" id="foi_entregue" class="form-check-input"
+                {{ $rma->dataEntrega ? 'checked' : '' }}>
+            <label for="foi_entregue" class="form-check-label">RMA Entregue</label>
+        </div>
+
+        <!-- Horas Trabalhadas -->
+        <div class="mb-3">
+            <label for="horasTrabalho" class="form-label">Horas de Trabalho</label>
+            <input type="number" name="horasTrabalho" id="horasTrabalho" class="form-control"
+                value="{{ $rma->horasTrabalho }}">
+        </div>
+
+        <!-- Descrição do Problema -->
+        <div class="mb-3">
+            <label for="descricaoProblema" class="form-label">Descrição do Problema</label>
+            <textarea name="descricaoProblema" id="descricaoProblema" class="form-control" rows="4">
+            {{ $rma->descricaoProblema }}
+            </textarea>
+        </div>
+
+        <!-- Total a Pagar -->
+        <div class="mb-3">
+            <label for="totalPagar" class="form-label">Total a Pagar</label>
+            <input type="text" name="totalPagar" id="totalPagar" class="form-control"
+                value="{{ $rma->totalPagar }}">
         </div>
 
         <!-- Botão de Submissão -->
