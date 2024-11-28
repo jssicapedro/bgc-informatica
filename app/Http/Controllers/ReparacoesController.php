@@ -88,9 +88,8 @@ class ReparacoesController extends Controller
      */
     public function edit($id)
     {
+        $rma = Rma::with('servicos', 'tecnico_responsavel')->findOrFail($id);
 
-
-        $rma = Rma::with('servicos')->findOrFail($id);
         $equipamentos = Equipamento::all();
         $encomendas = Encomenda::all();
         $servicos = Servico::all();

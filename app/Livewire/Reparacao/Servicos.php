@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Reparacao;
 
+use App\Models\Rma;
 use App\Models\Servico;
 use App\Models\Tecnico;
 use Livewire\Attributes\On;
@@ -13,6 +14,7 @@ class Servicos extends Component
     public $show = false;
     public $servicos;
     public $tecnicos;
+    public $rma;
 
     public $total = 0.0;
     public $horas = 0.0;
@@ -44,6 +46,35 @@ class Servicos extends Component
         $this->total = '€ '. number_format($total, 2, ',', '.');
         $this->horas = $horas;
     }
+
+    public function mount()
+    {
+        if(!is_null($this->rma)){
+            $this->rma = Rma::with('servicos', 'servicos.tecnico')->find($this->rma);
+            $this->servicos = $this->rma->servicos;
+            $this->servicos_selecionados = $this->rma->servicos->toArray();
+
+            $total = 0;
+            $horas = 0;
+
+            foreach($this->servicos_selecionados as $servico_selecionado)
+            {
+                $this->servicos_selecionados[$servico_selecionado['id']]['horas'] = $servico_selecionado['pivot']['horas'];
+                $this->servicos_selecionados[$servico_selecionado['id']]['tecnico'] = $servico_selecionado['pivot']['tecnico_id'];
+                $this->servicos_selecionados[$servico_selecionado['id']]['custo'] = '€ '. number_format(($servico_selecionado['custo']*$servico_selecionado['pivot']['horas']), 2, ',', '.');
+
+                $total = (float) str_replace('€ ', '', $this->servicos_selecionados[$servico_selecionado['id']]['custo']);
+                $horas += $this->servicos_selecionados[$servico_selecionado['id']]['horas'];
+            }
+
+            $this->total = '€ '. number_format($total, 2, ',', '.');
+            $this->horas = $horas;
+
+            $this->tecnicos = Tecnico::get();
+            $this->show = true;
+        }
+    }
+
     public function render()
     {
         return view('livewire.reparacao.servico');

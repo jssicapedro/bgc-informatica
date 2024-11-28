@@ -13,10 +13,6 @@ class Servico extends Model
     protected $table = 'servicos';
     protected $primaryKey = 'id';
 
-    protected $hidden = [
-        'id'
-    ];
-
     protected $fillable = [
         'categoria_id',
         'nome',
@@ -45,5 +41,10 @@ class Servico extends Model
     public function equipamento()
     {
         return $this->belongsTo(Equipamento::class);
+    }
+
+    public function tecnico()
+    {
+        return $this->belongsToMany(Tecnico::class, 'rma_servico', 'id', 'tecnico_id');
     }
 }

@@ -54,7 +54,7 @@ class Rma extends Model
 
     public function servicos()
     {
-        return $this->belongsToMany(Servico::class, 'rma_servico', 'rma_id', 'servico_id');
+        return $this->belongsToMany(Servico::class, 'rma_servico', 'rma_id', 'servico_id')->withPivot('horas', 'tecnico_id');
     }
 
     public function tecnicos()
