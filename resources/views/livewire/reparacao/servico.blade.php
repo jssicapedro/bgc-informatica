@@ -19,7 +19,7 @@
                         </select>
                     </div>
                     <div class="col-md-2 mt-2">
-                        <input class="form-control" type="text" placeholder="Tempo de serviço (h)"  wire:change="tempoChangeEvent({{ $servico->id }})" wire:model="servicos_selecionados.{{ $servico->id }}.tempo"/>
+                        <input class="form-control" type="text" placeholder="Tempo de serviço (h)"  wire:change="tempoChangeEvent({{ $servico->id }})" wire:model="servicos_selecionados.{{ $servico->id }}.horas"/>
                     </div>
                     <div class="col-md-2 mt-2">
                         <input class="form-control" type="text" value="€ {{ $servico->custo }} por hora" placeholder="Custor por serviço (h)"  disabled/>

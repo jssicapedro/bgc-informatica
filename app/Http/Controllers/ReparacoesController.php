@@ -65,7 +65,7 @@ class ReparacoesController extends Controller
         foreach($servicos as $servico_id => $servico) {
             $rma->servicos()->attach($servico_id, [
                 'tecnico_id' => $servico['tecnico'],
-                'horas' => $servico['tempo']
+                'horas' => $servico['horas']
             ]);
         }
 

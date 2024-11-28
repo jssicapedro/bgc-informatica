@@ -33,18 +33,16 @@ class Servicos extends Component
         $total = 0;
         $horas = 0;
 
-        $this->servicos_selecionados[$id]['custo'] = ($this->servicos_selecionados[$id]['tempo']) ? "€ ". number_format($this->servicos->find($id)->custo * $this->servicos_selecionados[$id]['tempo'], 2, ',', '.') : 0;
+        $this->servicos_selecionados[$id]['custo'] = ($this->servicos_selecionados[$id]['horas']) ? number_format($this->servicos->find($id)->custo * $this->servicos_selecionados[$id]['horas']) : 0;
 
-        foreach($this->servicos_selecionados as $selecionado)
+        foreach($this->servicos_selecionados as $servico_selecionado)
         {
-            $total += ($this->servicos_selecionados[$id]['tempo']) ? (float) str_replace('€ ', '', $selecionado['custo']) : 0;
-            $horas += ($this->servicos_selecionados[$id]['tempo']) ? $selecionado['tempo'] : 0;
+            $total += ($this->servicos_selecionados[$id]['horas']) ? (float) str_replace('€ ', '', $servico_selecionado['custo']) : 0;
+            $horas += ($this->servicos_selecionados[$id]['horas']) ? $servico_selecionado['horas'] : 0;
         }
 
         $this->total = '€ '. number_format($total, 2, ',', '.');
         $this->horas = $horas;
-
-        dd($this->servicos_selecionados);
     }
     public function render()
     {
