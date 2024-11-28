@@ -62,6 +62,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/nova-reparacao/store', [ReparacoesController::class, 'store'])->name('reparacao.store');
     Route::get('/ver-reparacao/{id}', [ReparacoesController::class, 'edit'])->name('reparacao.edit');
     Route::put('/ver-reparacao/{id}/update', [ReparacoesController::class, 'update'])->name('reparacao.update');
+    Route::delete('/reparacoes/{id}', [ReparacoesController::class, 'destroy'])->name('reparacao.destroy');
 
     /* ENCOMENDAS */
     Route::get('/encomendas', [EncomendasController::class, 'index'])->name('encomendas');
@@ -90,7 +91,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/ver-categoria/{id}/update', [CategoriasController::class, 'update'])->name('categoria.update');
     Route::delete('/categorias/{id}/delete', [CategoriasController::class, 'destroy'])->name('categorias.destroy');
     Route::patch('/categorias/{id}/restore', [CategoriasController::class, 'restore'])->name('categorias.restore');
-    
+
 
     /* TECNICOS */
     Route::get('/tecnicos', [TecnicosController::class, 'index'])->name('tecnicos');

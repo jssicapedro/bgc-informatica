@@ -15,6 +15,7 @@ class RMASeeder extends Seeder
     {
         DB::table('rma')->insert([
             [
+                'tecnico_id' => 1,
                 'equipamento_id' => 2,
                 'encomenda_id' => 1,
                 'dataChegada' => '2024-11-10',
@@ -26,6 +27,7 @@ class RMASeeder extends Seeder
                 'qr' => 'QR_CODE_1'
             ],
             [
+                'tecnico_id' => 1,
                 'equipamento_id' => 1,
                 'encomenda_id' => 2,
                 'dataChegada' => '2024-11-10',
@@ -37,6 +39,7 @@ class RMASeeder extends Seeder
                 'qr' => 'QR_CODE_1'
             ],
             [
+                'tecnico_id' => 1,
                 'equipamento_id' => 8,
                 'encomenda_id' => 3,
                 'dataChegada' => '2024-11-10',

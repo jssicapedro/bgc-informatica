@@ -22,7 +22,7 @@
     <form action="{{ route('reparacao.update', $rma->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
-        <!-- Equipamento -->
+        <!-- Equipamentos -->
         <div class="mb-3">
             <label for="equipamento_id" class="form-label">Equipamento</label>
             <select name="equipamento_id" id="equipamento_id" class="form-control">
@@ -38,7 +38,7 @@
         <!-- Encomenda -->
         <div class="mb-3">
             <label for="encomenda_id" class="form-label">Encomenda</label>
-            <select name="encomenda_id" id="encomenda_id" class="form-control" multiple>
+            <select name="encomenda_id" id="encomenda_id" class="form-control">
                 @foreach($encomendas as $encomenda)
                 <option value="{{ $encomenda->id }}"
                     {{ $rma->encomenda_id == $encomenda->id ? 'selected' : '' }}>
@@ -69,6 +69,7 @@
             <label for="foi_entregue" class="form-check-label">RMA Entregue</label>
         </div>
 
+
         <!-- Horas Trabalhadas -->
         <div class="mb-3">
             <label for="horasTrabalho" class="form-label">Horas de Trabalho</label>
@@ -84,11 +85,16 @@
             </textarea>
         </div>
 
+        <div class="mb-3">
+            <label for="totalPagar" class="form-label">Custo de Serviços</label>
+            <input type="text" name="totalPagar" id="totalPagar" class="form-control" value="{{ $servicos_custo_total }}" disabled>
+        </div>
+
         <!-- Total a Pagar -->
         <div class="mb-3">
             <label for="totalPagar" class="form-label">Total a Pagar</label>
             <input type="text" name="totalPagar" id="totalPagar" class="form-control"
-                value="{{ $rma->totalPagar }}">
+                value="{{ $rma->horasTrabalho }}" disabled>
         </div>
 
         <!-- Botão de Submissão -->

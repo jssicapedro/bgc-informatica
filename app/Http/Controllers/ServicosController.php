@@ -6,6 +6,7 @@ use App\Http\Requests\ServicoRequest;
 use App\Models\Categoria;
 use App\Models\Servico;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Http\Request;
 
 class ServicosController extends Controller
 {
@@ -44,7 +45,7 @@ class ServicosController extends Controller
 
         /* dd($request->toArray()); */
 
-        return redirect()->route('servicos')->with('success', 'Servico created successfully.');
+        return redirect()->route('servicos')->with('success', 'Servicos created successfully.');
     }
 
     /**
@@ -62,7 +63,7 @@ class ServicosController extends Controller
      */
     public function edit($id)
     {
-        /* dd($servico = Servico::findOrFail($id)); */
+        /* dd($servico = Servicos::findOrFail($id)); */
         $servico = Servico::findOrFail($id);
         $categorias = Categoria::all();
 
@@ -86,7 +87,7 @@ class ServicosController extends Controller
         // Salve as alterações
         $servico->save();
 
-        return redirect()->route('servicos')->with('success', 'Servico updated successfully.');
+        return redirect()->route('servicos')->with('success', 'Servicos updated successfully.');
     }
 
     /**
@@ -100,7 +101,7 @@ class ServicosController extends Controller
        // Soft delete do técnico (não remove fisicamente do banco, apenas marca como excluído)
        $servico->delete();
 
-       return redirect()->route('servicos')->with('success', 'Servico excluído com sucesso.');
+       return redirect()->route('servicos')->with('success', 'Servicos excluído com sucesso.');
     }
 
     /**
@@ -114,6 +115,19 @@ class ServicosController extends Controller
         // Restaura o técnico
         $servico->restore();
 
-        return redirect()->route('servicos')->with('success', 'Servico restaurado com sucesso.');
+        return redirect()->route('servicos')->with('success', 'Servicos restaurado com sucesso.');
+    }
+
+    public function buscarServicos(Request $request){
+        $categoria = $request->query('categoria', null);
+
+        if($categoria){
+            $servicos = Servico::where('categoria_id', $categoria)->get();
+        }else{
+            $servicos = Servico::all();
+        }
+        return response()->json([
+            'servicos' => $servicos
+        ], 200);
     }
 }

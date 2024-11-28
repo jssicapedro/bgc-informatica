@@ -12,6 +12,10 @@ class Categoria extends Model
 
     protected $primaryKey = 'id';
 
+    protected $hidden = [
+        'id'
+    ];
+
     protected $fillable = [
         'nome',
     ];

@@ -13,6 +13,10 @@ class Servico extends Model
     protected $table = 'servicos';
     protected $primaryKey = 'id';
 
+    protected $hidden = [
+        'id'
+    ];
+
     protected $fillable = [
         'categoria_id',
         'nome',

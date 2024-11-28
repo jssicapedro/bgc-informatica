@@ -55,10 +55,10 @@ class EquipamentosController extends Controller
             'modelo_id' => $request->modelo_id,
             'cliente_id' => $request->cliente_id,
         ]);
-        /* 
+        /*
         dd($request->toArray()); */
 
-        return redirect()->route('equipamentos')->with('success', 'Equipamento created successfully.');
+        return redirect()->route('equipamentos')->with('success', 'Equipamentos created successfully.');
     }
 
     /**
@@ -98,7 +98,7 @@ class EquipamentosController extends Controller
             'cliente_id' => $request->cliente_id ?? $equipamento->cliente_id,
         ]);
 
-        return redirect()->route('equipamentos')->with('success', 'Equipamento updated successfully.');
+        return redirect()->route('equipamentos')->with('success', 'Equipamentos updated successfully.');
     }
 
     /**
@@ -107,5 +107,14 @@ class EquipamentosController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function buscarEquipamentoPorId(Request $request, $id)
+    {
+        $equipamento = Equipamento::with('cliente', 'modelo.marca', 'categoria')->findOrFail($id);
+
+        return response()->json([
+            'equipamento' => $equipamento
+        ], 200);
     }
 }

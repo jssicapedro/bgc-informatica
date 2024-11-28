@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('categoria_id');
             $table->enum('nome', Servico::LISTA_SERVICOS);
-            $table->float('custo');
+            $table->float('custo')->default(0.0);
             $table->integer('estimativa');
             $table->string('descricao');
             $table->timestamps();

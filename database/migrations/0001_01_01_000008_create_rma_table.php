@@ -13,12 +13,14 @@ return new class extends Migration
     {
         Schema::create('rma', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('tecnico_id');
             $table->foreignId('equipamento_id');
             $table->foreignId('encomenda_id')->nullable();
             $table->timestamp('dataChegada')->nullable();
             $table->timestamp('previsaoEntrega')->nullable();
             $table->timestamp('dataEntrega')->nullable();
             $table->float('horasTrabalho')->nullable();
+            $table->float('custoServicos')->default(0.0);
             $table->string('descricaoProblema');
             $table->enum('estado', ['em processamento', 'em reparacao', 'completo']);
             $table->float('totalPagar')->nullable();
@@ -33,6 +35,7 @@ return new class extends Migration
             $table->foreignId('rma_id');
             $table->foreignId('servico_id');
             $table->foreignId('tecnico_id');
+            $table->float('horas')->default(0.0);
             $table->timestamps();
             $table->softDeletes();
         });

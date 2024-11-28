@@ -11,7 +11,7 @@ class IndexController extends Controller
     public function index(Request $request)
     {
         $dispositivos = Categoria::all();
-        /* $estimativas = Servico::all(); */
+        /* $estimativas = Servicos::all(); */
 
         // Inicializa a variável total
         $total = 0; // Garantir que a variável sempre exista
