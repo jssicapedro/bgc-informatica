@@ -18,6 +18,7 @@ class Servicos extends Component
 
     public $total = 0.0;
     public $horas = 0.0;
+    private $timer = 0.0;
 
     public $servicos_selecionados = [];
 
@@ -39,12 +40,12 @@ class Servicos extends Component
 
         foreach($this->servicos_selecionados as $servico_selecionado)
         {
+            $horas += $servico_selecionado['horas'] = $this->timer;
             $total += ($this->servicos_selecionados[$id]['horas']) ? (float) str_replace('€ ', '', $servico_selecionado['custo']) : 0;
-            $horas += ($this->servicos_selecionados[$id]['horas']) ? $servico_selecionado['horas'] : 0;
         }
 
-        $this->total = '€ '. number_format($total, 2, ',', '.');
         $this->horas = $horas;
+        $this->total = '€ '. number_format($total, 2, ',', '.');
     }
 
     public function mount()
@@ -59,16 +60,17 @@ class Servicos extends Component
 
             foreach($this->servicos_selecionados as $servico_selecionado)
             {
+                $this->timer = $servico_selecionado['pivot']['horas'];
                 $this->servicos_selecionados[$servico_selecionado['id']]['horas'] = $servico_selecionado['pivot']['horas'];
                 $this->servicos_selecionados[$servico_selecionado['id']]['tecnico'] = $servico_selecionado['pivot']['tecnico_id'];
                 $this->servicos_selecionados[$servico_selecionado['id']]['custo'] = '€ '. number_format(($servico_selecionado['custo']*$servico_selecionado['pivot']['horas']), 2, ',', '.');
 
-                $total = (float) str_replace('€ ', '', $this->servicos_selecionados[$servico_selecionado['id']]['custo']);
+                $total += (float) str_replace('€ ', '', $this->servicos_selecionados[$servico_selecionado['id']]['custo']);
                 $horas += $this->servicos_selecionados[$servico_selecionado['id']]['horas'];
             }
 
-            $this->total = '€ '. number_format($total, 2, ',', '.');
             $this->horas = $horas;
+            $this->total = '€ '. number_format($total, 2, ',', '.');
 
             $this->tecnicos = Tecnico::get();
             $this->show = true;
