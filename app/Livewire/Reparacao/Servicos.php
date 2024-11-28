@@ -31,44 +31,38 @@ class Servicos extends Component
         $this->show = true;
     }
 
-    public function tempoChangeEvent($id): void
+    public function tempoChangeEvent($index, $id): void
     {
-        $total = 0;
-        $horas = 0;
+        $servico = Servico::find($id);
 
-        $this->servicos_selecionados[$id]['custo'] = ($this->servicos_selecionados[$id]['horas']) ? number_format($this->servicos->find($id)->custo * $this->servicos_selecionados[$id]['horas']) : 0;
+        $this->servicos_selecionados[$index]['custo'] = (float)number_format($servico->custo * $this->servicos_selecionados[$index]['horas'], 2, ',', '.');
 
-        foreach($this->servicos_selecionados as $servico_selecionado)
-        {
-            $horas += $servico_selecionado['horas'] = $this->timer;
-            $total += ($this->servicos_selecionados[$id]['horas']) ? (float) str_replace('€ ', '', $servico_selecionado['custo']) : 0;
-        }
-
-        $this->horas = $horas;
-        $this->total = '€ '. number_format($total, 2, ',', '.');
+        $this->horas = array_sum(array_column($this->servicos_selecionados, 'horas'));
+        $this->total = "€ ". number_format(array_sum(array_column($this->servicos_selecionados, 'custo')), 2, ',', '.');
     }
 
-    public function mount()
+    public function mount(): void
     {
+
         if(!is_null($this->rma)){
             $this->rma = Rma::with('servicos', 'servicos.tecnico')->find($this->rma);
             $this->servicos = $this->rma->servicos;
-            $this->servicos_selecionados = $this->rma->servicos->toArray();
+            $this->servicos_selecionados = $this->rma->servicos;
 
             $total = 0;
             $horas = 0;
 
-            foreach($this->servicos_selecionados as $servico_selecionado)
+            foreach($this->servicos_selecionados as $key => $servico_selecionado)
             {
-                $this->timer = $servico_selecionado['pivot']['horas'];
-                $this->servicos_selecionados[$servico_selecionado['id']]['horas'] = $servico_selecionado['pivot']['horas'];
-                $this->servicos_selecionados[$servico_selecionado['id']]['tecnico'] = $servico_selecionado['pivot']['tecnico_id'];
-                $this->servicos_selecionados[$servico_selecionado['id']]['custo'] = '€ '. number_format(($servico_selecionado['custo']*$servico_selecionado['pivot']['horas']), 2, ',', '.');
+                $this->servicos_selecionados[$key]["horas"] = $servico_selecionado['pivot']['horas'];
+                $this->servicos_selecionados[$key]["tecnico"] = $servico_selecionado['pivot']['tecnico_id'];
+                $this->servicos_selecionados[$key]["custo"] = $servico_selecionado->custo*$servico_selecionado->pivot->horas;
 
-                $total += (float) str_replace('€ ', '', $this->servicos_selecionados[$servico_selecionado['id']]['custo']);
-                $horas += $this->servicos_selecionados[$servico_selecionado['id']]['horas'];
+                $horas += $this->servicos_selecionados[$key]["horas"];
+                $total += (float) str_replace('€ ', '', $this->servicos_selecionados[$key]["custo"]);
             }
 
+            $this->servicos_selecionados = $this->servicos_selecionados->toArray();
             $this->horas = $horas;
             $this->total = '€ '. number_format($total, 2, ',', '.');
 

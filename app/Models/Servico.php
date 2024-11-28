@@ -12,7 +12,6 @@ class Servico extends Model
 
     protected $table = 'servicos';
     protected $primaryKey = 'id';
-
     protected $fillable = [
         'categoria_id',
         'nome',

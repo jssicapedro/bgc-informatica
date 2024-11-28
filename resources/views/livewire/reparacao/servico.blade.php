@@ -6,7 +6,7 @@
                 <hr />
             </header>
             <div class="row mt-2 mb-2">
-                @foreach($servicos as $servico)
+                @foreach($servicos as $key => $servico)
                     <div class="col-md-3 mt-2">
                         <label for="equipamento_id" class="form-label">{{ $servico->nome }}</label>
                     </div>
@@ -19,13 +19,13 @@
                         </select>
                     </div>
                     <div class="col-md-2 mt-2">
-                        <input class="form-control" type="text" placeholder="Tempo de serviço (h)"  wire:change="tempoChangeEvent({{ $servico->id }})" wire:model="servicos_selecionados.{{ $servico->id }}.horas"/>
+                        <input class="form-control" type="text" placeholder="Tempo de serviço (h)"  wire:change="tempoChangeEvent({{ $key }}, {{ $servico->id }})" wire:model="servicos_selecionados.{{ $key }}.horas"/>
                     </div>
                     <div class="col-md-2 mt-2">
                         <input class="form-control" type="text" value="€ {{ $servico->custo }} por hora" placeholder="Custor por serviço (h)"  disabled/>
                     </div>
                     <div class="col-md-2 mt-2">
-                        <input class="form-control" type="text" wire:model="servicos_selecionados.{{ $servico->id }}.custo" placeholder="Total por serviço (€)"  disabled/>
+                        <input class="form-control" type="text" wire:model="servicos_selecionados.{{ $key }}.custo" placeholder="Total por serviço (€)"  disabled/>
                     </div>
                 @endforeach
             </div>
