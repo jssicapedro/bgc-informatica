@@ -18,7 +18,7 @@ class MarcaController extends Controller
      */
     public function index()
     {
-        $modelos_with_marcas = Modelo::with('marca')->get();
+        $modelos_with_marcas = Modelo::with('marca')->paginate(5);
 
         return view('admin.marcamodelo.marcamodelos')
             ->with(['modelos_with_marcas' => $modelos_with_marcas]);

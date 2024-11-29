@@ -93,5 +93,7 @@
             </tbody>
         </table>
     </div>
+    <!-- Links de paginação -->
+    {{ $categorias->links() }}
 </div>
 @endsection

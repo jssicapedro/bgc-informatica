@@ -79,7 +79,6 @@
                         </ul>
                     </td>
                 </tr>
-
                 <!-- Modal de confirmação para exclusão -->
                 <div class="modal fade" id="deleteModal{{ $servico->id }}" tabindex="-1" aria-labelledby="deleteModalLabel{{ $servico->id }}" aria-hidden="true">
                     <div class="modal-dialog">
@@ -106,5 +105,7 @@
             </tbody>
         </table>
     </div>
+    <!-- Links de paginação -->
+        {{ $servicos->links() }}
 </div>
 @endsection

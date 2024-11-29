@@ -23,8 +23,7 @@ class RMASeeder extends Seeder
                 'dataEntrega' => '2024-11-20',
                 'horasTrabalho' => 5,
                 'descricaoProblema' => 'Arranjo dos pinos dos na motherboard e do CPU, computador fixo',
-                'estado' => 'em processamento',
-                'qr' => 'QR_CODE_1'
+                'estado' => 'completo'
             ],
             [
                 'tecnico_id' => 1,
@@ -35,8 +34,7 @@ class RMASeeder extends Seeder
                 'dataEntrega' => '2024-11-22',
                 'horasTrabalho' => 1,
                 'descricaoProblema' => 'Limpeza de computador portátil',
-                'estado' => 'em reparacao',
-                'qr' => 'QR_CODE_1'
+                'estado' => 'em reparacao'
             ],
             [
                 'tecnico_id' => 1,
@@ -48,7 +46,6 @@ class RMASeeder extends Seeder
                 'horasTrabalho' => 2,
                 'descricaoProblema' => 'Substituição de ecrã de smartphone',
                 'estado' => 'em reparacao',
-                'qr' => 'QR_CODE_3'
             ],
         ]);
     }

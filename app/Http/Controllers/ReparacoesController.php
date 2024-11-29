@@ -21,7 +21,7 @@ class ReparacoesController extends Controller
      */
     public function index()
     {
-        $reparacoes = Rma::with('equipamento', 'equipamento.modelo', 'servicos', 'tecnicos', 'tecnico_responsavel')->get();
+        $reparacoes = Rma::with('equipamento', 'equipamento.modelo', 'servicos', 'tecnicos', 'tecnico_responsavel')->paginate(5);
         $tecnicos = Tecnico::all();
 
         return view('admin.rma.reparacoes')

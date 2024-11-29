@@ -63,5 +63,7 @@
             </tbody>
         </table>
     </div>
+    <!-- Links de paginação -->
+    {{ $equipamentos->links() }}
 </div>
 @endsection

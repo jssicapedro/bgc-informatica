@@ -83,5 +83,8 @@
         @method('DELETE')
         @csrf
     </form>
+
+    <!-- Links de paginação -->
+    {{ $reparacoes->links() }}
 </div>
 @endsection

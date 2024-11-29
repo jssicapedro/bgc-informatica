@@ -20,7 +20,7 @@ class EquipamentosController extends Controller
     public function index()
     {
         // Carregar todos os equipamentos
-        $equipamentos = Equipamento::with('cliente', 'modelo', 'categoria')->get();
+        $equipamentos = Equipamento::with('cliente', 'modelo', 'categoria')->paginate(5);
 
         //        dd($equipamentos->toArray());
 

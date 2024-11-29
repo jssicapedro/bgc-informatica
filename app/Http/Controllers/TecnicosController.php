@@ -18,7 +18,7 @@ class TecnicosController extends Controller
      */
     public function index()
     {
-        $tecnicos = Tecnico::withTrashed()->get();
+        $tecnicos = Tecnico::withTrashed()->paginate(5);
         return view('admin.tecnicos.tecnicos', compact('tecnicos'));
     }
 

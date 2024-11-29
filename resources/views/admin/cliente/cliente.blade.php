@@ -61,5 +61,7 @@
             </tbody>
         </table>
     </div>
+    <!-- Links de paginação -->
+    {{ $clientes->links() }}
 </div>
 @endsection

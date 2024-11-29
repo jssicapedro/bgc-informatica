@@ -16,7 +16,7 @@ class ServicosController extends Controller
      */
     public function index()
     {
-        $servicos = Servico::withTrashed()->with('categoria')->get();
+        $servicos = Servico::withTrashed()->with('categoria')->paginate(5);
 
         return view('admin.servicos.servicos', compact('servicos'));
     }

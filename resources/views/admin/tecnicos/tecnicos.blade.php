@@ -108,5 +108,7 @@
             </tbody>
         </table>
     </div>
+    <!-- Links de paginação -->
+    {{ $tecnicos->links() }}
 </div>
 @endsection

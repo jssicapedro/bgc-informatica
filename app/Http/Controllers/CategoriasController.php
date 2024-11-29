@@ -15,7 +15,7 @@ class CategoriasController extends Controller
      */
     public function index()
     {
-        $categorias = Categoria::withTrashed()->get();
+        $categorias = Categoria::withTrashed()->paginate(5);
 
         return view('admin.categoria.categoria', compact('categorias'));
     }

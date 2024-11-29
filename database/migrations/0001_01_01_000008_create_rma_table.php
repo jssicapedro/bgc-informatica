@@ -24,7 +24,6 @@ return new class extends Migration
             $table->string('descricaoProblema');
             $table->enum('estado', ['em processamento', 'em reparacao', 'completo']);
             $table->float('totalPagar')->nullable();
-            $table->string('qr')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

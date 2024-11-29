@@ -51,5 +51,7 @@
             </tbody>
         </table>
     </div>
+    <!-- Links de paginação -->
+    {{ $modelos_with_marcas->links() }}
 </div>
 @endsection
