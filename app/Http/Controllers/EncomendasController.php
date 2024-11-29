@@ -15,7 +15,7 @@ class EncomendasController extends Controller
      */
     public function index()
     {
-        $encomendas = Encomenda::all();
+        $encomendas = Encomenda::paginate(5);
         return view('admin.encomendas.encomendas', compact('encomendas'));
     }
 

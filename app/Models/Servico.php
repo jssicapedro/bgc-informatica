@@ -4,14 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Servico extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $table = 'servicos';
     protected $primaryKey = 'id';
-
     protected $fillable = [
         'categoria_id',
         'nome',
@@ -40,5 +40,10 @@ class Servico extends Model
     public function equipamento()
     {
         return $this->belongsTo(Equipamento::class);
+    }
+
+    public function tecnico()
+    {
+        return $this->belongsToMany(Tecnico::class, 'rma_servico', 'id', 'tecnico_id');
     }
 }

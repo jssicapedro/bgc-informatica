@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\RmaRequest;
 use App\Models\Cliente;
+use App\Models\Encomenda;
 use App\Models\Equipamento;
 use App\Models\Rma;
 use App\Models\RmaServico;
@@ -20,7 +21,7 @@ class ReparacoesController extends Controller
      */
     public function index()
     {
-        $reparacoes = Rma::with('equipamento', 'equipamento.modelo', 'servicos', 'tecnicos')->get();
+        $reparacoes = Rma::with('equipamento', 'equipamento.modelo', 'servicos', 'tecnicos', 'tecnico_responsavel')->paginate(5);
         $tecnicos = Tecnico::all();
 
         return view('admin.rma.reparacoes')
@@ -47,21 +48,26 @@ class ReparacoesController extends Controller
      */
     public function store(RmaRequest $request)
     {
+        $servicos = json_decode($request->input('servicos_data'), JSON_PRETTY_PRINT);
+        $custoServicos = (float) str_replace('€ ', '', $request->input('custoServicos'));
+
         $rma = Rma::create([
+            'tecnico_id' => $request->input('tecnico_id'),
             'equipamento_id' => $request->equipamento_id,
             'descricaoProblema' => $request->descricaoProblema,
             'dataEntrega' => now(),
             'dataChegada' => now(),  // Adicionando o valor para 'dataChegada'
-            'horasTrabalho' => 0,
+            'horasTrabalho' => $request->input('servicos_horas'),
+            'custoServicos' => $custoServicos,
             'estado' => 'em processamento',
         ]);
 
-        // Criar o serviço na tabela 'rma_servico'
-        RmaServico::create([
-            'rma_id' => $rma->id,
-            'servico_id' => $request->servico_id,
-            'tecnico_id' => $request->tecnico_id,
-        ]);
+        foreach($servicos as $servico_id => $servico) {
+            $rma->servicos()->attach($servico_id, [
+                'tecnico_id' => $servico['tecnico'],
+                'horas' => $servico['horas']
+            ]);
+        }
 
         return redirect()->route('reparacoes')->with('success', 'RMA created successfully.');
     }
@@ -82,15 +88,23 @@ class ReparacoesController extends Controller
      */
     public function edit($id)
     {
-        $rma = Rma::findOrFail($id);
+        $rma = Rma::with('servicos', 'tecnico_responsavel')->findOrFail($id);
+
         $equipamentos = Equipamento::all();
+        $encomendas = Encomenda::all();
         $servicos = Servico::all();
         // Recupera os IDs dos serviços associados ao RMA
         $servicosSelecionados = $rma->servicos->pluck('id')->toArray();
 
         $tecnicos = Tecnico::all();
 
-        return view('admin.rma.reparacao_edit', compact('rma', 'equipamentos', 'servicos', 'servicosSelecionados', 'tecnicos'));
+        $servicos_custo_total = 0;
+
+        foreach($rma->servicos as $servico){
+            $servicos_custo_total += $servico->custo;
+        }
+
+        return view('admin.rma.reparacao_edit', compact('rma', 'equipamentos', 'encomendas', 'servicos', 'servicosSelecionados', 'tecnicos', 'servicos_custo_total'));
     }
 
     /**
@@ -122,5 +136,8 @@ class ReparacoesController extends Controller
     public function destroy(string $id)
     {
         //
+        Rma::findOrFail($id)->delete();
+
+        return redirect()->route('reparacoes')->with('success', 'RMA deleted successfully.');
     }
 }

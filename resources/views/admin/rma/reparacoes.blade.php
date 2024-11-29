@@ -49,11 +49,10 @@
                         @endif
                     </td>
                     <td>
-                        @foreach($reparacao->tecnicos as $tecnico)
-                        {{ $tecnico->nome }}@if(!$loop->last),@endif
-                        @endforeach
                         @if($reparacao->tecnicos->isEmpty())
-                        Sem técnico
+                            Sem técnico
+                        @else
+                           {{ $reparacao->tecnico_responsavel->nome  }}
                         @endif
                     </td>
                     <td>{{ $reparacao->estado }}</td>
@@ -68,11 +67,11 @@
                                 edit
                             </span>
                         </a>
-                        <a href="">
-                            <span class="material-icons">
-                                delete
-                            </span>
-                        </a>
+                        <button form="reparacoes-delete" type="submit">
+                                <span class="material-icons">
+                                    delete
+                                </span>
+                        </button>
                     </td>
                     <!-- Adicione outros campos relevantes -->
                 </tr>
@@ -80,5 +79,12 @@
             </tbody>
         </table>
     </div>
+    <form action="{{ route('reparacao.destroy', ['id' => $reparacao->id]) }}" name="reparacoes-delete" id="reparacoes-delete" method="POST">
+        @method('DELETE')
+        @csrf
+    </form>
+
+    <!-- Links de paginação -->
+    {{ $reparacoes->links() }}
 </div>
 @endsection

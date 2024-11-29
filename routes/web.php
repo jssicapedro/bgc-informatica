@@ -20,6 +20,53 @@ Route::get('/', [IndexController::class, 'index'])->name('index');
 Route::get('/servicos/{categoria_id}', [IndexController::class, 'getServicosPorCategoria'])->name('servicos.por_categoria');
 
 
+
+
+
+
+
+
+
+
+
+Route::get('/consultar_rma', [IndexController::class, 'consultarRMA'])->name('consultar.rma');
+
+// Rota para processar a consulta de RMA
+Route::post('/consultar_rma', [IndexController::class, 'processarConsultaRMA'])->name('consultar.rma.processar');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Route::middleware('guest')->group(function () {
     Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
@@ -62,6 +109,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/nova-reparacao/store', [ReparacoesController::class, 'store'])->name('reparacao.store');
     Route::get('/ver-reparacao/{id}', [ReparacoesController::class, 'edit'])->name('reparacao.edit');
     Route::put('/ver-reparacao/{id}/update', [ReparacoesController::class, 'update'])->name('reparacao.update');
+    Route::delete('/reparacoes/{id}', [ReparacoesController::class, 'destroy'])->name('reparacao.destroy');
 
     /* ENCOMENDAS */
     Route::get('/encomendas', [EncomendasController::class, 'index'])->name('encomendas');
@@ -78,6 +126,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/novo-servico/store', [ServicosController::class, 'store'])->name('servico.store');
     Route::get('/ver-servico/{id}', [ServicosController::class, 'edit'])->name('servico.edit');
     Route::put('/ver-servico/{id}/update', [ServicosController::class, 'update'])->name('servico.update');
+    Route::delete('/servicos/{id}/delete', [ServicosController::class, 'destroy'])->name('servicos.destroy');
+    Route::patch('/servicos/{id}/restore', [ServicosController::class, 'restore'])->name('servicos.restore');
 
     /* CATEGORIAS */
     Route::get('/categorias', [CategoriasController::class, 'index'])->name('categorias');
@@ -88,7 +138,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/ver-categoria/{id}/update', [CategoriasController::class, 'update'])->name('categoria.update');
     Route::delete('/categorias/{id}/delete', [CategoriasController::class, 'destroy'])->name('categorias.destroy');
     Route::patch('/categorias/{id}/restore', [CategoriasController::class, 'restore'])->name('categorias.restore');
-    
+
 
     /* TECNICOS */
     Route::get('/tecnicos', [TecnicosController::class, 'index'])->name('tecnicos');

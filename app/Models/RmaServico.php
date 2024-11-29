@@ -15,16 +15,17 @@ class RmaServico extends Model
         'tecnico_id'
     ];
 
-    public function rma()
-    {
-        return $this->belongsTo(Rma::class, 'rma_id');
-    }
-
+    
     public function servico()
     {
         return $this->belongsTo(Servico::class, 'servico_id');
     }
-
+    
+    public function rma()
+    {
+        return $this->belongsTo(Rma::class, 'rma_id');
+    }
+    
     public function tecnico()
     {
         return $this->belongsToMany(Tecnico::class, 'rma_servico', 'rma_id', 'tecnico_id');

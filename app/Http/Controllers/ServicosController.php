@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CategoriaRequest;
 use App\Http\Requests\ServicoRequest;
 use App\Models\Categoria;
 use App\Models\Servico;
@@ -17,7 +16,7 @@ class ServicosController extends Controller
      */
     public function index()
     {
-        $servicos = Servico::with('categoria')->get();
+        $servicos = Servico::withTrashed()->with('categoria')->paginate(5);
 
         return view('admin.servicos.servicos', compact('servicos'));
     }
@@ -46,7 +45,7 @@ class ServicosController extends Controller
 
         /* dd($request->toArray()); */
 
-        return redirect()->route('servicos')->with('success', 'Servico created successfully.');
+        return redirect()->route('servicos')->with('success', 'Servicos created successfully.');
     }
 
     /**
@@ -64,7 +63,7 @@ class ServicosController extends Controller
      */
     public function edit($id)
     {
-        /* dd($servico = Servico::findOrFail($id)); */
+        /* dd($servico = Servicos::findOrFail($id)); */
         $servico = Servico::findOrFail($id);
         $categorias = Categoria::all();
 
@@ -88,14 +87,47 @@ class ServicosController extends Controller
         // Salve as alterações
         $servico->save();
 
-        return redirect()->route('servicos')->with('success', 'Servico updated successfully.');
+        return redirect()->route('servicos')->with('success', 'Servicos updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+       // Encontre o técnico ou falhe com 404 se não encontrado
+       $servico = Servico::findOrFail($id);
+
+       // Soft delete do técnico (não remove fisicamente do banco, apenas marca como excluído)
+       $servico->delete();
+
+       return redirect()->route('servicos')->with('success', 'Servicos excluído com sucesso.');
+    }
+
+    /**
+     * Restore the specified resource from storage.
+     */
+    public function restore($id)
+    {
+        // Recupera o técnico excluído (soft deleted)
+        $servico = Servico::withTrashed()->findOrFail($id);
+
+        // Restaura o técnico
+        $servico->restore();
+
+        return redirect()->route('servicos')->with('success', 'Servicos restaurado com sucesso.');
+    }
+
+    public function buscarServicos(Request $request){
+        $categoria = $request->query('categoria', null);
+
+        if($categoria){
+            $servicos = Servico::where('categoria_id', $categoria)->get();
+        }else{
+            $servicos = Servico::all();
+        }
+        return response()->json([
+            'servicos' => $servicos
+        ], 200);
     }
 }
