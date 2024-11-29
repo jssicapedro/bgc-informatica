@@ -14,7 +14,7 @@
   <div class="topnav">
     <a href="#quemSomos">QUEM SOMOS</a>
     <a href="#servicos">SERVIÇOS</a>
-    <a href="#produtos">PRODUTOS</a>
+    <a href="#produtos">RMA</a>
     <a href="#orcamento">ORÇAMENTO</a>
     <a href="#contactos">CONTACTOS</a>
   </div>
@@ -118,21 +118,14 @@
   <br>
   <br>
 
-  <h1 id="produtos" class="titulo3"> > Produtos </h1>
+  <h1 id="produtos" class="titulo3"> > RMA </h1>
 
   <br>
   <br>
   <br>
 
-  <div class="container">
-    <img class="products" src="{{asset('img/index/img5.jpg')}}" alt="Herd of horses">
-    <img class="products" src="{{asset('img/index/img4.jpg')}}" alt="Baby Elephant">
-    <img class="products" src="{{asset('img/index/img5.jpg')}}" alt="Koi Fish">
-    <img class="products" src="{{asset('img/index/img4.jpg')}}" alt="Ibis Bird">
-    <img class="products" src="{{asset('img/index/img5.jpg')}}" alt="Lemur">
-    <img class="products" src="{{asset('img/index/img4.jpg')}}" alt="Berber Monkeys">
-  </div>
 
+  
   <br>
   <br>
   <br>
@@ -140,7 +133,7 @@
   <br>
 
   <div>
-    <img class="image2" src="{{asset('img/index/img1.jpg')}}" alt="Imagem">
+    <img class="image2" src="{{asset('img/index/img6.jpg')}}" alt="Imagem">
   </div>
 
   <br>
@@ -148,7 +141,7 @@
   <br>
 
   <h1 id="orcamento" class="titulo4"> > Orçamento </h1>
-  <small class="small">Não incluindo taxas nem necessidade de encomendas</small>
+  
   <br>
   <br>
   <br>
@@ -186,6 +179,10 @@
     </div>
     @endif
   </div>
+  
+ <br>
+ <br>
+  <small class="small">Não incluindo taxas nem necessidade de encomendas</small>
 
   <br>
   <br>
