@@ -10,31 +10,22 @@
     </head>
 
     <body>
-        <!-- Navbar adaptada -->
-        <div class="navbar">
-            <div class="navbar-left">
-                <img src="{{ asset('img/nav/logotipo.png') }}" alt="Logotipo" class="logo">
-                <h1 class="nav-title">BGC Informática</h1>
-            </div>
-            <div class="navbar-right">
-                <a href="#quemSomos">QUEM SOMOS</a>
-                <a href="#servicos">SERVIÇOS</a>
-                <a href="{{ route('consultar.rma') }}">CONSULTAR RMA</a>
-                <a href="#orcamento">ORÇAMENTO</a>
-                <a href="#contactos">CONTACTOS</a>
-            </div>
+        <div class="topnav">
+            <a href="#quemSomos">QUEM SOMOS</a>
+            <a href="#servicos">SERVIÇOS</a>
+            <a href="{{ route('consultar.rma') }}">CONSULTAR RMA</a>
+            <a href="#orcamento">ORÇAMENTO</a>
+            <a href="#contactos">CONTACTOS</a>
         </div>
-
 
         <div class="banner">
-            <img class="bgc-image" src="{{asset('img/index/loja.jpg')}}" alt="Imagem">
+            <img class="bgc-image" src="{{asset('img/index/img2 copy.jpg')}}" alt="Imagem">
         </div>
 
-
         <br>
         <br>
 
-        <h1 id="quemSomos" class="titulo"> > Quem Somos? </h1>
+        <h1 id="qemSomos" class="titulo"> > Quem Somos? </h1>
 
         <br>
         <br>
@@ -53,7 +44,7 @@
             </div>
 
             <div>
-                <img src="{{asset('img/index/images.png')}}" alt="Escritorio">
+                <img src="{{asset('img/index/abstrat.jpg')}}" alt="Escritorio">
 
                 <p> It is a long established fact that a reader will be distracted by the readable content of a page when
                     looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of
@@ -165,52 +156,57 @@
         <br>
 
         <div>
-            <img class="image2" src="{{asset('img/index/loja2.jpg')}}" alt="Imagem">
+            <img class="image2" src="{{asset('img/index/img6.jpg')}}" alt="Imagem">
         </div>
 
         <br>
         <br>
         <br>
 
-        
+        <h1 id="orcamento" class="titulo4"> > Orçamento </h1>
         <br>
         <br>
         <br>
-        <h1 id="orcamento" class="titulo4">Orçamento</h1>
+
         <div class="container_or">
             <form action="{{ route('index') }}" method="GET">
-                <div class="orcamento-row">
-                    <div class="orcamento-item">
-                        <label for="dispositivo">Dispositivo</label>
-                        <select id="dispositivo" name="dispositivo" class="form-control">
-                            <option>Escolha o Dispositivo</option>
-                            @foreach($dispositivos as $dispositivo)
-                                <option value="{{ $dispositivo->id }}" {{ old('dispositivo->nome') == $dispositivo->id ? 'selected' : '' }}>
-                                    {{ $dispositivo->nome }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="orcamento-item">
-                        <label for="servico">Serviço</label>
-                        <select id="servico" name="servico" class="form-control">
-                            <option value="{{ old('servico->nome') }}">Escolha o serviço para o seu problema</option>
-                        </select>
-                    </div>
-                    <div class="orcamento-item">
-                        <button type="submit" class="btn btn-primary">Calcular</button>
-                    </div>
+                <div class="orcamento">
+                    <label for="dispositivo">Dispositivos</label>
+                    <select id="dispositivo" name="dispositivo" class="form-control">
+                        <option>Escolha o Dispositivo</option>
+                        @foreach($dispositivos as $dispositivo)
+                            <option
+                                value="{{ $dispositivo->id }}" {{ old('dispositivo->nome') == $dispositivo->id ? 'selected' : '' }}>
+                                {{ $dispositivo->nome }}
+                            </option>
+                        @endforeach
+                    </select>
                 </div>
+
+                <div class="orcamento">
+                    <label for="servico">Serviço</label>
+                    <select id="servico" name="servico" class="form-control">
+                        <option value="{{ old('servico->nome') }}">Escolha o serviço para o seu problema</option>
+                        <!-- A lista de serviços será populada dinamicamente via AJAX -->
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Calcular Orçamento</button>
             </form>
+
+            <!-- Exibir o orçamento calculado -->
             @if(isset($total))
-                <div class="orcamento-result">
+                <div class="orcamento">
                     <h3>Orçamento estimado:</h3>
                     <p>Total: €{{ number_format($total, 2) }}</p>
                 </div>
             @endif
         </div>
+        
+        <br>
+        <br>
         <small class="small">Não incluindo taxas nem necessidade de encomendas</small>
-
+        </div>
 
         <br>
         <br>
@@ -227,7 +223,11 @@
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4773.268331621087!2d-8.839642587073088!3d41.87734247112207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd25bfc6be0e8c57%3A0xee9d2604bf037558!2sBGCINFORM%C3%81TICA!5e1!3m2!1spt-PT!2spt!4v1732645811942!5m2!1spt-PT!2spt"
             width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"></iframe>
-        
+        <br>
+        <br>
+        <br>
+
+
         <footer>
             <div class="info">
                 <p>&#128231: bgc@gmail.com;</p>
