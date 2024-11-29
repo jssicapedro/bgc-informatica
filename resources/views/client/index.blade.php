@@ -14,7 +14,7 @@
 <div class="topnav">
     <a href="#quemSomos">QUEM SOMOS</a>
     <a href="#servicos">SERVIÇOS</a>
-    <a href="#produtos">PRODUTOS</a>
+    <a href="{{ route('consultar.rma') }}">CONSULTAR RMA</a>
     <a href="#orcamento">ORÇAMENTO</a>
     <a href="#contactos">CONTACTOS</a>
 </div>
@@ -176,7 +176,7 @@
                 <option>Escolha o Dispositivo</option>
                 @foreach($dispositivos as $dispositivo)
                     <option
-                        value="{{ $dispositivo->id }}" {{ old('dispositivo') == $dispositivo->id ? 'selected' : '' }}>
+                        value="{{ $dispositivo->id }}" {{ old('dispositivo->nome') == $dispositivo->id ? 'selected' : '' }}>
                         {{ $dispositivo->nome }}
                     </option>
                 @endforeach
@@ -186,7 +186,7 @@
         <div class="orcamento">
             <label for="servico">Serviço</label>
             <select id="servico" name="servico" class="form-control">
-                <option value="">Escolha o serviço para o seu problema</option>
+                <option value="{{ old('servico->nome') }}">Escolha o serviço para o seu problema</option>
                 <!-- A lista de serviços será populada dinamicamente via AJAX -->
             </select>
         </div>

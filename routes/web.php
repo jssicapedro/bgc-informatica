@@ -20,6 +20,53 @@ Route::get('/', [IndexController::class, 'index'])->name('index');
 Route::get('/servicos/{categoria_id}', [IndexController::class, 'getServicosPorCategoria'])->name('servicos.por_categoria');
 
 
+
+
+
+
+
+
+
+
+
+Route::get('/consultar_rma', [IndexController::class, 'consultarRMA'])->name('consultar.rma');
+
+// Rota para processar a consulta de RMA
+Route::post('/consultar_rma', [IndexController::class, 'processarConsultaRMA'])->name('consultar.rma.processar');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Route::middleware('guest')->group(function () {
     Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [LoginController::class, 'login'])->name('login.submit');

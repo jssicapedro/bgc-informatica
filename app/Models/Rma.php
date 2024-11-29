@@ -66,4 +66,9 @@ class Rma extends Model
     {
         return $this->belongsTo(Tecnico::class, 'tecnico_id', 'id');
     }
+
+    public function rmaServico()
+    {
+        return $this->hasMany(RmaServico::class, 'rma_id');
+    }
 }
