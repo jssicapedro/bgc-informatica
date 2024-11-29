@@ -51,6 +51,8 @@ class ReparacoesController extends Controller
         $servicos = json_decode($request->input('servicos_data'), JSON_PRETTY_PRINT);
         $custoServicos = (float) str_replace('€ ', '', $request->input('custoServicos'));
 
+        /* dd($request->toArray()); */
+
         $rma = Rma::create([
             'tecnico_id' => $request->input('tecnico_id'),
             'equipamento_id' => $request->equipamento_id,
@@ -62,7 +64,7 @@ class ReparacoesController extends Controller
             'estado' => 'em processamento',
         ]);
 
-        foreach($servicos as $servico_id => $servico) {
+        foreach ($servicos as $servico_id => $servico) {
             $rma->servicos()->attach($servico_id, [
                 'tecnico_id' => $servico['tecnico'],
                 'horas' => $servico['horas']
@@ -100,9 +102,11 @@ class ReparacoesController extends Controller
 
         $servicos_custo_total = 0;
 
-        foreach($rma->servicos as $servico){
+        foreach ($rma->servicos as $servico) {
             $servicos_custo_total += $servico->custo;
         }
+
+
 
         return view('admin.rma.reparacao_edit', compact('rma', 'equipamentos', 'encomendas', 'servicos', 'servicosSelecionados', 'tecnicos', 'servicos_custo_total'));
     }
@@ -114,6 +118,8 @@ class ReparacoesController extends Controller
     {
         // Recuperar o RMA pelo ID
         $rma = Rma::findOrFail($id);
+
+        dd($rma->toArray());
 
         // Atualizar os dados do RMA usando os dados validados do RmaRequest
         $rma->update([
@@ -127,7 +133,7 @@ class ReparacoesController extends Controller
         // O campo totalPagar será atualizado automaticamente, se configurado no evento `saving` do modelo
 
         // Redirecionar de volta com mensagem de sucesso
-        return redirect()->route('rma.index')->with('success', 'RMA atualizado com sucesso.');
+        return redirect()->route('reparacoes')->with('success', 'RMA atualizado com sucesso.');
     }
 
     /**

@@ -23,6 +23,9 @@ php artisan db:seed </pre>
 <pre>npm install -g vite</pre>
 <pre>npm install vite --save-dev</pre>
 
+## Install o livewire
+<pre> composer require livewire/livewire </pre>
+
 ## Gestão de Ficheiros e CRUD
 
 | Menu              | CREATE                   | READ                      | UPDATE                | DELETE | 

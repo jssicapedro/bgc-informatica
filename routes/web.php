@@ -18,53 +18,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [IndexController::class, 'index'])->name('index');
 // Rota para retornar os serviços de uma categoria (dispositivo)
 Route::get('/servicos/{categoria_id}', [IndexController::class, 'getServicosPorCategoria'])->name('servicos.por_categoria');
-
-
-
-
-
-
-
-
-
-
-
+/* Rora para visualizar formulario de rma */
 Route::get('/consultar_rma', [IndexController::class, 'consultarRMA'])->name('consultar.rma');
-
 // Rota para processar a consulta de RMA
 Route::post('/consultar_rma', [IndexController::class, 'processarConsultaRMA'])->name('consultar.rma.processar');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 Route::middleware('guest')->group(function () {
@@ -118,6 +75,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/nova-encomenda/store', [EncomendasController::class, 'store'])->name('encomenda.store');
     Route::get('/ver-encomenda/{id}', [EncomendasController::class, 'edit'])->name('encomenda.edit');
     Route::put('/ver-encomenda/{id}/update', [EncomendasController::class, 'update'])->name('encomenda.update');
+    Route::delete('/encomendas/{id}/delete', [EncomendasController::class, 'destroy'])->name('encomenda.destroy');
+    Route::patch('/encomendas/{id}/restore', [EncomendasController::class, 'restore'])->name('encomenda.restore');
 
     /* SERVICOS */
     Route::get('/servicos', [ServicosController::class, 'index'])->name('servicos');
