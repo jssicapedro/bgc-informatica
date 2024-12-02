@@ -34,7 +34,8 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/calendario', [CalendarioController::class, 'index'])->name('calendario');
+    Route::get('/calendario', [CalendarioController::class, 'index'])->name('calendario.index');
+
 
     /* CLIENTES */
     Route::get('/clientes', [ClientesController::class, 'index'])->name('clientes');

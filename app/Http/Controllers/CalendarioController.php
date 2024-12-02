@@ -10,61 +10,44 @@ class CalendarioController extends Controller
 {
     public function index()
     {
-        // Recupera as entregas (RMA)
-        $entregas = Rma::select('dataChegada', 'dataEntrega')->get();
+        $rmas = Rma::with('equipamento.cliente')
+            ->select('id', 'dataChegada', 'equipamento_id', 'dataEntrega', 'descricaoProblema')
+            ->get();
 
-        // Formatar as entregas para passar para o FullCalendar
-        $eventos = $entregas->map(function ($entrega) {
-            // Converte as datas para instâncias de Carbon
-            $dataChegada = Carbon::parse($entrega->dataChegada); // Mantém a hora
-            $dataEntrega = Carbon::parse($entrega->dataEntrega); // Mantém a hora
+        $events = [];
 
-            // Retorna os dados no formato que o FullCalendar espera
-            return [
-                'title' => 'Rma',  // Título do evento
-                'start' => $dataChegada->toIso8601String(), // Começo da entrega (com hora)
-                'end' => $dataEntrega->toIso8601String(), // Fim da entrega (com hora)
-            ];
-        });
+        foreach ($rmas as $rma) {
+            if ($rma->dataChegada) {
+                // Formatar a data de chegada e data de entrega
 
-        // Passando os dados formatados para a view
-        return view('admin.calendario', ['entregas' => $eventos]);
-    }
+                $rmaId = $rma->id;
+                $startDate = Carbon::parse($rma->dataChegada)->format('Y-m-d');
+                $endDate = $rma->dataEntrega ? Carbon::parse($rma->dataEntrega)->format('Y-m-d') : null;
 
+                // Montar o título do evento com nome do cliente, marca e modelo
+                $clienteNome = $rma->equipamento->cliente ? $rma->equipamento->cliente->nome : 'Cliente desconhecido';
+                $marca = $rma->equipamento->modelo->marca->nome ?? 'Marca desconhecida';
+                $modelo = $rma->equipamento->modelo->nome ?? 'Modelo desconhecido';
 
-    public function create()
-    {
-        //
-    }
+                // Criar o título com as informações do cliente, marca e modelo
+                $title = "{$clienteNome} - {$marca} - {$modelo}";
 
-    public function store(Request $request)
-    {
-        //
-    }
+                // Adicionar o evento ao array, sem agrupar
+                $events[] = [
+                    'id' => $rmaId,
+                    'title' => $title,
+                    'start' => $startDate,
+                    'end' => $endDate,
+                ];
+            }
+        };
 
-    public function show(string $id)
-    {
-        //
-    }
+        // Converter o array associativo para um índice numérico para o FullCalendar
+        $events = array_values($events);
 
-    public function edit(string $id)
-    {
-        //
-    }
+        /* dd($events); */
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        // Retorna a view com os dados
+        return view('admin.calendario', compact('events'));
     }
 }

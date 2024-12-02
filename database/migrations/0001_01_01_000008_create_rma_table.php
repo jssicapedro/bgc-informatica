@@ -16,9 +16,9 @@ return new class extends Migration
             $table->foreignId('tecnico_id');
             $table->foreignId('equipamento_id');
             $table->foreignId('encomenda_id')->nullable();
-            $table->timestamp('dataChegada')->nullable();
-            $table->timestamp('previsaoEntrega')->nullable();
-            $table->timestamp('dataEntrega')->nullable();
+            $table->date('dataChegada')->nullable();
+            $table->date('previsaoEntrega')->nullable();
+            $table->date('dataEntrega')->nullable();
             $table->float('horasTrabalho')->nullable();
             $table->float('custoServicos')->default(0.0);
             $table->string('descricaoProblema');
