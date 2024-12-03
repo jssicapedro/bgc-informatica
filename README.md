@@ -30,11 +30,11 @@ php artisan db:seed </pre>
 
 | Menu              | CREATE                   | READ                      | UPDATE                | DELETE | 
 | ---               | ---                      | ---                       | ---                   |---     |
-| CLIENTE           | clienete_new ✅         | cliente_view ✅           | cliente_edit ✅       |       |
-| EQUIPAMENTOS      | equipamentos_new ✅     |                            | equipamentos_edit ✅ |         |
-| MARCAS E MODELOS  | marcamodelos_new ✅     |                            | equipamentos_edit ✅ |         |
-| RMA               | reparacoes_new ✅       | reparacoes_view ✅        | reparacoes_edit       |         |
-| ENCOMENDAS        | encomendas_new ✅       | encomendas_view ✅        | encomendas_edit ✅    |         |
-| SERVICOS          | servicos_new ✅         | servicos_view ✅          | servicos_edit ✅      | ✅      |
-| CATEGORIAS        | categoria_new ✅        |                            | categoria_edit ✅    | ✅      |
-| TECNICOS          | tecnicos_new ✅         | tecnicos_view ✅          | tecnicos_edit ✅      | ✅      |
+| CLIENTE           | clienete_new ✅         | cliente_view ✅           | cliente_edit ✅       |✅|
+| EQUIPAMENTOS      | equipamentos_new ✅     |                            | equipamentos_edit ✅ |✅|
+| MARCAS E MODELOS  | marcamodelos_new ✅     |                            | marcamodelos_edit ✅ |✅|
+| RMA               | reparacoes_new ✅       | reparacoes_view ✅        | reparacoes_edit       |✅|
+| ENCOMENDAS        | encomendas_new ✅       | encomendas_view ✅        | encomendas_edit ✅    |✅|
+| SERVICOS          | servicos_new ✅         | servicos_view ✅          | servicos_edit ✅      |✅|
+| CATEGORIAS        | categoria_new ✅        |                            | categoria_edit ✅    |✅|
+| TECNICOS          | tecnicos_new ✅         | tecnicos_view ✅          | tecnicos_edit ✅      |✅|

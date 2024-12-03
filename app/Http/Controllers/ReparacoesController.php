@@ -21,7 +21,7 @@ class ReparacoesController extends Controller
      */
     public function index()
     {
-        $reparacoes = Rma::with('equipamento', 'equipamento.modelo', 'servicos', 'tecnicos', 'tecnico_responsavel')->paginate(5);
+        $reparacoes = Rma::with('equipamento', 'equipamento.modelo', 'servicos', 'tecnicos', 'tecnico_responsavel')->withTrashed()->paginate(5);
         $tecnicos = Tecnico::all();
 
         return view('admin.rma.reparacoes')
@@ -146,4 +146,18 @@ class ReparacoesController extends Controller
 
         return redirect()->route('reparacoes')->with('success', 'RMA deleted successfully.');
     }
+
+    /**
+    * Restore the specified resource from storage.
+    */
+   public function restore($id)
+   {
+       // Recupera o técnico excluído (soft deleted)
+       $rma = Rma::withTrashed()->findOrFail($id);
+
+       // Restaura o técnico
+       $rma->restore();
+
+       return redirect()->route('reparacoes')->with('success', 'Reparação restaurada com sucesso.');
+   }
 }

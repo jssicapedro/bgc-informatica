@@ -20,7 +20,7 @@ class EquipamentosController extends Controller
     public function index()
     {
         // Carregar todos os equipamentos
-        $equipamentos = Equipamento::with('cliente', 'modelo', 'categoria')->paginate(5);
+        $equipamentos = Equipamento::with('cliente', 'modelo', 'categoria')->withTrashed()->paginate(5);
 
         //        dd($equipamentos->toArray());
 
@@ -104,10 +104,28 @@ class EquipamentosController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $equipamento = Equipamento::findOrFail($id);
+
+        $equipamento->delete();
+
+        return redirect()->route('equipamentos')->with('success', 'Equipamento excluído com sucesso.');
     }
+
+    /**
+    * Restore the specified resource from storage.
+    */
+   public function restore($id)
+   {
+       // Recupera o técnico excluído (soft deleted)
+       $equipamento = Equipamento::withTrashed()->findOrFail($id);
+
+       // Restaura o técnico
+       $equipamento->restore();
+
+       return redirect()->route('equipamentos')->with('success', 'Equipamento restaurado com sucesso.');
+   }
 
     public function buscarEquipamentoPorId(Request $request, $id)
     {

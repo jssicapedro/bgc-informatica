@@ -34,7 +34,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/calendario', [CalendarioController::class, 'index'])->name('calendario.index');
+    Route::get('/calendario', [CalendarioController::class, 'index'])->name('calendario');
 
 
     /* CLIENTES */
@@ -44,6 +44,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/novo-cliente/store', [ClientesController::class, 'store'])->name('cliente.store');
     Route::get('/ver-cliente/{id}', [ClientesController::class, 'edit'])->name('cliente.edit');
     Route::put('/ver-cliente/{id}/update', [ClientesController::class, 'update'])->name('cliente.update');
+    Route::delete('/ver-cliente/{id}/delete', [ClientesController::class, 'destroy'])->name('cliente.destroy');
+    Route::patch('/ver-cliente/{id}/restore', [ClientesController::class, 'restore'])->name('cliente.restore');
 
     /* EQUIPAMENTOS */
     Route::get('/equipamentos', [EquipamentosController::class, 'index'])->name('equipamentos');
@@ -52,6 +54,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/novo-equipamento/store', [EquipamentosController::class, 'store'])->name('equipamento.store');
     Route::get('/ver-equipamento/{id}', [EquipamentosController::class, 'edit'])->name('equipamento.edit');
     Route::put('/ver-equipamento/{id}/update', [EquipamentosController::class, 'update'])->name('equipamento.update');
+    Route::delete('/ver-equipamento/{id}/delete', [EquipamentosController::class, 'destroy'])->name('equipamento.destroy');
+    Route::patch('/ver-equipamento/{id}/restore', [EquipamentosController::class, 'restore'])->name('equipamento.restore');
 
     /* MARCAS MODELOS */
     Route::get('/marcas-modelos', [MarcaController::class, 'index'])->name('marcas-modelos');
@@ -59,6 +63,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/marcas-modelos/store', [MarcaController::class, 'store'])->name('marcamodelo.store');
     Route::get('/ver-marca-modelo/{id}', [MarcaController::class, 'edit'])->name('marcamodelo.edit');
     Route::put('/ver-marca-modelo/{id}/update', [MarcaController::class, 'update'])->name('marcamodelo.update');
+    Route::delete('/ver-marca-modelo/{id}/delete', [MarcaController::class, 'destroy'])->name('marcamodelo.destroy');
+    Route::patch('/ver-marca-modelo/{id}/restore', [MarcaController::class, 'restore'])->name('marcamodelo.restore');
 
     /* REPARACOES */
     Route::get('/reparacoes', [ReparacoesController::class, 'index'])->name('reparacoes');
@@ -67,7 +73,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/nova-reparacao/store', [ReparacoesController::class, 'store'])->name('reparacao.store');
     Route::get('/ver-reparacao/{id}', [ReparacoesController::class, 'edit'])->name('reparacao.edit');
     Route::put('/ver-reparacao/{id}/update', [ReparacoesController::class, 'update'])->name('reparacao.update');
-    Route::delete('/reparacoes/{id}', [ReparacoesController::class, 'destroy'])->name('reparacao.destroy');
+    Route::delete('/reparacao/{id}/delete', [ReparacoesController::class, 'destroy'])->name('reparacao.destroy');
+    Route::patch('/reparacao/{id}/restore', [ReparacoesController::class, 'restore'])->name('reparacao.restore');
 
     /* ENCOMENDAS */
     Route::get('/encomendas', [EncomendasController::class, 'index'])->name('encomendas');

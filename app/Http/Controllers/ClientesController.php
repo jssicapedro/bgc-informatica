@@ -14,7 +14,7 @@ class ClientesController extends Controller
 
     public function index()
     {
-        $clientes = Cliente::paginate(5);
+        $clientes = Cliente::withTrashed()->paginate(5);
         return view('admin.cliente.cliente', compact('clientes'));
     }
     /**
@@ -81,8 +81,26 @@ class ClientesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $cliente = Cliente::findOrFail($id);
+
+        $cliente->delete();
+
+        return redirect()->route('clientes')->with('success', 'Cliente excluído com sucesso.');
     }
+
+    /**
+    * Restore the specified resource from storage.
+    */
+   public function restore($id)
+   {
+       // Recupera o técnico excluído (soft deleted)
+       $cliente = Cliente::withTrashed()->findOrFail($id);
+
+       // Restaura o técnico
+       $cliente->restore();
+
+       return redirect()->route('clientes')->with('success', 'Técnico restaurado com sucesso.');
+   }
 }
