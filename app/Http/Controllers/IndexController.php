@@ -45,7 +45,6 @@ class IndexController extends Controller
         return view('client.index', compact('dispositivos', 'total', 'availableServicos'));
     }
 
-
     public function getServicosPorCategoria($categoria_id)
     {
         // Recupera os serviços para a categoria selecionada
@@ -54,13 +53,6 @@ class IndexController extends Controller
         // Retorna os serviços como JSON
         return response()->json($servicos);
     }
-
-
-
-
-
-
-
 
     public function consultarRMA(Request $request)
     {

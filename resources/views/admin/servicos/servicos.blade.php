@@ -9,7 +9,6 @@
 
 <!-- js -->
 @push('scripts')
-@vite(['resources/js/app.js', 'resources/css/app.css'])
 @endpush
 
 @section('main')

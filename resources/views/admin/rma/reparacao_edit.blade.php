@@ -19,8 +19,9 @@
             <a href="{{ route('reparacoes') }}">Voltar à listagem</a>
             <h1>Editar a reparação</h1>
         </div>
-        <form action=" {{ route('reparacao.store') }}" method="POST" enctype="multipart/form-data">
+        <form action=" {{ route('reparacao.update', $rma->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
+            @method('PUT') <!-- Aqui o método PATCH é necessário para edição -->
             @if($errors->any())
                 <div class="alert alert-danger">
                     @foreach($errors->all() as $error)
@@ -32,7 +33,7 @@
                 <div class="email_tel">
                     <div class="tel">
                         <label for="tecnico_id" class="form-label">Tecnico responsável:</label>
-                        <select class="form-control" id="tecnico_id" name="tecnico_id" required>
+                        <select class="form-control @error('tecnico_id') is-invalid @enderror" id="tecnico_id" name="tecnico_id" required>
                             <option value="">Selecione o tecnico</option>
                             @foreach($tecnicos as $tecnico)
                                 <option value="{{ $tecnico->id }}" @if($tecnico->id == $rma->tecnico_id) selected @endif
@@ -53,10 +54,10 @@
                 </div>
                 <div>
                     <label for="descricaoProblema" class="form-label">Descrição do problema:</label>
-                    <textarea class="form-control" id="descricaoProblema" name="descricaoProblema" value="{{ old('descricaoProblema') }}" required></textarea>
+                    <input type="text" class="form-control" value="{{ $rma->descricaoProblema }}" id="descricaoProblema" name="descricaoProblema" required>
                 </div>
             </div>
-            <button type="submit" class="btn btn-submit">Add Rma</button>
+            <button type="submit" class="btn btn-submit">Edit Rma</button>
         </form>
     </div>
 @endsection

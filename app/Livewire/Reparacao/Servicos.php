@@ -22,6 +22,7 @@ class Servicos extends Component
 
     public $servicos_selecionados = [];
 
+    /* atualiza os serviços quando o equipamento é alterado */
     #[On('servicos-refresh')]
     public function refreshListaServicos($categoria)
     {
@@ -31,6 +32,7 @@ class Servicos extends Component
         $this->show = true;
     }
 
+    /* altera os valores das horas */
     public function tempoChangeEvent($index, $id): void
     {
         $servico = Servico::find($id);
@@ -39,8 +41,12 @@ class Servicos extends Component
 
         $this->horas = array_sum(array_column($this->servicos_selecionados, 'horas'));
         $this->total = "€ ". number_format(array_sum(array_column($this->servicos_selecionados, 'custo')), 2, ',', '.');
+
+        /* dd($this->servicos_selecionados); */
     }
 
+
+    /* edit - arranja info */
     public function mount(): void
     {
 

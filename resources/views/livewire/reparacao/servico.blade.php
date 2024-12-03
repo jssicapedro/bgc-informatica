@@ -6,12 +6,13 @@
                 <hr />
             </header>
             <div class="row mt-2 mb-2">
+                <!-- key é a chave  -->
                 @foreach($servicos as $key => $servico)
                     <div class="col-md-3 mt-2">
                         <label for="equipamento_id" class="form-label">{{ $servico->nome }}</label>
                     </div>
                     <div class="col-md-3 mt-2">
-                        <select class="form-control" wire:model="servicos_selecionados.{{ $servico->id }}.tecnico">
+                        <select class="form-control" wire:model="servicos_selecionados.{{ $key }}.tecnico">
                             <option value="">Selecione o Técnico</option>
                             @foreach($tecnicos as $tecnico)
                                 <option value="{{ $tecnico->id }}">{{ $tecnico->nome }}</option>

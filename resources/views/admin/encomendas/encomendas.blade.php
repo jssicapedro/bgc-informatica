@@ -9,7 +9,6 @@
 
 <!-- js -->
 @push('scripts')
-@vite(['resources/js/app.js', 'resources/css/app.css'])
 @endpush
 
 @section('main')
@@ -38,25 +37,71 @@
                     <td>{{ \Carbon\Carbon::parse($encomenda->dataPedido)->format('d/m/Y') }}</td>
                     <td>{{ $encomenda->dataEntrega ? \Carbon\Carbon::parse($encomenda->dataEntrega)->format('d/m/Y') : 'A encomenda ainda não chegou' }}</td>
                     <td>{{ $encomenda->descricao }}</td>
-                    <td class="acoes btn">
-                        <a href="{{ route('encomenda.show', ['id' => $encomenda->id]) }}">
-                            <span class="material-icons">
-                                visibility
-                            </span>
-                        </a>
-                        <a href="{{ route('encomenda.edit', ['id' => $encomenda->id]) }}">
-                            <span class="material-icons">
-                                edit
-                            </span>
-                        </a>
-                        <a href="">
-                            <span class="material-icons">
-                                delete
-                            </span>
-                        </a>
+                    <td>
+                        <ul class="acoes btn">
+                            <li>
+                                <a href="{{ route('encomenda.show', ['id' => $encomenda->id]) }}">
+                                    <span class="material-icons">
+                                        visibility
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('encomenda.edit', ['id' => $encomenda->id]) }}">
+                                    <span class="material-icons">
+                                        edit
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- Exibição da opção de restaurar ou excluir dependendo se o técnico foi excluído -->
+                            @if($encomenda->trashed())
+                            <li>
+                                <!-- Restaura o técnico -->
+                                <form action="{{ route('encomenda.restore', ['id' => $encomenda->id]) }}" method="POST" style="display: inline;">
+                                    @csrf
+                                    @method('PATCH')
+                                    <button type="submit" class="btn text-warning">
+                                        <span class="material-icons">
+                                            history
+                                        </span>
+                                    </button>
+                                </form>
+                            </li>
+                            @else
+                            <li>
+                                <!-- Excluir técnico -->
+                                <button class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $encomenda->id }}">
+                                    <span class="material-icons">
+                                        delete
+                                    </span>
+                                </button>
+                            </li>
+                            @endif
+                        </ul>
                     </td>
-                    <!-- Adicione outros campos relevantes -->
                 </tr>
+                <!-- Modal de confirmação -->
+                <div class="modal fade" id="deleteModal{{ $encomenda->id }}" tabindex="-1" aria-labelledby="deleteModalLabel{{ $encomenda->id }}" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="deleteModalLabel{{ $encomenda->id }}">Confirmar Exclusão</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Tem certeza de que deseja apagar a encomenda?
+                            </div>
+                            <div class="modal-footer">
+                                <form action="{{ route('encomenda.destroy', $encomenda->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Apagar</button>
+                                </form>
+                                <button type="button" class="btn btn-secondary" data-bs-dismisApagas="modal">Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 @endforeach
             </tbody>
         </table>

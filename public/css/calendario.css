@@ -1,0 +1,56 @@
+main {
+    max-height: 80vh;
+}
+
+.calendario {
+    padding: 22px 0;
+}
+
+div#calendar {
+    height: 630px;
+}
+
+.fc-view-harness.fc-view-harness-active {
+    height: 65vh;
+}
+
+.fc .fc-daygrid-day-frame {
+    height: 150px;
+    position: relative;
+}
+
+th .fc-scroller-harness .fc-scroller{
+    overflow: hidden hidden!important;
+}
+
+.fc-direction-ltr .fc-daygrid-event.fc-event-end,
+.fc-direction-rtl .fc-daygrid-event.fc-event-start,
+a.fc-event.fc-event-past.fc-daygrid-event.fc-daygrid-block-event.fc-h-event {
+    margin-bottom: 5px;
+    background-color: var(--default_btn);
+    border: none;
+}
+
+a.fc-col-header-cell-cushion {
+    text-transform: capitalize;
+    color: var(--default_color);
+    text-decoration: none;
+}
+
+.fc-daygrid-day-number {
+    text-decoration: none;
+    color: var(--default_color);
+}
+
+.fc .fc-daygrid-day.fc-day-today {
+    background-color: var(--default_footer_background);
+}
+
+.fc-day-today .fc-daygrid-day-number {
+    color: var(--default_background);
+}
+
+td.fc-day.fc-day-mon.fc-day-today.fc-day-other.fc-daygrid-day {
+    background-color: var(--default_btn);
+    color: var(--default_color_sombra);
+}
