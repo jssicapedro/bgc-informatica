@@ -1,9 +1,9 @@
-:root{
+:root {
   --default_blue: #44679F;
   --default_blue_footer: #254284;
   --default_white: #fff;
   --default_white_background: #ddd;
-  --default_black: #000; 
+  --default_black: #000;
 }
 
 * {
@@ -31,6 +31,7 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
+  z-index: 100;
 }
 
 .navbar-left {
@@ -59,14 +60,17 @@ body {
   text-decoration: none;
   font-size: 1rem;
   transition: background-color 0.3s, color 0.3s;
-  border-radius: 25px; /* Tornar os botões mais arredondados */
-  border: 2px solid var(--default_blue); /* Adicionar um toque de personalidade */
+  border-radius: 25px;
+  /* Tornar os botões mais arredondados */
+  border: 2px solid var(--default_blue);
+  /* Adicionar um toque de personalidade */
 }
 
 .navbar-right a:hover {
   background-color: var(--default_blue);
   color: var(--default_white);
-  transform: scale(1.1); /* Adicionar um efeito de transformação ao passar o mouse */
+  transform: scale(1.1);
+  /* Adicionar um efeito de transformação ao passar o mouse */
 }
 
 
@@ -82,7 +86,11 @@ body {
   object-fit: cover;
 }
 
-.titulo, .titulo2, .titulo3, .titulo4, .titulo5 {
+.titulo,
+.titulo2,
+.titulo3,
+.titulo4,
+.titulo5 {
   font-size: 2rem;
   color: var(--default_blue);
   text-align: center;
@@ -111,7 +119,9 @@ body {
   width: 20vw;
 }
 
-.hr1, .hr2, .hr3 {
+.hr1,
+.hr2,
+.hr3 {
   border: 0;
   height: 3px;
   background-image: linear-gradient(to right, transparent, var(--default_blue), transparent);
@@ -217,7 +227,8 @@ label {
   border-radius: 4px;
 }
 
-.btn-primary, .btn-secondary {
+.btn-primary,
+.btn-secondary {
   background-color: var(--default_blue);
   border: none;
   padding: 10px 20px;
@@ -227,21 +238,24 @@ label {
   text-decoration: none;
 }
 
-.btn-primary:hover, .btn-secondary:hover {
+.btn-primary:hover,
+.btn-secondary:hover {
   background-color: #0056b3;
 }
 
 footer {
   background-color: var(--default_blue_footer);
-  color: var(--default_white) ;
+  color: var(--default_white);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   font-size: 100%;
-  padding: 20px;
+  padding: 10px 20px 0;
   width: 100%;
-  margin-top: auto;
+  margin-top: -2%;
+  height: calc(15vh + 2%);
+  
 }
 
 footer div.info {
@@ -249,8 +263,9 @@ footer div.info {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  gap: 25px;
+  gap: 15px;
   flex-direction: row;
+  margin-top: 10px;
 }
 
 footer div.time {
@@ -258,5 +273,5 @@ footer div.time {
   justify-content: space-evenly;
   align-items: center;
   flex-direction: row;
-  gap: 15px;
+  gap: 5px;
 }
