@@ -23,10 +23,35 @@ class RmaRequest extends FormRequest
     {
         return [
             'equipamento_id' => 'required|exists:equipamentos,id',
-            'servicos_data' => 'required|string',
             'tecnico_id' => 'required|exists:tecnicos,id',
+            'servico_id' => 'array|max:3', // Limita a 3 serviços
+            'servico_id.*' => 'integer|exists:servicos,id',
             'descricaoProblema' => 'required|string|max:1000',
-            'servicos_horas' => 'required|numeric|min:0',
+            'estado' => 'required|string|in:em reparação,completo',
+            'dataEntrega' => 'nullable|date', // Apenas aceita datas válidas se for enviada
+        ];
+
+        // Requer técnico e equipamento apenas na criação
+        if ($this->isMethod('post')) {
+            $rules['equipamento_id'] = 'required|exists:equipamentos,id';
+            $rules['tecnico_id'] = 'required|exists:tecnicos,id';
+        }
+
+        return $rules;
+    }
+
+    public function messages()
+    {
+        return [
+            'equipamento_id.required' => 'O equipamento é obrigatório.',
+            'equipamento_id.exists' => 'O equipamento selecionado não existe.',
+            'servico_id.required' => 'Pelo menos um serviço precisa ser selecionado.',
+            'servico_id.max' => 'Você pode selecionar no máximo 3 serviços.',
+            'servico_id.*.exists' => 'Um ou mais serviços selecionados não existem.',
+            'tecnico_id.required' => 'O técnico responsável é obrigatório.',
+            'tecnico_id.exists' => 'O técnico selecionado não existe.',
+            'descricaoProblema.required' => 'A descrição do problema é obrigatória.',
+            'descricaoProblema.max' => 'A descrição do problema não pode ter mais de 1000 caracteres.',
         ];
     }
 }
