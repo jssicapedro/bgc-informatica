@@ -81,6 +81,8 @@
                 <textarea class="form-control" id="descricaoProblema" name="descricaoProblema" required>{{ old('descricaoProblema') }}</textarea>
             </div>
 
+            <input type="hidden" name="estado" value="em processamento">
+
             <button type="submit" class="btn btn-submit">Criar RMA</button>
         </div>
     </form>

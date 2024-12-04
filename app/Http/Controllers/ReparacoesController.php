@@ -60,7 +60,7 @@ class ReparacoesController extends Controller
             'equipamento_id' => $request->input('equipamento_id'),
             'descricaoProblema' => $request->input('descricaoProblema'),
             'dataChegada' => $dataChegada,  // Preenche com a data atual
-            'estado' => 'em processamento',
+            'estado' => $request->input('estado'),
         ]);
 
         // Associa os serviços ao RMA com o técnico responsável
@@ -91,8 +91,9 @@ class ReparacoesController extends Controller
         $servicos = $rma->servicos; // Apenas serviços associados ao RMA
         $tecnicos = Tecnico::all();
         $equipamentos = Equipamento::all();
+        $encomendas = Encomenda::whereDoesntHave('rma')->get();
 
-        return view('admin.rma.reparacao_edit', compact('rma', 'servicos', 'tecnicos', 'equipamentos'));
+        return view('admin.rma.reparacao_edit', compact('rma', 'servicos', 'tecnicos', 'equipamentos', 'encomendas'));
     }
 
     /**
@@ -103,26 +104,52 @@ class ReparacoesController extends Controller
         $validated = $request->validated();
 
         $rma = Rma::findOrFail($id);
+
+        // Atualizar os campos básicos do RMA
         $rma->equipamento_id = $validated['equipamento_id'];
         $rma->tecnico_id = $validated['tecnico_id'];
         $rma->descricaoProblema = $validated['descricaoProblema'];
         $rma->estado = $validated['estado'];
 
-        // Define a data de entrega se o estado for "completo" e a opção estiver selecionada
-        if ($validated['estado'] === 'completo') {
-            $rma->dataEntrega = now(); // Marca a data atual como a data de entrega
-        } else {
-            $rma->dataEntrega = null; // Reseta a data de entrega se o estado não for "completo"
+        // Atualizar data de entrega conforme o estado
+        $rma->dataEntrega = $validated['estado'] === 'completo' ? now() : null;
+
+        // Atualizar o ID da encomenda, se fornecido
+        if (isset($validated['encomenda_id']) && $validated['encomenda_id']) {
+            $rma->encomenda_id = $validated['encomenda_id'];
         }
+
+        // Sincronizar serviços e calcular total de horas e custo dos serviços
+        $totalHoras = 0;
+        $totalCustoServicos = 0;
+
+        if (isset($validated['servico_id'])) {
+            foreach ($validated['servico_id'] as $servicoId) {
+                $horas = $validated['horas_trabalho'][$servicoId] ?? 0; // Horas enviadas no request
+                $servico = Servico::find($servicoId);
+
+                if ($servico) {
+                    $rma->servicos()->syncWithoutDetaching([$servicoId => ['horas' => $horas]]);
+                    $totalHoras += $horas;
+                    $totalCustoServicos += $horas * $servico->custo;
+                }
+            }
+        }
+
+        $rma->horasTrabalho = $totalHoras;
+        $rma->custoServicos = $totalCustoServicos;
+        $rma->totalPagar = (float) $totalCustoServicos;
+
+        if (isset($rma->encomenda_id)) {
+            $encomenda = Encomenda::find($rma->encomenda_id);
+            if ($encomenda) {
+                $rma->totalPagar += (float) $encomenda->custo;
+            }
+        }
+        
 
         $rma->save();
 
-        // Atualiza os serviços relacionados ao RMA
-        if (isset($validated['servico_id'])) {
-            $rma->servicos()->sync($validated['servico_id']);
-        }
-
-        // Redirecionar com mensagem de sucesso
         return redirect()->route('reparacoes')->with('success', 'RMA atualizado com sucesso.');
     }
 

@@ -24,8 +24,11 @@ class Rma extends Model
         'horasTrabalho',
         'descricaoProblema',
         'estado',
-        'totalPagar'
+        'totalPagar',
+        'custoServicos'
     ];
+
+    protected $guarded = [];
 
     // Evento que ocorre antes de salvar o modelo
     protected static function booted()
@@ -43,9 +46,9 @@ class Rma extends Model
     }
 
     // Relacionamento com a encomenda (um RMA tem uma encomenda)
-    public function encomenda(): HasOne
+    public function encomenda()
     {
-        return $this->hasOne(Encomenda::class, 'id');
+        return $this->belongsTo(Encomenda::class, 'encomenda_id');
     }
 
     public function equipamento(): BelongsTo

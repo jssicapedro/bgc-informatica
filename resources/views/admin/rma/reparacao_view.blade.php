@@ -94,9 +94,9 @@
         </div>
         @if ($reparacao->estado == 'completo')
         <div class="email">
-            <label>Total a pagar</label>
+            <label>Total a pagar pelo serviço</label>
             @if ($reparacao->totalPagar)
-            <input type="text" class="form-control" value="{{ $reparacao->totalPagar }}€" readonly>
+            <input type="text" class="form-control" value="{{ $reparacao->custoServicos }}€" readonly>
             @else
             <p>Este rma ainda não foi finalizado.</p>
             @endif
