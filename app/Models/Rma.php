@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Rma extends Model
@@ -38,10 +37,8 @@ class Rma extends Model
             $servico = $rma->servico; // Relacionamento com serviço
             $encomenda = $rma->encomenda; // Relacionamento com encomenda
 
-            $custoServico = $servico ? $servico->custo : 0;
-            $custoEncomenda = $encomenda ? $encomenda->custo : 0;
-
-            $rma->totalPagar = ($rma->horasTrabalho * $custoServico) + $custoEncomenda;
+            $custoServico = $servico ? $servico->custo : 0; // se não houver fica 0
+            $custoEncomenda = $encomenda ? $encomenda->custo : 0;  // se não houver fica 0
         });
     }
 

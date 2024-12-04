@@ -77,9 +77,9 @@ class ReparacoesController extends Controller
     public function show(string $id)
     {
         $reparacao = Rma::findOrFail($id);
+        $servicos = $reparacao->servicos; // Apenas serviços associados ao RMA
 
-
-        return view('admin.rma.reparacao_view', compact('reparacao'));
+        return view('admin.rma.reparacao_view', compact('reparacao', 'servicos'));
     }
 
     /**

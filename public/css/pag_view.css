@@ -5,6 +5,10 @@ main{
     min-height: 80vh!important;
 }
 
+h3 {
+    margin-top: 15px!important;
+}
+
 .pag_list{
     flex-direction: column;
 }
@@ -30,4 +34,30 @@ p {
     height: 60px;
     display: flex;
     align-items: center;
+}
+
+hr{
+    margin: 20px 0;
+}
+
+@media print {
+    /* Esconder o botão de impressão */
+    ul.navbar-nav , .pag_new a, .pag_list a, .btn {
+        display: none;
+    }
+
+    /* Ajustar margens para impressão */
+    body {
+        margin: 0;
+        padding: 1cm;
+    }
+
+    /* Ajustar fontes para melhor visualização em papel */
+    .container {
+        font-size: 12pt;
+    }
+
+    footer{
+        display: none;
+    }
 }
