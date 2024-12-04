@@ -61,6 +61,7 @@ class ReparacoesController extends Controller
             'descricaoProblema' => $request->input('descricaoProblema'),
             'dataChegada' => $dataChegada,  // Preenche com a data atual
             'estado' => $request->input('estado'),
+            'totalPagar' => 0.00,
         ]);
 
         // Associa os serviços ao RMA com o técnico responsável

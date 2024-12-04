@@ -90,7 +90,15 @@ class IndexController extends Controller
         }
 
         // Retorna a view com as variáveis necessárias
-        return view('client.consultar_rma', compact('rma', 'mensagem', 'availableServicos'));
+        /* return view('client.consultar_rma', compact('rma', 'mensagem', 'availableServicos')); */
+
+
+        return view('client.consultar_rma', [
+            'rma' => $rma,
+            'mensagem' => $mensagem,
+            'availableServicos' => $availableServicos,
+            'oldInput' => session()->getOldInput(),
+        ]);
     }
 
     public function processarConsultaRMA(Request $request)
