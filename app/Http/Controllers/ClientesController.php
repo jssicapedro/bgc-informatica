@@ -11,10 +11,9 @@ class ClientesController extends Controller
 {
     use SoftDeletes;
 
-
     public function index()
     {
-        $clientes = Cliente::all();
+        $clientes = Cliente::withTrashed()->paginate(5);
         return view('admin.cliente.cliente', compact('clientes'));
     }
     /**
@@ -24,7 +23,6 @@ class ClientesController extends Controller
     {
         return view('admin.cliente.cliente_new');
     }
-
     /**
      * Store a newly created resource in storage.
      */
@@ -33,14 +31,13 @@ class ClientesController extends Controller
         Cliente::create([
             'nome' => $request->nome,
             'email' => $request->email,
-            'telemovel' => $request->telemovel,
-            'nif' => $request->nif,
+            'telemovel' => str_replace(' ', '', $request->input('telemovel')),
+            'nif' => str_replace(' ', '', $request->input('nif')),
             'morada' => $request->morada,
         ]);
 
         return redirect()->route('clientes')->with('success', 'Clientes created successfully.');
     }
-
     /**
      * Display the specified resource.
      */
@@ -50,7 +47,6 @@ class ClientesController extends Controller
 
         return view('admin.cliente.cliente_view', compact('cliente'));
     }
-
     /**
      * Show the form for editing the specified resource.
      */
@@ -59,7 +55,6 @@ class ClientesController extends Controller
         $cliente = Cliente::findOrFail($id);
         return view('admin.cliente.cliente_edit', compact('cliente'));
     }
-
     /**
      * Update the specified resource in storage.
      */
@@ -68,10 +63,10 @@ class ClientesController extends Controller
         $cliente = Cliente::findOrFail($id);
 
         $cliente->update([
-            'nome' => $request->nome,
+            'nome' => ucfirst(strtolower($request->input('nome'))),
             'email' => $request->email,
-            'telemovel' => $request->telemovel,
-            'nif' => $request->nif,
+            'telemovel' => str_replace(' ', '', $request->input('telemovel')),
+            'nif' => str_replace(' ', '', $request->input('nif')),
             'morada' => $request->morada,
         ]);
 
@@ -81,8 +76,37 @@ class ClientesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $cliente = Cliente::findOrFail($id);
+
+        $cliente->delete();
+
+        return redirect()->route('clientes')->with('success', 'Cliente excluído com sucesso.');
+    }
+
+    /**
+     * Restore the specified resource from storage.
+     */
+    public function restore($id)
+    {
+        // Recupera o técnico excluído (soft deleted)
+        $cliente = Cliente::withTrashed()->findOrFail($id);
+
+        // Restaura o técnico
+        $cliente->restore();
+
+        return redirect()->route('clientes')->with('success', 'Técnico restaurado com sucesso.');
+    }
+
+
+    // Em ClienteController.php
+    public function getAllClientes()
+    {
+        // Obtém todos os clientes sem paginação
+        $clientes = Cliente::all();
+
+        // Retorna os dados em formato JSON
+        return response()->json($clientes);
     }
 }

@@ -22,11 +22,19 @@ class TecnicoRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'id' => 'required|exists:tecnicos,id',
             'nome' => 'required|string|max:255',
             'email' => 'required|email|max:255',
-            'telemovel' => 'required|numeric|digits:9',
+            'telemovel' => 'required|regex:/^[0-9]{9}$/',
             'especialidade' => 'required',
             'morada' => 'string'
         ];
     }
+
+    public function messages()
+{
+    return [
+        'telemovel.regex' => 'O número de telemóvel deve ter exatamente 9 dígitos, sem espaços.',
+    ];
+}
 }

@@ -1,0 +1,184 @@
+:root {
+    --default_blue: #44679F;
+    --default_blue_footer: #254284;
+    --default_white: #fff;
+    --default_white_background: #ddd;
+    --default_black: #000; 
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  /* Estilos gerais */
+html,  body {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+body{
+width: 100%;
+}
+/* Cabeçalho */
+h1 {
+    color: var(--default_blue);
+    margin-top: 20px;
+}
+
+/* Formulário */
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Botão */
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: var(--default_blue);
+}
+
+/* Cartão de detalhes do RMA */
+.card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-text {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 20px;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+  
+/* Rodapé */
+
+footer { 
+    background-color: var(--default_blue_footer); 
+    color: var(--default_white); 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    font-size: 100%; 
+    padding: 20px; 
+    width: 100%; 
+    margin-top: auto; 
+}
+ 
+footer div.info {
+    width: 80vw;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 25px;
+    flex-direction: row;
+}
+  
+footer div.time {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.nav-button {
+    text-align: center;
+    margin-bottom: 20px;
+}
+  
+.btn-secondary {
+    background-color: var(--default_blue);
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+}
+  
+.btn-secondary:hover {
+    background-color: #0056b3;
+}
+  
+  /* Faixa de navegação */ 
+.navbar { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    background-color: var(--default_white); 
+    padding: 10px 20px; 
+    width: 100%; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    margin-bottom: 20px; 
+} 
+  
+.navbar-left { 
+    display: flex; 
+    align-items: center; 
+} 
+    
+.logo { 
+    height: 50px; 
+    margin-right: 20px; 
+} 
+  
+.navbar-right { 
+    display: flex; 
+    align-items: center; 
+}
+    

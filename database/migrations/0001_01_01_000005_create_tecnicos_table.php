@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nome');
             $table->string('email')->unique();
             $table->string('telemovel')->nullable();
-            $table->enum('especialidade', ['computadores', 'smartphones', 'outros equipamentos', 'todas']);
+            $table->enum('especialidade', ['Computadores', 'Smartphones', 'Outros equipamentos', 'Todas']);
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

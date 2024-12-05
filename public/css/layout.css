@@ -10,6 +10,8 @@
     --default_table_background:#fff;
 
     --default_btn:#254284c2;
+
+    --default_color_sombra: #25428491;
 }
 
 *{
@@ -44,3 +46,4 @@ footer small{
     display: flex;
     justify-content: flex-end;
 }
+

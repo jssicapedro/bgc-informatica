@@ -2,50 +2,52 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Rma;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class CalendarioController extends Controller
 {
     public function index()
     {
-        //
-        return view('admin.calendario');
-    }
+        $rmas = Rma::with('equipamento.cliente')
+            ->select('id', 'dataChegada', 'equipamento_id', 'dataEntrega', 'descricaoProblema')
+            ->get();
 
+        $events = [];
 
-    public function create()
-    {
-        //
-    }
+        foreach ($rmas as $rma) {
+            if ($rma->dataChegada) {
+                // Formatar a data de chegada e data de entrega
 
-    public function store(Request $request)
-    {
-        //
-    }
+                $rmaId = $rma->id;
+                $startDate = Carbon::parse($rma->dataChegada)->format('Y-m-d');
+                $endDate = $rma->dataEntrega ? Carbon::parse($rma->dataEntrega)->format('Y-m-d') : null;
 
-    public function show(string $id)
-    {
-        //
-    }
+                // Montar o título do evento com nome do cliente, marca e modelo
+                $clienteNome = $rma->equipamento->cliente ? $rma->equipamento->cliente->nome : 'Cliente desconhecido';
+                $marca = $rma->equipamento->modelo->marca->nome ?? 'Marca desconhecida';
+                $modelo = $rma->equipamento->modelo->nome ?? 'Modelo desconhecido';
 
-    public function edit(string $id)
-    {
-        //
-    }
+                // Criar o título com as informações do cliente, marca e modelo
+                $title = "{$clienteNome} - {$marca} - {$modelo}";
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+                // Adicionar o evento ao array, sem agrupar
+                $events[] = [
+                    'id' => $rmaId,
+                    'title' => $title,
+                    'start' => $startDate,
+                    'end' => $endDate,
+                ];
+            }
+        };
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        // Converter o array associativo para um índice numérico para o FullCalendar
+        $events = array_values($events);
+
+        /* dd($events); */
+
+        // Retorna a view com os dados
+        return view('admin.calendario', compact('events'));
     }
 }

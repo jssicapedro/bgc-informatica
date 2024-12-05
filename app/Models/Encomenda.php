@@ -4,11 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Encomenda extends Model
 {
    /** @use HasFactory<\Database\Factories\ClienteFactory> */
-   use HasFactory;
+   use HasFactory, SoftDeletes;
 
    protected $table = 'encomendas';
    protected $primaryKey = 'id';
@@ -25,4 +26,9 @@ class Encomenda extends Model
    protected $casts = [
       'custo' => 'decimal:2',  // Isso garante que o valor de custo tenha 2 casas decimais
    ];
+
+   public function rma()
+   {
+      return $this->hasOne(Rma::class, 'encomenda_id');
+   }
 }

@@ -1,14 +1,12 @@
+main{
+    overflow-x: hidden;
+}
+
 .table_view{
     height: 80vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-}
-
-#navbarNav {
-    display: flex !important;
-    flex-basis: auto;
-    justify-content: flex-end!important;
 }
 
 .pag_new {
@@ -31,6 +29,7 @@ div#table {
     display: flex;
     justify-content: center;
     padding-bottom: 15px;
+    overflow-x: auto;
 }
 
 table {
@@ -61,6 +60,11 @@ td {
     width: 50px;
 }
 
+ul{
+    list-style: none;
+    margin: 0;
+}
+
 .acoes a {
     text-decoration: none;
     color: black;
@@ -75,6 +79,7 @@ td {
 .email_tel {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .nome_tel,
@@ -96,4 +101,36 @@ td {
 .morada,
 .esp {
     width: 45%;
+}
+
+nav.flex.items-center.justify-between {
+    width: 100vw;
+    height: 5vh;
+    padding: 15px 0;
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+span.relative.inline-flex.items-center.px-2.py-2.text-sm.font-medium.text-gray-500.bg-white.border.border-gray-300.cursor-default.rounded-l-md.leading-5.dark\:bg-gray-800.dark\:border-gray-600, a.relative.inline-flex.items-center.px-2.py-2.-ml-px.text-sm.font-medium.text-gray-500.bg-white.border.border-gray-300.rounded-r-md.leading-5.hover\:text-gray-400.focus\:z-10.focus\:outline-none.focus\:ring.ring-gray-300.focus\:border-blue-300.active\:bg-gray-100.active\:text-gray-500.transition.ease-in-out.duration-150.dark\:bg-gray-800.dark\:border-gray-600.dark\:active\:bg-gray-700.dark\:focus\:border-blue-800, span.relative.z-0.inline-flex.rtl\:flex-row-reverse.shadow-sm.rounded-md{
+    display: none !important;
+}
+
+@media (max-width: 1000px) {
+    .email_tel{
+        flex-direction: column;
+    }
+
+    .tel, .email{
+        width: 100%;
+    }
+    div#table{
+        justify-content: flex-start;
+    }
+    ul.acoes.btn {
+        flex-direction: column;
+    }
+    .table_view {
+        min-height: 100%;
+    }
 }

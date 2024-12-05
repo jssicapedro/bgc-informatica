@@ -24,9 +24,17 @@ class ClienteRequest extends FormRequest
         return [
             'nome' => 'required|string|max:255',
             'email' => 'required|email|max:255',
-            'telemovel' => 'required|numeric|digits:9',
-            'nif' => 'required|numeric|digits:9',
+            'telemovel' => 'required|regex:/^[0-9]{9}$/',
+            'nif' => 'required|regex:/^[0-9]{9}$/',
             'morada' => 'string'
+        ];
+    }
+    
+    public function messages()
+    {
+        return [
+            'telemovel.regex' => 'O número de telemóvel deve ter exatamente 9 dígitos, sem espaços.',
+            'nif.regex' => 'O NIF deve ter exatamente 9 dígitos, sem espaços.',
         ];
     }
 }

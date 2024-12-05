@@ -18,7 +18,7 @@ class MarcaController extends Controller
      */
     public function index()
     {
-        $modelos_with_marcas = Modelo::with('marca')->get();
+        $modelos_with_marcas = Modelo::with('marca')->withTrashed()->paginate(5);
 
         return view('admin.marcamodelo.marcamodelos')
             ->with(['modelos_with_marcas' => $modelos_with_marcas]);
@@ -104,8 +104,27 @@ class MarcaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        // Busca o modelo pelo ID e garante que ele existe
+        $modelo = Modelo::findOrFail($id);
+
+        // Exclui apenas o modelo
+        $modelo->delete();
+
+        return redirect()->route('marcas-modelos')->with('success', 'Marca e modelo excluído com sucesso.');
+    }
+
+    /**
+     * Restore the specified resource from storage.
+     */
+    public function restore($id)
+    {
+        $modelo = Modelo::withTrashed()->findOrFail($id);
+
+        // Restaura o modelo
+        $modelo->restore();
+
+        return redirect()->route('marcas-modelos')->with('success', 'Marca e modelo restaurado com sucesso.');
     }
 }

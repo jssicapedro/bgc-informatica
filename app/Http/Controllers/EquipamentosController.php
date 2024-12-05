@@ -20,7 +20,7 @@ class EquipamentosController extends Controller
     public function index()
     {
         // Carregar todos os equipamentos
-        $equipamentos = Equipamento::with('cliente', 'modelo', 'categoria')->get();
+        $equipamentos = Equipamento::with('cliente', 'modelo', 'categoria')->withTrashed()->paginate(5);
 
         //        dd($equipamentos->toArray());
 
@@ -55,10 +55,10 @@ class EquipamentosController extends Controller
             'modelo_id' => $request->modelo_id,
             'cliente_id' => $request->cliente_id,
         ]);
-        /* 
+        /*
         dd($request->toArray()); */
 
-        return redirect()->route('equipamentos')->with('success', 'Equipamento created successfully.');
+        return redirect()->route('equipamentos')->with('success', 'Equipamentos created successfully.');
     }
 
     /**
@@ -98,14 +98,41 @@ class EquipamentosController extends Controller
             'cliente_id' => $request->cliente_id ?? $equipamento->cliente_id,
         ]);
 
-        return redirect()->route('equipamentos')->with('success', 'Equipamento updated successfully.');
+        return redirect()->route('equipamentos')->with('success', 'Equipamentos updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $equipamento = Equipamento::findOrFail($id);
+
+        $equipamento->delete();
+
+        return redirect()->route('equipamentos')->with('success', 'Equipamento excluído com sucesso.');
+    }
+
+    /**
+    * Restore the specified resource from storage.
+    */
+   public function restore($id)
+   {
+       // Recupera o técnico excluído (soft deleted)
+       $equipamento = Equipamento::withTrashed()->findOrFail($id);
+
+       // Restaura o técnico
+       $equipamento->restore();
+
+       return redirect()->route('equipamentos')->with('success', 'Equipamento restaurado com sucesso.');
+   }
+
+    public function buscarEquipamentoPorId(Request $request, $id)
+    {
+        $equipamento = Equipamento::with('cliente', 'modelo.marca', 'categoria')->findOrFail($id);
+
+        return response()->json([
+            'equipamento' => $equipamento
+        ], 200);
     }
 }

@@ -36,7 +36,7 @@
                 </div>
             </div>
         </div>
-        <button type="submit" class="btn btn-submit">Add cliente</button>
+        <button type="submit" class="btn btn-submit">Add categoria</button>
     </form>
 </div>
 @endsection

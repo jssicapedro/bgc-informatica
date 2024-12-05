@@ -15,7 +15,7 @@ class EncomendasController extends Controller
      */
     public function index()
     {
-        $encomendas = Encomenda::all();
+        $encomendas = Encomenda::withTrashed()->paginate(5);
         return view('admin.encomendas.encomendas', compact('encomendas'));
     }
 
@@ -88,8 +88,28 @@ class EncomendasController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        // Encontre o encomenda ou falhe com 404 se não encontrado
+        $encomenda = Encomenda::findOrFail($id);
+        
+        // Soft delete do encomenda (não remove fisicamente do banco, apenas marca como excluído)
+        $encomenda->delete();
+        
+        return redirect()->route('encomendas')->with('success', 'Encomenda excluído com sucesso.');
     }
+    
+    /**
+    * Restore the specified resource from storage.
+    */
+   public function restore($id)
+   {
+       // Recupera o encomenda excluído (soft deleted)
+       $encomenda = Encomenda::withTrashed()->findOrFail($id);
+
+       // Restaura o encomenda
+       $encomenda->restore();
+
+       return redirect()->route('encomendas')->with('success', 'Encomenda restaurado com sucesso.');
+   }
 }

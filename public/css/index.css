@@ -1,55 +1,338 @@
-* {
-    box-sizing: border-box;
-  }
-  
-  body {
-    margin: 0;
-  }
-  
-  /* Style the header */
-  .header {
-    background-color: #ffffff;
-    padding: 20px;
-    text-align: center;
-  }
-  
-  /* Style the top navigation bar */
-  .topnav {
-    overflow: hidden;
-    background-color: #ffffff;
-    text-align: center; /* « The magic. */
-    position: sticky;
-    top: 0;
-  }
-  
-  /* Style the topnav links */
-  .topnav a {
-    display: inline-block;
-    color: #000000;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
-  
-  /* Change color on hover */
-  .topnav a:hover {
-    background-color: #ddd;
-    color: black;
-    display: inline-block; /* « Last bit of magic. */
-  }
-
-  .bgc-image {
-    width: 100%;
-    height: 20%
-  }
-
-.titulo {
-  font-size: 200%;
-  padding-left: 10%;
-  padding-right: 10%;
-  text-align: justify;
+:root {
+  --default_blue: #44679F;
+  --default_blue_footer: #254284;
+  --default_white: #fff;
+  --default_white_background: #ddd;
+  --default_black: #000;
 }
 
-footer{
-  margin-top: 35px;
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  font-family: sans-serif !important;
+}
+
+.header {
+  background-color: var(--default_white);
+  padding: 20px;
+  text-align: center;
+}
+
+/* Navbar adaptada */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--default_white);
+  padding: 10px 20px;
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-nav {
+  display: flex;
+  align-items: flex-end;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 50px;
+  margin-right: 20px;
+}
+
+.nav-title {
+  font-size: 1.5rem;
+  color: var(--default_blue);
+}
+
+.navbar-right a {
+  color: var(--default_black);
+  padding: 10px 20px;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: background-color 0.3s, color 0.3s;
+  border-radius: 25px;
+  border: 2px solid var(--default_blue);
+}
+
+.navbar-right a:hover {
+  background-color: var(--default_blue);
+  color: var(--default_white);
+  transform: scale(1.1);
+  /* Adicionar um efeito de transformação ao passar o mouse */
+}
+
+.rma {
+  background-color: var(--default_blue) !important;
+  color: var(--default_white) !important;
+}
+
+.rma:hover {
+  background-color: var(--default_white) !important;
+  color: var(--default_blue) !important;
+}
+
+.rma:hover {
+  scale: 1;
+}
+
+
+.banner {
+  height: 70vh;
+}
+
+.bgc-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.titulo,
+.titulo2,
+.titulo3,
+.titulo4,
+.titulo5 {
+  font-size: 2rem;
+  color: var(--default_blue);
+  text-align: center;
+  padding: 20px 10%;
+  margin: 0;
+  border-bottom: 2px solid var(--default_blue);
+}
+
+.about {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.about div {
+  display: flex;
+  flex-direction: row;
+  width: 80vw;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+.about img {
+  width: 20vw;
+}
+
+.hr1,
+.hr2,
+.hr3 {
+  border: 0;
+  height: 3px;
+  background-image: linear-gradient(to right, transparent, var(--default_blue), transparent);
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.galeria {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.row {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.imagem {
+  width: 25%;
+}
+
+.servico_img {
+  width: 100%;
+}
+
+.legenda {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+
+.products {    
+  width: auto;
+  height: 390px;
+  margin: 10px;
+  transition-duration: 1s;
+}
+
+.products:hover {
+  border: 5px solid var(--default_white);
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.image2 {
+  width: 100vw;
+  height: 70vh;
+}
+
+.container_or {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  background-color: var(--default_white);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+.orcamento-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+}
+
+.orcamento-item {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin: 0 10px;
+}
+
+label {
+  font-weight: bold;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.btn-primary,
+.btn-secondary {
+  background-color: var(--default_blue);
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover {
+  background-color: #0056b3;
+}
+
+iframe {
+  margin-bottom: 2%;
+}
+
+footer {
+  background-color: var(--default_blue_footer);
+  color: var(--default_white);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 100%;
+  padding: 10px 20px 0;
+  width: 100%;
+  margin-top: -2%;
+  height: calc(15vh + 2%);
+  
+}
+
+footer div.info {
+  width: 80vw;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 15px;
+  flex-direction: row;
+  margin-top: 10px;
+}
+
+footer p {
+  margin: 0;
+}
+
+footer div.time {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.termos_politicas {
+  display: flex;
+  gap: 25px;
+}
+
+.termos_politicas a {
+  text-decoration: none;
+  color: var(--default_white);
+}
+
+
+@media (max-width: 990px) {
+  .navbar-right a {
+    margin-left: 5%;
+    margin-right: 0;
+    width: 25vw;
+    margin-bottom: 5px;
+  }
+
+  .navbar-right a:hover {
+    transform: none;
+  }
+
+  .about div {
+    flex-direction: column-reverse;
+  }
+
+  img.escritorio {
+    width: 100%;
+  }
+
+  .galeria .row{
+    flex-direction: column;
+  }
+
+  .products {
+    width: 100%;
+    height: auto;
+}
 }

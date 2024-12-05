@@ -19,10 +19,17 @@ class CategoriaRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function rules(): array
+    public function rules()
     {
         return [
-            'nome' => 'required'
+            'nome' => 'required|string|max:255|unique:categorias,nome',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'nome.unique' => 'A categoria que está a criar já existe.',
         ];
     }
 }
