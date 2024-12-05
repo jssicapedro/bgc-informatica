@@ -24,7 +24,7 @@ Route::get('politica&privacidade', [IndexController::class, 'politicaPrivacidade
 
 
 Route::middleware('guest')->group(function () {
-    Route::get('tecnico/login', [LoginController::class, 'showLoginForm'])->name('login');
+    Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
 });
 
@@ -45,11 +45,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/ver-cliente/{id}/update', [ClientesController::class, 'update'])->name('cliente.update');
     Route::delete('/ver-cliente/{id}/delete', [ClientesController::class, 'destroy'])->name('cliente.destroy');
     Route::patch('/ver-cliente/{id}/restore', [ClientesController::class, 'restore'])->name('cliente.restore');
-
-    // Em routes/web.php ou routes/api.php
-    Route::get('/clientes/all', [ClientesController::class, 'getAllClientes']);
-
-
+    Route::get('/clientes/all', [ClientesController::class, 'getAllClientes']);/* imprimir listagens de clientes */
 
 
     /* EQUIPAMENTOS */
