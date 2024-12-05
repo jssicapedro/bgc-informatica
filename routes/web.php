@@ -76,6 +76,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/reparacao/{id}/delete', [ReparacoesController::class, 'destroy'])->name('reparacao.destroy');
     Route::patch('/reparacao/{id}/restore', [ReparacoesController::class, 'restore'])->name('reparacao.restore');
 
+    Route::get('/servicos/categoria/{categoriaId}', [ServicosController::class, 'getServicosPorCategoria']);
+
     /* ENCOMENDAS */
     Route::get('/encomendas', [EncomendasController::class, 'index'])->name('encomendas');
     Route::get('/encomenda/{id}', [EncomendasController::class, 'show'])->name('encomenda.show');

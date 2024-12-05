@@ -36,6 +36,7 @@ class ReparacoesController extends Controller
      */
     public function create()
     {
+
         $equipamentos = Equipamento::get();
         $servicos = Servico::all();
         $tecnicos = Tecnico::all();
@@ -48,27 +49,24 @@ class ReparacoesController extends Controller
      */
     public function store(RmaRequest $request)
     {
-        $servicos = json_decode($request->input('servicos_data'), JSON_PRETTY_PRINT);
-        $custoServicos = (float) str_replace('€ ', '', $request->input('custoServicos'));
+        // Recupera os dados do formulário
+        $servicos = $request->input('servico_id');
+        $dataChegada = now();  // Data atual para o campo dataChegada
+        $tecnicoId = $request->input('tecnico_id'); // Recupera o técnico selecionado
 
-        /* dd($request->toArray()); */
-
+        // Cria o RMA
         $rma = Rma::create([
-            'tecnico_id' => $request->input('tecnico_id'),
-            'equipamento_id' => $request->equipamento_id,
-            'descricaoProblema' => $request->descricaoProblema,
-            'dataEntrega' => now(),
-            'dataChegada' => now(),  // Adicionando o valor para 'dataChegada'
-            'horasTrabalho' => $request->input('servicos_horas'),
-            'custoServicos' => $custoServicos,
-            'estado' => 'em processamento',
+            'tecnico_id' => $tecnicoId,  // Certifique-se de associar o técnico
+            'equipamento_id' => $request->input('equipamento_id'),
+            'descricaoProblema' => $request->input('descricaoProblema'),
+            'dataChegada' => $dataChegada,  // Preenche com a data atual
+            'estado' => $request->input('estado'),
+            'totalPagar' => 0.00,
         ]);
 
-        foreach ($servicos as $servico_id => $servico) {
-            $rma->servicos()->attach($servico_id, [
-                'tecnico_id' => $servico['tecnico'],
-                'horas' => $servico['horas']
-            ]);
+        // Associa os serviços ao RMA com o técnico responsável
+        foreach ($servicos as $servicoId) {
+            $rma->servicos()->attach($servicoId, ['tecnico_id' => $tecnicoId]);  // Passa o tecnico_id
         }
 
         return redirect()->route('reparacoes')->with('success', 'RMA created successfully.');
@@ -80,9 +78,9 @@ class ReparacoesController extends Controller
     public function show(string $id)
     {
         $reparacao = Rma::findOrFail($id);
+        $servicos = $reparacao->servicos; // Apenas serviços associados ao RMA
 
-
-        return view('admin.rma.reparacao_view', compact('reparacao'));
+        return view('admin.rma.reparacao_view', compact('reparacao', 'servicos'));
     }
 
     /**
@@ -90,25 +88,13 @@ class ReparacoesController extends Controller
      */
     public function edit($id)
     {
-        $rma = Rma::with('servicos', 'tecnico_responsavel')->findOrFail($id);
-
-        $equipamentos = Equipamento::all();
-        $encomendas = Encomenda::all();
-        $servicos = Servico::all();
-        // Recupera os IDs dos serviços associados ao RMA
-        $servicosSelecionados = $rma->servicos->pluck('id')->toArray();
-
+        $rma = Rma::findOrFail($id); // Carregar o RMA pelo ID
+        $servicos = $rma->servicos; // Apenas serviços associados ao RMA
         $tecnicos = Tecnico::all();
+        $equipamentos = Equipamento::all();
+        $encomendas = Encomenda::whereDoesntHave('rma')->get();
 
-        $servicos_custo_total = 0;
-
-        foreach ($rma->servicos as $servico) {
-            $servicos_custo_total += $servico->custo;
-        }
-
-
-
-        return view('admin.rma.reparacao_edit', compact('rma', 'equipamentos', 'encomendas', 'servicos', 'servicosSelecionados', 'tecnicos', 'servicos_custo_total'));
+        return view('admin.rma.reparacao_edit', compact('rma', 'servicos', 'tecnicos', 'equipamentos', 'encomendas'));
     }
 
     /**
@@ -116,23 +102,55 @@ class ReparacoesController extends Controller
      */
     public function update(RmaRequest $request, $id)
     {
-        // Recuperar o RMA pelo ID
+        $validated = $request->validated();
+
         $rma = Rma::findOrFail($id);
 
-        dd($rma->toArray());
+        // Atualizar os campos básicos do RMA
+        $rma->equipamento_id = $validated['equipamento_id'];
+        $rma->tecnico_id = $validated['tecnico_id'];
+        $rma->descricaoProblema = $validated['descricaoProblema'];
+        $rma->estado = $validated['estado'];
 
-        // Atualizar os dados do RMA usando os dados validados do RmaRequest
-        $rma->update([
-            'equipamento_id' => $request->input('equipamento_id'),
-            'servico_id' => $request->input('servico_id'),
-            'tecnico_id' => $request->input('tecnico_id'),
-            'descricaoProblema' => $request->input('descricaoProblema'),
-            'horasTrabalho' => $request->input('horasTrabalho'),
-        ]);
+        // Atualizar data de entrega conforme o estado
+        $rma->dataEntrega = $validated['estado'] === 'completo' ? now() : null;
 
-        // O campo totalPagar será atualizado automaticamente, se configurado no evento `saving` do modelo
+        // Atualizar o ID da encomenda, se fornecido
+        if (isset($validated['encomenda_id']) && $validated['encomenda_id']) {
+            $rma->encomenda_id = $validated['encomenda_id'];
+        }
 
-        // Redirecionar de volta com mensagem de sucesso
+        // Sincronizar serviços e calcular total de horas e custo dos serviços
+        $totalHoras = 0;
+        $totalCustoServicos = 0;
+
+        if (isset($validated['servico_id'])) {
+            foreach ($validated['servico_id'] as $servicoId) {
+                $horas = $validated['horas_trabalho'][$servicoId] ?? 0; // Horas enviadas no request
+                $servico = Servico::find($servicoId);
+
+                if ($servico) {
+                    $rma->servicos()->syncWithoutDetaching([$servicoId => ['horas' => $horas]]);
+                    $totalHoras += $horas;
+                    $totalCustoServicos += $horas * $servico->custo;
+                }
+            }
+        }
+
+        $rma->horasTrabalho = $totalHoras;
+        $rma->custoServicos = $totalCustoServicos;
+        $rma->totalPagar = (float) $totalCustoServicos;
+
+        if (isset($rma->encomenda_id)) {
+            $encomenda = Encomenda::find($rma->encomenda_id);
+            if ($encomenda) {
+                $rma->totalPagar += (float) $encomenda->custo;
+            }
+        }
+        
+
+        $rma->save();
+
         return redirect()->route('reparacoes')->with('success', 'RMA atualizado com sucesso.');
     }
 
@@ -148,16 +166,16 @@ class ReparacoesController extends Controller
     }
 
     /**
-    * Restore the specified resource from storage.
-    */
-   public function restore($id)
-   {
-       // Recupera o técnico excluído (soft deleted)
-       $rma = Rma::withTrashed()->findOrFail($id);
+     * Restore the specified resource from storage.
+     */
+    public function restore($id)
+    {
+        // Recupera o técnico excluído (soft deleted)
+        $rma = Rma::withTrashed()->findOrFail($id);
 
-       // Restaura o técnico
-       $rma->restore();
+        // Restaura o técnico
+        $rma->restore();
 
-       return redirect()->route('reparacoes')->with('success', 'Reparação restaurada com sucesso.');
-   }
+        return redirect()->route('reparacoes')->with('success', 'Reparação restaurada com sucesso.');
+    }
 }

@@ -26,4 +26,9 @@ class Encomenda extends Model
    protected $casts = [
       'custo' => 'decimal:2',  // Isso garante que o valor de custo tenha 2 casas decimais
    ];
+
+   public function rma()
+   {
+      return $this->hasOne(Rma::class, 'encomenda_id');
+   }
 }

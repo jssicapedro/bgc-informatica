@@ -22,7 +22,7 @@ return new class extends Migration
             $table->float('horasTrabalho')->nullable();
             $table->float('custoServicos')->default(0.0);
             $table->string('descricaoProblema');
-            $table->enum('estado', ['em processamento', 'em reparacao', 'completo']);
+            $table->enum('estado', ['em processamento', 'em reparação', 'completo']);
             $table->float('totalPagar')->nullable();
             $table->timestamps();
             $table->softDeletes();

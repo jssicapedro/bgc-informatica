@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Rma extends Model
@@ -24,8 +23,11 @@ class Rma extends Model
         'horasTrabalho',
         'descricaoProblema',
         'estado',
-        'totalPagar'
+        'totalPagar',
+        'custoServicos'
     ];
+
+    protected $guarded = [];
 
     // Evento que ocorre antes de salvar o modelo
     protected static function booted()
@@ -35,17 +37,15 @@ class Rma extends Model
             $servico = $rma->servico; // Relacionamento com serviço
             $encomenda = $rma->encomenda; // Relacionamento com encomenda
 
-            $custoServico = $servico ? $servico->custo : 0;
-            $custoEncomenda = $encomenda ? $encomenda->custo : 0;
-
-            $rma->totalPagar = ($rma->horasTrabalho * $custoServico) + $custoEncomenda;
+            $custoServico = $servico ? $servico->custo : 0; // se não houver fica 0
+            $custoEncomenda = $encomenda ? $encomenda->custo : 0;  // se não houver fica 0
         });
     }
 
     // Relacionamento com a encomenda (um RMA tem uma encomenda)
-    public function encomenda(): HasOne
+    public function encomenda()
     {
-        return $this->hasOne(Encomenda::class, 'id');
+        return $this->belongsTo(Encomenda::class, 'encomenda_id');
     }
 
     public function equipamento(): BelongsTo

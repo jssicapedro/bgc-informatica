@@ -6,6 +6,7 @@
                 <img src="{{ asset('img/nav/logotipo.png') }}" alt="Logotipo BGCInformatica">
             </a>
 
+            
             <!-- Menu -->
             <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
                 <ul class="navbar-nav ml-auto">

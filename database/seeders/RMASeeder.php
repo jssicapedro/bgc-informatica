@@ -22,6 +22,7 @@ class RMASeeder extends Seeder
                 'previsaoEntrega' => '2024-11-15',
                 'dataEntrega' => '2024-11-20',
                 'horasTrabalho' => 5,
+                'totalPagar' => 0,
                 'descricaoProblema' => 'Arranjo dos pinos dos na motherboard e do CPU, computador fixo',
                 'estado' => 'completo'
             ],
@@ -33,6 +34,7 @@ class RMASeeder extends Seeder
                 'previsaoEntrega' => '2024-11-20',
                 'dataEntrega' => '2024-11-22',
                 'horasTrabalho' => 1,
+                'totalPagar' => 0,
                 'descricaoProblema' => 'Limpeza de computador portátil',
                 'estado' => 'em reparacao'
             ],
@@ -44,6 +46,7 @@ class RMASeeder extends Seeder
                 'previsaoEntrega' => null,
                 'dataEntrega' => now(),
                 'horasTrabalho' => 2,
+                'totalPagar' => 0,
                 'descricaoProblema' => 'Substituição de ecrã de smartphone',
                 'estado' => 'em reparacao',
             ],

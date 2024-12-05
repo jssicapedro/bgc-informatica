@@ -95,13 +95,13 @@ class ServicosController extends Controller
      */
     public function destroy($id)
     {
-       // Encontre o técnico ou falhe com 404 se não encontrado
-       $servico = Servico::findOrFail($id);
+        // Encontre o técnico ou falhe com 404 se não encontrado
+        $servico = Servico::findOrFail($id);
 
-       // Soft delete do técnico (não remove fisicamente do banco, apenas marca como excluído)
-       $servico->delete();
+        // Soft delete do técnico (não remove fisicamente do banco, apenas marca como excluído)
+        $servico->delete();
 
-       return redirect()->route('servicos')->with('success', 'Servicos excluído com sucesso.');
+        return redirect()->route('servicos')->with('success', 'Servicos excluído com sucesso.');
     }
 
     /**
@@ -118,16 +118,30 @@ class ServicosController extends Controller
         return redirect()->route('servicos')->with('success', 'Servicos restaurado com sucesso.');
     }
 
-    public function buscarServicos(Request $request){
+    public function buscarServicos(Request $request)
+    {
         $categoria = $request->query('categoria', null);
 
-        if($categoria){
+        if ($categoria) {
             $servicos = Servico::where('categoria_id', $categoria)->get();
-        }else{
+        } else {
             $servicos = Servico::all();
         }
         return response()->json([
             'servicos' => $servicos
         ], 200);
+    }
+
+    public function getServicosPorCategoria($categoriaId)
+    {
+        // Verifique se a categoria existe antes de tentar buscar os serviços
+        $categoria = Categoria::find($categoriaId);
+
+        if ($categoria) {
+            $servicos = Servico::where('categoria_id', $categoriaId)->get();
+            return response()->json(['servicos' => $servicos]);
+        } else {
+            return response()->json(['servicos' => []]);
+        }
     }
 }
