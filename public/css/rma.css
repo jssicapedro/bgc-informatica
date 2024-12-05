@@ -24,9 +24,16 @@ html,  body {
 
 }
 
+
 body{
-width: 100%;
+    width: 100%;
 }
+
+main{
+    width: 80vw;
+}
+
+
 /* Cabeçalho */
 h1 {
     color: var(--default_blue);
