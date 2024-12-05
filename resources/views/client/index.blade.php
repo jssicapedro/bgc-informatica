@@ -44,7 +44,7 @@
     </nav>
 
     <div class="banner">
-        <img class="bgc-image" src="{{asset('img/index/img2 copy.jpg')}}" alt="Imagem">
+        <img class="bgc-image" src="{{asset('img/index/loja.jpg')}}" alt="Imagem">
     </div>
 
     <br>
