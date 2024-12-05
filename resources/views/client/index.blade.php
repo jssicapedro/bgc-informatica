@@ -176,7 +176,7 @@
         <br>
         <br>
         <br>
-        <h1 id="orcamento" class="titulo4">Orçamento</h1>
+        <h1 id="orcamento" class="titulo4"> > Orçamento</h1>
         <div class="container_or">
             <form action="{{ route('index') }}" method="GET">
                 <div class="orcamento-row">
@@ -230,11 +230,11 @@
         
         <footer>
             <div class="info">
-                <p>&#128231: bgc@gmail.com;</p>
-                <p> &#128205: Rua da Vida, Localidade 8200-852;</p>
+                <p>&#128231: bgc@gmail.com</p>
+                <p> &#128205: Rua da Vida, Localidade 8200-852</p>
                 <div class="time">
                     <p>&#128338:</p>
-                    <p>Seg a Sex: 8:30-13:00 e das 14:30-18:30 <br> Sáb a Dom: Encerrados;</p>
+                    <p>Seg a Sex: 8:30-13:00 e das 14:30-18:30 <br> Sáb a Dom: Encerrados</p>
                 </div>
             </div>
             <p> © Copyright 2024 BGC Informática. </p>
