@@ -271,6 +271,7 @@ footer {
   width: 100%;
   margin-top: -2%;
   height: calc(15vh + 2%);
+  
 }
 
 footer div.info {
@@ -280,6 +281,7 @@ footer div.info {
   align-items: center;
   gap: 15px;
   flex-direction: row;
+  margin-top: 10px;
 }
 
 footer p {

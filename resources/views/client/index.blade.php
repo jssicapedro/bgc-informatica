@@ -285,8 +285,7 @@
                 if (dispositivoId) {
                     // Faz uma requisição AJAX para obter os serviços para o dispositivo selecionado
                     $.ajax({
-                        url: '{{ url('
-                        servicos ') }}/' + dispositivoId,
+                        url: '{{ url('servicos') }}/' + dispositivoId,
                         method: 'GET',
                         success: function(response) {
                             // Limpa o select de serviços
