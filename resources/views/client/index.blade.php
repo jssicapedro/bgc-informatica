@@ -6,24 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="{{ asset('img/nav/logotipo.png') }}" type="image/jpg">
     <link rel="stylesheet" href="{{asset('css/index.css')}}">
-
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
     <!-- Navbar adaptada -->
-    <div class="navbar">
+    <nav class="navbar navbar-expand-lg fixed-top">
         <div class="navbar-left">
             <img src="{{ asset('img/nav/logotipo.png') }}" alt="Logotipo" class="logo">
             <h1 class="nav-title">BGC Informática</h1>
         </div>
-        <div class="navbar-right">
-            <a href="#quemSomos">QUEM SOMOS</a>
-            <a href="#servicos">SERVIÇOS</a>
-            <a href="#orcamento">ORÇAMENTO</a>
-            <a href="#contactos">CONTACTOS</a>
-            <a class="rma" href="{{ route('consultar.rma') }}">CONSULTAR RMA</a>
+
+        <!-- Toggler -->
+        <button class="navbar-toggler" type="button" aria-label="Toggle navigation" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-right collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item d-flex">
+                    <a class="nav-link me-3" href="#quemSomos">QUEM SOMOS</a>
+                </li>
+                <li class="nav-item d-flex">
+                    <a class="nav-link me-3" href="#servicos">SERVIÇOS</a>
+                </li>
+                <li class="nav-item d-flex">
+                    <a class="nav-link me-3" href="#orcamento">ORÇAMENTO</a>
+                </li>
+                <li class="nav-item d-flex">
+                    <a class="nav-link me-3" href="#contactos">CONTACTOS</a>
+                </li>
+                <li class="nav-item d-flex">
+                    <a class="nav-link rma me-3" href="{{ route('consultar.rma') }}">CONSULTAR RMA</a>
+                </li>
         </div>
-    </div>
+    </nav>
 
     <div class="banner">
         <img class="bgc-image" src="{{asset('img/index/img2 copy.jpg')}}" alt="Imagem">
@@ -51,7 +69,7 @@
         </div>
 
         <div>
-            <img src="{{asset('img/index/abstrat.jpg')}}" alt="Escritorio">
+            <img class="escritorio" src="{{asset('img/index/abstrat.jpg')}}" alt="Escritorio">
 
             <p> It is a long established fact that a reader will be distracted by the readable content of a page when
                 looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of
@@ -81,21 +99,21 @@
     <div class="container">
         <div class="galeria">
             <div class="row">
-                <div class="imagem">
+                <div class="col imagem">
                     <img class="servico_img" src="{{asset('img/index/img.png')}}"
                         alt="">
                     <p class="legenda">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit vero totam officia,
                         optio tempore,
                         sint nemo ipsa odio dolorum sequi expedita repudiandae reprehenderit voluptatem quaerat.</p>
                 </div>
-                <div class="imagem">
+                <div class="col imagem">
                     <img class="servico_img" src="{{asset('img/index/img3.png')}}"
                         alt="">
                     <p class="legenda">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit vero totam officia,
                         optio tempore,
                         sint nemo ipsa odio dolorum sequi expedita repudiandae reprehenderit voluptatem quaerat.</p>
                 </div>
-                <div class="imagem">
+                <div class="col imagem">
                     <img class="servico_img" class="servico_img" src="{{asset('img/index/img.png')}}"
                         alt="">
                     <p class="legenda">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit vero totam officia,
@@ -104,21 +122,21 @@
                 </div>
             </div>
             <div class="row">
-                <div class="imagem">
+                <div class="col imagem">
                     <img class="servico_img" src="{{asset('img/index/img3.png')}}"
                         alt="">
                     <p class="legenda">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit vero totam officia,
                         optio tempore,
                         sint nemo ipsa odio dolorum sequi expedita repudiandae reprehenderit voluptatem quaerat.</p>
                 </div>
-                <div class="imagem">
+                <div class="col imagem">
                     <img class="servico_img" src="{{asset('img/index/img.png')}}"
                         alt="">
                     <p class="legenda">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit vero totam officia,
                         optio tempore,
                         sint nemo ipsa odio dolorum sequi expedita repudiandae reprehenderit voluptatem quaerat.</p>
                 </div>
-                <div class="imagem">
+                <div class="col imagem">
                     <img class="servico_img" src="{{asset('img/index/img3.png')}}"
                         alt="">
                     <p class="legenda">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit vero totam officia,
@@ -145,13 +163,21 @@
     <br>
     <br>
 
-    <div class="container">
-        <img class="products" src="{{asset('img/index/img5.jpg')}}" alt="Herd of horses">
-        <img class="products" src="{{asset('img/index/img4.jpg')}}" alt="Baby Elephant">
-        <img class="products" src="{{asset('img/index/img5.jpg')}}" alt="Koi Fish">
-        <img class="products" src="{{asset('img/index/img4.jpg')}}" alt="Ibis Bird">
-        <img class="products" src="{{asset('img/index/img5.jpg')}}" alt="Lemur">
-        <img class="products" src="{{asset('img/index/img4.jpg')}}" alt="Berber Monkeys">
+    <div class="produtos container w-100">
+        <div class="row">
+            <div class="col">
+                <img class="products" src="{{asset('img/index/img5.jpg')}}" alt="Herd of horses">
+                <img class="products" src="{{asset('img/index/img4.jpg')}}" alt="Baby Elephant">
+                <img class="products" src="{{asset('img/index/img5.jpg')}}" alt="Koi Fish">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <img class="products" src="{{asset('img/index/img4.jpg')}}" alt="Ibis Bird">
+                <img class="products" src="{{asset('img/index/img5.jpg')}}" alt="Lemur">
+                <img class="products" src="{{asset('img/index/img4.jpg')}}" alt="Berber Monkeys">
+            </div>
+        </div>
     </div>
 
     <br>
@@ -239,12 +265,17 @@
                 <p>Seg a Sex: 8:30-13:00 e das 14:30-18:30 <br> Sáb a Dom: Encerrados;</p>
             </div>
         </div>
+        <div class="termos_politicas">
+            <a href="{{ route('termosCondicoes') }}" target="_blank" rel="noopener noreferrer">Termos & Condições</a>
+            <a href="{{ route('politicaPrivacidade') }}" target="_blank" rel="noopener noreferrer">Politica & Privacidade</a>
+        </div>
         <p> © Copyright 2024 BGC Informática. </p>
     </footer>
 
     <!-- Incluir o jQuery (necessário para AJAX) -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+    <!-- bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         $(document).ready(function() {
             // Quando o dispositivo for selecionado
@@ -254,7 +285,8 @@
                 if (dispositivoId) {
                     // Faz uma requisição AJAX para obter os serviços para o dispositivo selecionado
                     $.ajax({
-                        url: '{{ url('servicos') }}/' + dispositivoId,
+                        url: '{{ url('
+                        servicos ') }}/' + dispositivoId,
                         method: 'GET',
                         success: function(response) {
                             // Limpa o select de serviços

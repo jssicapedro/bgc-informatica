@@ -11,7 +11,6 @@ class ClientesController extends Controller
 {
     use SoftDeletes;
 
-
     public function index()
     {
         $clientes = Cliente::withTrashed()->paginate(5);
@@ -24,7 +23,6 @@ class ClientesController extends Controller
     {
         return view('admin.cliente.cliente_new');
     }
-
     /**
      * Store a newly created resource in storage.
      */
@@ -40,7 +38,6 @@ class ClientesController extends Controller
 
         return redirect()->route('clientes')->with('success', 'Clientes created successfully.');
     }
-
     /**
      * Display the specified resource.
      */
@@ -50,7 +47,6 @@ class ClientesController extends Controller
 
         return view('admin.cliente.cliente_view', compact('cliente'));
     }
-
     /**
      * Show the form for editing the specified resource.
      */
@@ -59,7 +55,6 @@ class ClientesController extends Controller
         $cliente = Cliente::findOrFail($id);
         return view('admin.cliente.cliente_edit', compact('cliente'));
     }
-
     /**
      * Update the specified resource in storage.
      */
@@ -91,16 +86,27 @@ class ClientesController extends Controller
     }
 
     /**
-    * Restore the specified resource from storage.
-    */
-   public function restore($id)
-   {
-       // Recupera o técnico excluído (soft deleted)
-       $cliente = Cliente::withTrashed()->findOrFail($id);
+     * Restore the specified resource from storage.
+     */
+    public function restore($id)
+    {
+        // Recupera o técnico excluído (soft deleted)
+        $cliente = Cliente::withTrashed()->findOrFail($id);
 
-       // Restaura o técnico
-       $cliente->restore();
+        // Restaura o técnico
+        $cliente->restore();
 
-       return redirect()->route('clientes')->with('success', 'Técnico restaurado com sucesso.');
-   }
+        return redirect()->route('clientes')->with('success', 'Técnico restaurado com sucesso.');
+    }
+
+
+    // Em ClienteController.php
+    public function getAllClientes()
+    {
+        // Obtém todos os clientes sem paginação
+        $clientes = Cliente::all();
+
+        // Retorna os dados em formato JSON
+        return response()->json($clientes);
+    }
 }

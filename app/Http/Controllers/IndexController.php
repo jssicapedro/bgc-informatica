@@ -161,4 +161,14 @@ class IndexController extends Controller
         // Retorna a view com os dados necessários
         return view('client.consultar_rma', compact('rma', 'mensagem', 'availableServicos'));
     }
+
+    public function termosCondicoes()
+    {
+        return view('client.termoscondicoes');
+    }
+
+    public function politicaPrivacidade()
+    {
+        return view('client.termoscondicoes');
+    }
 }

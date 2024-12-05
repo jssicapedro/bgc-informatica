@@ -16,16 +16,15 @@ use App\Http\Controllers\IndexController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [IndexController::class, 'index'])->name('index');
-// Rota para retornar os serviços de uma categoria (dispositivo)
 Route::get('/servicos/{categoria_id}', [IndexController::class, 'getServicosPorCategoria'])->name('servicos.por_categoria');
-/* Rora para visualizar formulario de rma */
 Route::get('/consultar_rma', [IndexController::class, 'consultarRMA'])->name('consultar.rma');
-// Rota para processar a consulta de RMA
 Route::post('/consultar_rma', [IndexController::class, 'processarConsultaRMA'])->name('consultar.rma.processar');
+Route::get('termos&condicoes', [IndexController::class, 'termosCondicoes'])->name('termosCondicoes');
+Route::get('politica&privacidade', [IndexController::class, 'politicaPrivacidade'])->name('politicaPrivacidade');
 
 
 Route::middleware('guest')->group(function () {
-    Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+    Route::get('tecnico/login', [LoginController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
 });
 
@@ -46,6 +45,12 @@ Route::middleware('auth')->group(function () {
     Route::put('/ver-cliente/{id}/update', [ClientesController::class, 'update'])->name('cliente.update');
     Route::delete('/ver-cliente/{id}/delete', [ClientesController::class, 'destroy'])->name('cliente.destroy');
     Route::patch('/ver-cliente/{id}/restore', [ClientesController::class, 'restore'])->name('cliente.restore');
+
+    // Em routes/web.php ou routes/api.php
+    Route::get('/clientes/all', [ClientesController::class, 'getAllClientes']);
+
+
+
 
     /* EQUIPAMENTOS */
     Route::get('/equipamentos', [EquipamentosController::class, 'index'])->name('equipamentos');
