@@ -160,47 +160,40 @@
         <br>
         <br>
         <br>
-        <h1 id="orcamento" class="titulo4"> > Orçamento </h1>
-    <small class="small">Não incluindo taxas nem necessidade de encomendas</small>
-    <br>
-    <br>
-    <br>
-
-    <div class="container_or">
-        <form action="{{ route('index') }}" method="GET">
-            <div class="orcamento">
-                <label for="dispositivo">Dispositivos</label>
-                <select id="dispositivo" name="dispositivo" class="form-control">
-                    <option>Escolha o Dispositivo</option>
-                    @foreach($dispositivos as $dispositivo)
-                    <option
-                        value="{{ $dispositivo->id }}" {{ old('dispositivo->nome') == $dispositivo->id ? 'selected' : '' }}>
-                        {{ $dispositivo->nome }}
-                    </option>
-                    @endforeach
-                </select>
-            </div>
-
-            <div class="orcamento">
-                <label for="servico">Serviço</label>
-                <select id="servico" name="servico" class="form-control">
-                    <option value="{{ old('servico->nome') }}">Escolha o serviço para o seu problema</option>
-                    <!-- A lista de serviços será populada dinamicamente via AJAX -->
-                </select>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Calcular Orçamento</button>
-        </form>
-
-        <!-- Exibir o orçamento calculado -->
-        @if(isset($total))
-        <div class="orcamento">
-            <h3>Orçamento estimado:</h3>
-            <p>Total: €{{ number_format($total, 2) }}</p>
+        <h1 id="orcamento" class="titulo4"> > Orçamento</h1>
+        <div class="container_or">
+            <form action="{{ route('index') }}" method="GET">
+                <div class="orcamento-row">
+                    <div class="orcamento-item">
+                        <label for="dispositivo">Dispositivo</label>
+                        <select id="dispositivo" name="dispositivo" class="form-control">
+                            <option>Escolha o Dispositivo</option>
+                            @foreach($dispositivos as $dispositivo)
+                                <option value="{{ $dispositivo->id }}" {{ old('dispositivo->nome') == $dispositivo->id ? 'selected' : '' }}>
+                                    {{ $dispositivo->nome }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="orcamento-item">
+                        <label for="servico">Serviço</label>
+                        <select id="servico" name="servico" class="form-control">
+                            <option value="{{ old('servico->nome') }}">Escolha o serviço para o seu problema</option>
+                        </select>
+                    </div>
+                    <div class="orcamento-item">
+                        <button type="submit" class="btn btn-primary">Calcular</button>
+                    </div>
+                </div>
+            </form>
+            @if(isset($total))
+                <div class="orcamento-result">
+                    <h3>Orçamento estimado:</h3>
+                    <p>Total: €{{ number_format($total, 2) }}</p>
+                </div>
+            @endif
         </div>
-        @endif
-    </div>
-
+        <small class="small">Não incluindo taxas nem necessidade de encomendas</small>
     <br>
     <br>
     <br>
