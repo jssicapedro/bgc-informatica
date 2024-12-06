@@ -41,12 +41,8 @@
 
         <div class="about">
             <div>
-                <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-                    scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
-                    electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
-                    Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
-                    Aldus PageMaker including versions of Lorem Ipsum. </p>
+                <p> Somos uma loja especializada na venda de equipamentos e consumíveis informáticos, bem como na prestação de serviços de reparação e manutenção de dispositivos tecnológicos. Localizados na Avenida Manuel Xavier, nº 2, estamos ao seu dispor desde 2009, com o compromisso de oferecer soluções de qualidade, tanto para empresas como para clientes individuais.
+                Ao longo dos anos, temos consolidado uma sólida reputação no mercado, pautando-nos por valores que são a base do nosso trabalho: rigor, experiência, atenção, dedicação e confiança. Estes princípios guiam todas as nossas ações, desde a escolha dos produtos que comercializamos até à forma como prestamos suporte técnico, garantindo sempre o melhor atendimento e a máxima satisfação dos nossos clientes. </p>
 
                 <img src="{{asset('img/nav/logotipo2.png')}}" alt="Logotipo">
 
@@ -55,12 +51,8 @@
             <div>
                 <img src="{{asset('img/index/images.png')}}" alt="Escritorio">
 
-                <p> It is a long established fact that a reader will be distracted by the readable content of a page when
-                    looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of
-                    letters, as opposed to using 'Content here, content here', making it look like readable English. Many
-                    desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a
-                    search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved
-                    over the years, sometimes by accident, sometimes on purpose (injected humour and the like). </p>
+                <p> Seja para o seu negócio ou para o seu uso pessoal, temos as melhores opções e um serviço especializado para assegurar que os seus equipamentos informáticos funcionem de forma eficaz e segura. Estamos prontos para atender às suas necessidades, oferecendo a atenção personalizada que cada cliente merece, com a experiência e o conhecimento necessários para proporcionar soluções rápidas e eficientes.
+                Conte conosco para as suas necessidades informáticas. O nosso compromisso com a excelência está refletido no serviço que prestamos, com a confiança de quem sabe que, desde 2009, estamos aqui para ajudar a otimizar e manter o seu equipamento sempre em ótimo estado. </p>
 
 
             </div>
@@ -84,48 +76,42 @@
             <div class="galeria">
                 <div class="row">
                     <div class="imagem">
-                        <img class="servico_img" src="{{asset('img/index/img.png')}}"
+                        <img class="servico_img" src="{{asset('img/index/servicos1.jpg')}}"
                             alt="">
-                        <p class="legenda">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit vero totam officia,
-                            optio tempore,
-                            sint nemo ipsa odio dolorum sequi expedita repudiandae reprehenderit voluptatem quaerat.</p>
+                        <p class="title"> <b> Venda de equipamentos informáticos e periféricos </b> </p>
+                        <p class="legenda"> Disponibilizamos uma ampla gama de equipamentos e acessórios informáticos de alta qualidade para melhorar a sua experiência tecnológica. </p>
                     </div>
                     <div class="imagem">
                         <img class="servico_img" src="{{asset('img/index/img3.png')}}"
                             alt="">
-                        <p class="legenda">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit vero totam officia,
-                            optio tempore,
-                            sint nemo ipsa odio dolorum sequi expedita repudiandae reprehenderit voluptatem quaerat.</p>
+                        <p class="title"> <b> Venda de equipamentos em primeira e segunda mão </b> </p>
+                        <p class="legenda"> Oferecemos equipamentos novos e usados, como monitores, impressoras, ratos e pen drives, com preços acessíveis e garantia de qualidade. </p>
                     </div>
                     <div class="imagem">
                         <img class="servico_img" class="servico_img" src="{{asset('img/index/img.png')}}"
                             alt="">
-                        <p class="legenda">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit vero totam officia,
-                            optio tempore,
-                            sint nemo ipsa odio dolorum sequi expedita repudiandae reprehenderit voluptatem quaerat.</p>
+                        <p class="title"> <b> Encomendas em 24h </b> </p>
+                        <p class="legenda"> Garantimos a entrega de equipamentos em até 24 horas, para que você tenha o que precisa com rapidez. </p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="imagem">
                         <img class="servico_img" src="{{asset('img/index/img3.png')}}"
                             alt="">
-                        <p class="legenda">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit vero totam officia,
-                            optio tempore,
-                            sint nemo ipsa odio dolorum sequi expedita repudiandae reprehenderit voluptatem quaerat.</p>
+                        <p class="title"> <b> Venda de consumíveis </b> </p>
+                        <p class="legenda"> Temos uma variedade de consumíveis, como toners, cartuchos e cabos, das melhores marcas para garantir o bom funcionamento dos seus dispositivos. </p>
                     </div>
                     <div class="imagem">
-                        <img class="servico_img" src="{{asset('img/index/img.png')}}"
+                        <img class="servico_img" src="{{asset('img/index/servicos5.jpg')}}"
                             alt="">
-                        <p class="legenda">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit vero totam officia,
-                            optio tempore,
-                            sint nemo ipsa odio dolorum sequi expedita repudiandae reprehenderit voluptatem quaerat.</p>
+                        <p class="title"> <b> Reparação de Equipamentos Informáticos </b> </p>
+                        <p class="legenda"> Realizamos reparações rápidas e eficientes em computadores, laptops e impressoras, com diagnóstico preciso e consertos de qualidade. </p>
                     </div>
                     <div class="imagem">
                         <img class="servico_img" src="{{asset('img/index/img3.png')}}"
                             alt="">
-                        <p class="legenda">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit vero totam officia,
-                            optio tempore,
-                            sint nemo ipsa odio dolorum sequi expedita repudiandae reprehenderit voluptatem quaerat.</p>
+                        <p class="title"> <b> Apoio a empresas </b> </p>
+                        <p class="legenda"> Oferecemos serviços de instalação de redes, software de faturação e equipamentos informáticos, proporcionando soluções completas para o bom funcionamento da sua empresa. </p>
                     </div>
                 </div>
             </div>
