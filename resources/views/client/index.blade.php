@@ -160,107 +160,118 @@
         <br>
         <br>
         <br>
-        <h1 id="orcamento" class="titulo4"> > Orçamento</h1>
-        <div class="container_or">
-            <form action="{{ route('index') }}" method="GET">
-                <div class="orcamento-row">
-                    <div class="orcamento-item">
-                        <label for="dispositivo">Dispositivo</label>
-                        <select id="dispositivo" name="dispositivo" class="form-control">
-                            <option>Escolha o Dispositivo</option>
-                            @foreach($dispositivos as $dispositivo)
-                                <option value="{{ $dispositivo->id }}" {{ old('dispositivo->nome') == $dispositivo->id ? 'selected' : '' }}>
-                                    {{ $dispositivo->nome }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="orcamento-item">
-                        <label for="servico">Serviço</label>
-                        <select id="servico" name="servico" class="form-control">
-                            <option value="{{ old('servico->nome') }}">Escolha o serviço para o seu problema</option>
-                        </select>
-                    </div>
-                    <div class="orcamento-item">
-                        <button type="submit" class="btn btn-primary">Calcular</button>
-                    </div>
-                </div>
-            </form>
-            @if(isset($total))
-                <div class="orcamento-result">
-                    <h3>Orçamento estimado:</h3>
-                    <p>Total: €{{ number_format($total, 2) }}</p>
-                </div>
-            @endif
-        </div>
-        <small class="small">Não incluindo taxas nem necessidade de encomendas</small>
+        <h1 id="orcamento" class="titulo4"> > Orçamento </h1>
+    <small class="small">Não incluindo taxas nem necessidade de encomendas</small>
+    <br>
+    <br>
+    <br>
 
-
-        <br>
-        <br>
-        <br>
-
-        <hr class="hr3">
-
-        <br>
-        <br>
-        <br>
-
-        <h1 id="contactos" class="titulo5"> > Contactos </h1>
-        <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4773.268331621087!2d-8.839642587073088!3d41.87734247112207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd25bfc6be0e8c57%3A0xee9d2604bf037558!2sBGCINFORM%C3%81TICA!5e1!3m2!1spt-PT!2spt!4v1732645811942!5m2!1spt-PT!2spt"
-            width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"></iframe>
-        
-        <footer>
-            <div class="info">
-                <p>&#128231: bgc@gmail.com</p>
-                <p> &#128205: Rua da Vida, Localidade 8200-852</p>
-                <div class="time">
-                    <p>&#128338:</p>
-                    <p>Seg a Sex: 8:30-13:00 e das 14:30-18:30 <br> Sáb a Dom: Encerrados</p>
-                </div>
+    <div class="container_or">
+        <form action="{{ route('index') }}" method="GET">
+            <div class="orcamento">
+                <label for="dispositivo">Dispositivos</label>
+                <select id="dispositivo" name="dispositivo" class="form-control">
+                    <option>Escolha o Dispositivo</option>
+                    @foreach($dispositivos as $dispositivo)
+                    <option
+                        value="{{ $dispositivo->id }}" {{ old('dispositivo->nome') == $dispositivo->id ? 'selected' : '' }}>
+                        {{ $dispositivo->nome }}
+                    </option>
+                    @endforeach
+                </select>
             </div>
-            <p> © Copyright 2024 BGC Informática. </p>
-        </footer>
+
+            <div class="orcamento">
+                <label for="servico">Serviço</label>
+                <select id="servico" name="servico" class="form-control">
+                    <option value="{{ old('servico->nome') }}">Escolha o serviço para o seu problema</option>
+                    <!-- A lista de serviços será populada dinamicamente via AJAX -->
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Calcular Orçamento</button>
+        </form>
+
+        <!-- Exibir o orçamento calculado -->
+        @if(isset($total))
+        <div class="orcamento">
+            <h3>Orçamento estimado:</h3>
+            <p>Total: €{{ number_format($total, 2) }}</p>
+        </div>
+        @endif
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+    <hr class="hr3">
+
+    <br>
+    <br>
+    <br>
+
+    <h1 id="contactos" class="titulo5"> > Contactos </h1>
+    <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4773.268331621087!2d-8.839642587073088!3d41.87734247112207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd25bfc6be0e8c57%3A0xee9d2604bf037558!2sBGCINFORM%C3%81TICA!5e1!3m2!1spt-PT!2spt!4v1732645811942!5m2!1spt-PT!2spt"
+        width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <footer>
+        <div class="info">
+            <p>&#128231: bgc@gmail.com;</p>
+            <p> &#128205: Rua da Vida, Localidade 8200-852;</p>
+            <div class="time">
+                <p>&#128338:</p>
+                <p>Seg a Sex: 8:30-13:00 e das 14:30-18:30 <br> Sáb a Dom: Encerrados;</p>
+            </div>
+        </div>
+        <div class="termos_politicas">
+            <a href="{{ route('termosCondicoes') }}" target="_blank" rel="noopener noreferrer">Termos & Condições</a>
+            <a href="{{ route('politicaPrivacidade') }}" target="_blank" rel="noopener noreferrer">Politica & Privacidade</a>
+        </div>
+        <p> © Copyright 2024 BGC Informática. </p>
+    </footer>
 
     <!-- Incluir o jQuery (necessário para AJAX) -->
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Quando o dispositivo for selecionado
+            $('#dispositivo').on('change', function() {
+                var dispositivoId = $(this).val(); // Pega o id do dispositivo selecionado
 
-        <script>
-            $(document).ready(function () {
-                // Quando o dispositivo for selecionado
-                $('#dispositivo').on('change', function () {
-                    var dispositivoId = $(this).val(); // Pega o id do dispositivo selecionado
+                if (dispositivoId) {
+                    // Faz uma requisição AJAX para obter os serviços para o dispositivo selecionado
+                    $.ajax({
+                        url: '{{ url('servicos') }}/' + dispositivoId,
+                        method: 'GET',
+                        success: function(response) {
+                            // Limpa o select de serviços
+                            $('#servico').empty();
 
-                    if (dispositivoId) {
-                        // Faz uma requisição AJAX para obter os serviços para o dispositivo selecionado
-                        $.ajax({
-                            url: '{{ url('servicos') }}/': + dispositivoId,
-                            method: 'GET',
-                            success: function (response) {
-                                // Limpa o select de serviços
-                                $('#servico').empty();
+                            // Adiciona um item padrão
+                            $('#servico').append('<option value="">Escolha o serviço para o seu problema</option>');
 
-                                // Adiciona um item padrão
-                                $('#servico').append('<option value="">Escolha o serviço para o seu problema</option>');
-
-                                // Preenche o select de serviços com as opções retornadas
-                                $.each(response, function (index, servico) {
-                                    $('#servico').append('<option value="' + servico.id + '">' + servico.nome + '</option>');
-                                });
-                            },
-                            error: function (xhr) {
-                                alert('Erro ao carregar os serviços!');
-                            }
-                        });
-                    } else {
-                        // Se nenhum dispositivo for selecionado, limpa o select de serviços
-                        $('#servico').empty();
-                        $('#servico').append('<option value="">Escolha o serviço para o seu problema</option>');
-                    }
-                });
+                            // Preenche o select de serviços com as opções retornadas
+                            $.each(response, function(index, servico) {
+                                $('#servico').append('<option value="' + servico.id + '">' + servico.nome + '</option>');
+                            });
+                        },
+                        error: function(xhr) {
+                            alert('Erro ao carregar os serviços!');
+                        }
+                    });
+                } else {
+                    // Se nenhum dispositivo for selecionado, limpa o select de serviços
+                    $('#servico').empty();
+                    $('#servico').append('<option value="">Escolha o serviço para o seu problema</option>');
+                }
             });
-        </script>
-    </body>
+        });
+    </script>
+</body>
+
 </html>
