@@ -16,6 +16,10 @@ body {
   font-family: sans-serif !important;
 }
 
+h1{
+  border-bottom-width: 0;
+}
+
 .header {
   background-color: var(--default_white);
   padding: 20px;
@@ -108,7 +112,6 @@ body {
   text-align: center;
   padding: 20px 10%;
   margin: 0;
-  border-bottom: 2px solid var(--default_blue);
 }
 
 .about {
