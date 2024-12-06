@@ -19,9 +19,9 @@
             <div class="navbar-right">
                 <a href="#quemSomos">QUEM SOMOS</a>
                 <a href="#servicos">SERVIÇOS</a>
-                <a href="{{ route('consultar.rma') }}">CONSULTAR RMA</a>
                 <a href="#orcamento">ORÇAMENTO</a>
                 <a href="#contactos">CONTACTOS</a>
+                <a href="{{ route('consultar.rma') }}">CONSULTAR RMA</a>
             </div>
         </div>
 
@@ -148,6 +148,8 @@
         <br>
         <br>
         <hr class="hr1">
+        <br>
+        <br>
         <div>
             <img class="image2" src="{{asset('img/index/loja2.jpg')}}" alt="Imagem">
         </div>
