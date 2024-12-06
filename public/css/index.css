@@ -116,6 +116,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: justify;
 }
 
 .about div {
@@ -166,6 +167,12 @@ body {
 
 .servico_img {
   width: 100%;
+}
+
+.title {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  color:#44679F
 }
 
 .legenda {
