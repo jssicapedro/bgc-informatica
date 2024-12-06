@@ -169,6 +169,6 @@ class IndexController extends Controller
 
     public function politicaPrivacidade()
     {
-        return view('client.termoscondicoes');
+        return view('client.politicaprivacidade');
     }
 }
