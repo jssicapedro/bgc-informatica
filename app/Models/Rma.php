@@ -17,6 +17,8 @@ class Rma extends Model
     protected $fillable = [
         'tecnico_id',
         'equipamento_id',
+        'equipamento.modelo.marca',
+        'equipamento.cliente',
         'encomenda_id',
         'dataChegada',
         'dataEntrega',

@@ -35,6 +35,7 @@ class ClienteRequest extends FormRequest
         return [
             'telemovel.regex' => 'O número de telemóvel deve ter exatamente 9 dígitos, sem espaços.',
             'nif.regex' => 'O NIF deve ter exatamente 9 dígitos, sem espaços.',
+            'email.regex' => 'O email não é válido',
         ];
     }
 }

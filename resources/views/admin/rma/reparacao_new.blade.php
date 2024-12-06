@@ -53,7 +53,7 @@
                         <option value="">Selecione o equipamento</option>
                         @foreach($equipamentos as $equipamento)
                         <option value="{{ $equipamento->id }}" {{ old('equipamento_id') == $equipamento->id ? 'selected' : '' }}>
-                            {{ $equipamento->modelo->marca->nome }}, {{ $equipamento->modelo->nome }} de <strong>{{ $equipamento->cliente->nome }}</strong>
+                            {{ $equipamento->modelo->marca->nome }}, {{ $equipamento->modelo->nome }} de <strong>{{ $equipamento->cliente?->nome }}</strong>
                         </option>
                         @endforeach
                     </select>

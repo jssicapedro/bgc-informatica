@@ -17,7 +17,7 @@
 <div class="container">
     <div class="pag_new pag_list">
         <a href="{{ route('equipamentos') }}">Voltar à listagem</a>
-        <h1>Editar os dados do equipamento de {{$equipamento->cliente->nome}}</h1>
+        <h1>Editar os dados do equipamento de {{$equipamento->cliente?->nome}}</h1>
     </div>
     <form action="{{ route('equipamento.update', $equipamento->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
@@ -61,12 +61,12 @@
             <div class="nif">
                 <label for="cliente_id" class="form-label">Cliente:</label>
                 <select class="form-control" id="cliente_id" name="cliente_id">
-                    <option class="fw-bold" value="{{ $equipamento->cliente->id }}" selected>
-                        {{ $equipamento->cliente->id }} - {{ $equipamento->cliente->nome }}
+                    <option class="fw-bold" value="{{ $equipamento->cliente?->id }}" selected>
+                        {{ $equipamento->cliente?->id }} - {{ $equipamento->cliente?->nome }}
                     </option>
                     @foreach($clientes as $cliente)
                     <option value="{{ $cliente->id }}"
-                        {{ old('cliente_id', $equipamento->cliente->id) == $cliente->id ? 'selected' : '' }}>
+                        {{ old('cliente_id', $equipamento->cliente?->id) == $cliente->id ? 'selected' : '' }}>
                         {{ $cliente->id }} - {{ $cliente->nome }}
                     </option>
                     @endforeach

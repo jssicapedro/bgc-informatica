@@ -47,3 +47,13 @@ footer small{
     justify-content: flex-end;
 }
 
+.termos_privacidade{
+    display: flex;
+    flex-direction: column;
+}
+
+.termos_privacidade a{
+    color: var(--default_footer_color);
+    text-decoration: none;
+}
+

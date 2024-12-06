@@ -97,7 +97,7 @@
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Apagar</button>
                                 </form>
-                                <button type="button" class="btn btn-secondary" data-bs-dismisApagas="modal">Cancelar</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                             </div>
                         </div>
                     </div>

@@ -36,7 +36,7 @@
                         {{ $equipamento->modelo->marca->nome }},
                         {{ $equipamento->modelo->nome }}
                     <td>
-                        {{ $equipamento->cliente->nome }}
+                        {{ $equipamento->cliente?->nome }}
                     </td>
                     <td>{{ $equipamento->categoria->nome }}</td>
                     <td>
@@ -91,7 +91,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                Tem certeza de que deseja apagar o técnico <strong>{{ $equipamento->modelo->marca->nome }}, {{ $equipamento->modelo->nome }}</strong> do cliente <strong>{{ $equipamento->cliente->nome }}</strong>?
+                                Tem certeza de que deseja apagar o técnico <strong>{{ $equipamento->modelo->marca->nome }}, {{ $equipamento->modelo->nome }}</strong> do cliente <strong>{{ $equipamento->cliente?->nome }}</strong>?
                             </div>
                             <div class="modal-footer">
                                 <form action="{{ route('equipamento.destroy', $equipamento->id) }}" method="POST">
@@ -99,7 +99,7 @@
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Apagar</button>
                                 </form>
-                                <button type="button" class="btn btn-secondary" data-bs-dismisApagas="modal">Cancelar</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                             </div>
                         </div>
                     </div>

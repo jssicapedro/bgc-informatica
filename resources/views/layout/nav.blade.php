@@ -13,7 +13,7 @@
 
             <!-- Menu -->
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto align-items-end">
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('clientes') }}">Clientes</a>
                     </li>

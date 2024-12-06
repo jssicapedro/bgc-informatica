@@ -24,6 +24,7 @@ class ReparacoesController extends Controller
         $reparacoes = Rma::with('equipamento', 'equipamento.modelo', 'servicos', 'tecnicos', 'tecnico_responsavel')->withTrashed()->paginate(5);
         $tecnicos = Tecnico::all();
 
+
         return view('admin.rma.reparacoes')
             ->with([
                 'reparacoes' => $reparacoes,
