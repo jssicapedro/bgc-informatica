@@ -16,7 +16,6 @@ use App\Http\Controllers\IndexController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [IndexController::class, 'index'])->name('index');
-Route::get('/servicos/{categoria_id}', [IndexController::class, 'getServicosPorCategoria'])->name('servicos.por_categoria');
 Route::get('/consultar_rma', [IndexController::class, 'consultarRMA'])->name('consultar.rma');
 Route::post('/consultar_rma', [IndexController::class, 'processarConsultaRMA'])->name('consultar.rma.processar');
 Route::get('termos&condicoes', [IndexController::class, 'termosCondicoes'])->name('termosCondicoes');
