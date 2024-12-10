@@ -12,7 +12,8 @@ class RmaServico extends Model
     protected $fillable = [
         'rma_id',
         'servico_id',
-        'tecnico_id'
+        'tecnico_id',
+        'horas'
     ];
 
     
