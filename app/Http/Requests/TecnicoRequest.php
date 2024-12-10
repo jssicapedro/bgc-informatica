@@ -22,7 +22,6 @@ class TecnicoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id' => 'required|exists:tecnicos,id',
             'nome' => 'required|string|max:255',
             'email' => 'required|email|max:255',
             'telemovel' => 'required|regex:/^[0-9]{9}$/',

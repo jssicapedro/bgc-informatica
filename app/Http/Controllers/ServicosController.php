@@ -53,8 +53,8 @@ class ServicosController extends Controller
      */
     public function show($id)
     {
-        $servico = Servico::findOrFail($id);
-
+        $servico = Servico::with('categoria')->findOrFail($id);
+        
         return view('admin.servicos.servico_view', compact('servico'));
     }
 

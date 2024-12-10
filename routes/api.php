@@ -11,8 +11,8 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 
-Route::get('equipamento/{id}', [EquipamentosController::class, 'buscarEquipamentoPorId']);
-Route::get('servico', [ServicosController::class, 'buscarServicos']);
 
 Route::get('/servicos/{categoria_id}', [IndexController::class, 'getServicosPorCategoria'])->name('servicos.por_categoria');
 Route::get('/orcamento/{categoria}/{servico}', [ServicosController::class, 'calculaOrcamento'])->name('servicos.por_categoria');
+Route::get('equipamento/{id}', [EquipamentosController::class, 'buscarEquipamentoPorId']);
+Route::get('servico', [ServicosController::class, 'buscarServicos']);

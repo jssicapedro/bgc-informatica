@@ -34,7 +34,7 @@ return new class extends Migration
             $table->foreignId('rma_id');
             $table->foreignId('servico_id');
             $table->foreignId('tecnico_id');
-            $table->float('horas')->default(0.0);
+            $table->float('horas');
             $table->timestamps();
             $table->softDeletes();
         });

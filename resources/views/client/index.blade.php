@@ -171,7 +171,18 @@
 <br>
 <br>
 
+<<<<<<< HEAD
 <hr class="hr2">
+=======
+                if (dispositivoId) {
+                    // Faz uma requisição AJAX para obter os serviços para o dispositivo selecionado
+                    $.ajax({
+                        url: '/api/servicos/' + dispositivoId,
+                        method: 'GET',
+                        success: function(response) {
+                            // Limpa o select de serviços
+                            $('#servico').empty();
+>>>>>>> c94e275c4f3c5643411e674e0a63f7acd8c0b9c9
 
 <br>
 <br>
