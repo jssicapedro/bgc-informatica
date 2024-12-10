@@ -71,7 +71,7 @@
             nossas ações, desde a escolha dos produtos que comercializamos até à forma como prestamos suporte técnico,
             garantindo sempre o melhor atendimento e a máxima satisfação dos nossos clientes. </p>
 
-        <img src="{{asset('img/nav/logotipo.png')}}" alt="Logotipo">
+        <img src="{{asset('img/nav/logotipo2.png')}}" alt="Logotipo">
 
     </div>
 
@@ -171,18 +171,7 @@
 <br>
 <br>
 
-<<<<<<< HEAD
 <hr class="hr2">
-=======
-                if (dispositivoId) {
-                    // Faz uma requisição AJAX para obter os serviços para o dispositivo selecionado
-                    $.ajax({
-                        url: '/api/servicos/' + dispositivoId,
-                        method: 'GET',
-                        success: function(response) {
-                            // Limpa o select de serviços
-                            $('#servico').empty();
->>>>>>> c94e275c4f3c5643411e674e0a63f7acd8c0b9c9
 
 <br>
 <br>
