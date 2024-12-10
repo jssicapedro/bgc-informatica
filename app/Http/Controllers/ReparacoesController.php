@@ -54,6 +54,7 @@ class ReparacoesController extends Controller
         $servicos = $request->input('servico_id');
         $dataChegada = now();  // Data atual para o campo dataChegada
         $tecnicoId = $request->input('tecnico_id'); // Recupera o técnico selecionado
+        
 
         // Cria o RMA
         $rma = Rma::create([
@@ -61,9 +62,11 @@ class ReparacoesController extends Controller
             'equipamento_id' => $request->input('equipamento_id'),
             'descricaoProblema' => $request->input('descricaoProblema'),
             'dataChegada' => $dataChegada,  // Preenche com a data atual
+            'previsaoEntrega' => $request->input('previsaoEntrega'),
             'estado' => $request->input('estado'),
             'totalPagar' => 0.00,
         ]);
+
 
         // Associa os serviços ao RMA com o técnico responsável
         foreach ($servicos as $servicoId) {

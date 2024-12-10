@@ -25,7 +25,7 @@
                                     <th>#</th>
                                     <th>Nome</th>
                                     <th>Email</th>
-                                    <th>Telefone</th>
+                                    <th>Telemovel</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -38,7 +38,7 @@
                                 <td>${cliente.id}</td>
                                 <td>${cliente.nome}</td>
                                 <td>${cliente.email}</td>
-                                <td>${cliente.telefone}</td>
+                                <td>${cliente.telemovel}</td>
                             </tr>
                         `;
                 });

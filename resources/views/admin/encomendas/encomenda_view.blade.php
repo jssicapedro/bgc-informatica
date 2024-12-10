@@ -37,7 +37,7 @@
         <div class="email_tel">
             <div class="tel">
                 <h3>Data de entrega</h3>
-                <input type="text" class="form-control"  value="{{ $encomenda->dataEntrega ? \Carbon\Carbon::parse($encomenda->dataEntrega)->format('m/Y') : 'A encomenda ainda não chegou' }}" readonly>
+                <input type="text" class="form-control"  value="{{ $encomenda->dataEntrega ? \Carbon\Carbon::parse($encomenda->dataEntrega)->format('d/m/Y') : 'A encomenda ainda não chegou' }}" readonly>
             </div>
         </div>
         <div class="morada">

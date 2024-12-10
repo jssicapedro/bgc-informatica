@@ -56,27 +56,28 @@
         </div>
         <h3>Datas</h3>
         <div class="email_tel">
-            <div class="email">
+            <div class="col md-3">
                 <label>Data de chegada á loja</label>
                 <input type="text" class="form-control" value="{{ \Carbon\Carbon::parse($reparacao->dataChegada)->format('d/m/Y') }}" readonly>
             </div>
-            <div class="email">
+            <div class="col md-3">
                 <label>Data de previsão da resolução</label>
-                @if(!($reparacao->previsaoEntrega))
+                @if(empty($reparacao->previsaoEntrega))
                 <input type="text" class="form-control" value="Sem data de previsão" readonly>
+
+                @else
+                <input type="text" class="form-control" value="{{ \Carbon\Carbon::parse($reparacao->previsaoEntrega)->format('d/m/Y') }}" readonly>
+                @endif
             </div>
-            @else
-            <input type="text" class="form-control" value="{{ \Carbon\Carbon::parse($reparacao->previsaoEntrega)->format('d/m/Y') }}" readonly>
+            <div class="col md-3">
+                <label>Data de entrega ao cliente</label>
+                @if(empty($reparacao->dataEntrega))
+                <input type="text" class="form-control" value="O cliente ainda não veio buscar o equipamento" readonly>
+                @else
+                <input type="text" class="form-control" value="{{ \Carbon\Carbon::parse($reparacao->dataEntrega)->format('d/m/Y') }}" readonly>
+                @endif
+            </div>
         </div>
-        <div class="email">
-            <label>Data de entrega ao cliente</label>
-            @if(!($reparacao->dataEntrega))
-            <input type="text" class="form-control" value="O cliente ainda não veio buscar o equipamento" readonly>
-            @else
-            <input type="text" class="form-control" value="{{ \Carbon\Carbon::parse($reparacao->dataEntrega)->format('d/m/Y') }}" readonly>
-            @endif
-        </div>
-        @endif
     </div>
     <hr>
     <h2>Serviços prestados</h2>
@@ -85,7 +86,7 @@
     <div class="email_tel">
         @foreach($servicos as $servico)
         <div class="email">
-            <label for="servico_{{ $servico->id }}">
+            <label style="font-weight: bold;" for="servico_{{ $servico->id }}">
                 {{ $servico->categoria->nome }} - {{ $servico->nome }} - {{ $servico->custo . '€/h' }}
             </label>
             <input type="text" name="horas_trabalho[{{ $servico->id }}]" placeholder="Horas de trabalho" class="form-control mt-1"

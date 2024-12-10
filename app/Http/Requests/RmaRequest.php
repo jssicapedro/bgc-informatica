@@ -29,6 +29,7 @@ class RmaRequest extends FormRequest
             'descricaoProblema' => 'required|string|max:1000',
             'estado' => 'required|in:em processamento,em reparação,completo',
             'dataEntrega' => 'nullable|date', // Apenas aceita datas válidas se for enviada
+            'previsaoEntrega' => 'nullable|date',
             'encomenda' => 'nullable|string|in:sim,nao',
             'encomenda_id' => 'nullable|exists:encomendas,id', // Validação para encomenda_id
             'horas_trabalho' => 'nullable|array', // Horas de trabalho é um array, caso contrário, será omitido

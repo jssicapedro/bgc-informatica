@@ -75,6 +75,16 @@
                 </div>
             </div>
 
+            <!-- Previsão de entrega -->
+            <div class="row mb-3 mt-3">
+                <div class="col-md-3">
+                    <label for="previsaoEntrega" class="form-label">Previsão de conclusão:</label>
+                    <div>
+                        <input class="form-control" type="date" id="previsaoEntrega" name="previsaoEntrega" value="{{ old('previsaoEntrega') }}">
+                    </div>
+                </div>
+            </div>
+
             <!-- Descrição do Problema -->
             <div>
                 <label for="descricaoProblema" class="form-label">Descrição do problema:</label>
