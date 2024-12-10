@@ -11,7 +11,6 @@ use App\Models\RmaServico;
 use App\Models\Servico;
 use App\Models\Tecnico;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Http\Request;
 
 class ReparacoesController extends Controller
 {

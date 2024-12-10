@@ -8,10 +8,6 @@
 <link rel="stylesheet" href="{{ asset('css/pag_view.css') }}">
 @endpush
 
-<!-- js -->
-@push('scripts')
-@endpush
-
 @section('main')
 <div class="container">
     <div class="pag_new pag_list">
