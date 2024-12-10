@@ -144,4 +144,23 @@ class ServicosController extends Controller
             return response()->json(['servicos' => []]);
         }
     }
+
+    public function calculaOrcamento(Request $request, $categoria, $servico)
+    {
+        // Recupera a categoria (dispositivo) selecionada
+        $categoria = Categoria::find($categoria);
+
+        // Recupera os serviços que pertencem à categoria selecionada
+        $servico = Servico::find($servico);
+
+        // Recupera o serviço selecionado, e verifica se ele pertence à categoria do dispositivo
+        if ($categoria && $servico) {
+            // Calcula o total com base no serviço selecionado
+            $total = ($servico->estimativa / 60) * $servico->custo;
+        }
+
+        return response()->json([
+            'total' => $total
+        ]);
+    }
 }
