@@ -26,7 +26,8 @@ class ClienteRequest extends FormRequest
             'email' => 'required|email|max:255',
             'telemovel' => 'required|regex:/^[0-9]{9}$/',
             'nif' => 'required|regex:/^[0-9]{9}$/',
-            'morada' => 'string'
+            'morada' => 'string',
+            'password' => 'required|string|min:8',
         ];
     }
     
