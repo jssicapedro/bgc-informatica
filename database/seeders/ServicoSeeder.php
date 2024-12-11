@@ -85,7 +85,7 @@ class ServicoSeeder extends Seeder
                 [
                     'id' => 9,
                     'categoria_id' => 3, // Outros equipamentos
-                    'nome' => 'conserto',
+                    'nome' => 'substituição/manutenção',
                     'custo' => 14.00,
                     'estimativa' => 160,
                     'descricao' => 'Troca de peças em vários tipos de equipamentos.',
