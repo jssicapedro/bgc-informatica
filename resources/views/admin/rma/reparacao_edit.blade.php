@@ -105,7 +105,7 @@
                         {{ $servico->categoria->nome }} - {{ $servico->nome }}
                     </label>
                     <br>
-                    <small>Numero de horas do serviço</small>
+                    <small>Número de horas do serviço</small>
                     <input type="number" name="horas_trabalho[{{ $servico->id }}]" placeholder="Horas de trabalho" class="form-control mt-1"
                         value="{{ old('horas_trabalho.' . $servico->id, $rma->servicos->where('id', $servico->id)->first()->pivot->horas ?? '') }}">
                 </div>
