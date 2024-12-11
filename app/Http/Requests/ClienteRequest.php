@@ -27,7 +27,6 @@ class ClienteRequest extends FormRequest
             'telemovel' => 'required|regex:/^[0-9]{9}$/',
             'nif' => 'required|regex:/^[0-9]{9}$/',
             'morada' => 'string',
-            'password' => 'required|string|min:8',
         ];
     }
     
