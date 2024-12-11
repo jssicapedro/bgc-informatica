@@ -96,6 +96,7 @@
             </div>
             <div class="row mb-3 mt-3">
                 <label for="servico_id" class="form-label">Tipo de Serviço:</label>
+                
                 @foreach($servicos as $servico)
                 <div class="col">
                     <input type="checkbox" name="servico_id[]" value="{{ $servico->id }}" id="servico_{{ $servico->id }}" class="form-check-input"
@@ -103,6 +104,8 @@
                     <label for="servico_{{ $servico->id }}">
                         {{ $servico->categoria->nome }} - {{ $servico->nome }}
                     </label>
+                    <br>
+                    <small>Numero de horas do serviço</small>
                     <input type="number" name="horas_trabalho[{{ $servico->id }}]" placeholder="Horas de trabalho" class="form-control mt-1"
                         value="{{ old('horas_trabalho.' . $servico->id, $rma->servicos->where('id', $servico->id)->first()->pivot->horas ?? '') }}">
                 </div>
