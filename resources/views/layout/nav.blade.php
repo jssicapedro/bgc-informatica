@@ -30,10 +30,10 @@
                         <a class="nav-link" href="{{ route('encomendas') }}">Encomendas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('servicos') }}">Serviços</a>
+                        <a class="nav-link" href="{{ route('categorias') }}">Categorias</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('categorias') }}">Categorias</a>
+                        <a class="nav-link" href="{{ route('servicos') }}">Serviços</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('tecnicos') }}">Técnicos</a>

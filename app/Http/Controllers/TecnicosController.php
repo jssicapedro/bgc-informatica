@@ -40,7 +40,7 @@ class TecnicosController extends Controller
             'email' => $request->email,
             'telemovel' => str_replace(' ', '', $request->input('telemovel')),
             'especialidade' => $request->especialidade,
-            'password' => $request->password,
+            'password' => Hash::make($request->password),
         ]);
 
         return redirect()->route('tecnicos')->with('success', 'Tecnicos created successfully.');
