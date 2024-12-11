@@ -77,7 +77,7 @@ class ServicoSeeder extends Seeder
                 [
                     'id' => 8,
                     'categoria_id' => 3, // Outros equipamentos
-                    'nome' => 'substituição/manutenção',
+                    'nome' => 'conserto',
                     'custo' => 10.00,
                     'estimativa' => 240,
                     'descricao' => 'Reparo de diversos equipamentos eletrônicos.',
